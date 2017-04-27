@@ -3,11 +3,13 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@FrontBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.product_images: /uploads/images/products
 
 framework:
     #esi: ~
@@ -35,6 +37,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    paths:
+        '%kernel.root_dir%/../vendor/javiereguiluz/easyadmin-bundle/Resources/views': easyadmin_template
 
 # Doctrine Configuration
 doctrine:
@@ -78,6 +82,56 @@ fos_user:
 # Configure Easy admin
 easy_admin:
     entities:
-        - AppBundle\Entity\Product
-        - AppBundle\Entity\Category
-        - AppBundle\Entity\User
+        User:
+            class: AppBundle\Entity\User
+            edit:
+                fields: ['id', 'email']
+        Category:
+            class: AppBundle\Entity\Category
+            form:
+                fields: ['name', 'parentId', 'description']
+            # templates:
+            #     field_array: ':easy_admin:field_array.html.twig'
+        Product:
+            class: AppBundle\Entity\Product
+            form:
+                fields: ['name', { property: 'description', type: 'textarea' }, 'price', { property: 'imageFile', type: 'vich_image' }]
+            # edit:
+            #     fields: ['name', 'description', 'price', { property: 'imageFile', type: 'vich_image' }]
+
+    design:
+        brand_color: '#1ABC9C'
+        menu:
+            - { entity: 'User', icon: 'user' }
+            - { entity: 'Category', icon: 'file-text-o' }
+            - { entity: 'Product', icon: 'list' }
+
+# Vich configuration
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_images:
+            uri_prefix:         '%app.path.product_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/products'
+
+tweede_golf_media:
+    max_per_page: 24  # this is optional (default is 18)
+    file_entity: 'AppBundle:File'  # this is required
+
+liip_imagine:
+    filter_sets:
+        tgmedia_thumbnail:
+            quality: 80
+            filters:
+                thumbnail: { size: [200, 150], mode: outbound }
+
+stfalcon_tinymce:
+    include_jquery: true
+    tinymce_jquery: true
+    selector: ".tinymce"
+    theme:
+        advanced:
+            plugins:
+                - "media emoticons link image textcolor code table template fileupload"
+            toolbar1: "insertfile undo redo | styleselect | bold italic | underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | emoticons | forecolor backcolor table fileupload"
+            image_advtab: true

@@ -1,10 +1,6 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
-
-# admin:
-#     resource: "@AdminBundle/Resources/config/routing.yml"
-#     prefix:   /admin
+front:
+    resource: "@FrontBundle/Resources/config/routing.yml"
+    prefix:   /
 
 # Import FOSUserBundle routing files
 fos_user_security:
@@ -28,6 +24,11 @@ fos_user_change_password:
 
 # Easy admin config
 easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/"
+    resource: "@AdminBundle/Controller/AdminController.php"
     type:     annotation
-    prefix:   /admin   
+    prefix:   /admin
+
+tweedegolf_media:
+    resource: "@TweedeGolfMediaBundle/Controller/"
+    type:     annotation
+    prefix:   /api

@@ -1,0 +1,1 @@
+var img=new Image();img.src='https://cm.g.doubleclick.net/pixel?google_nid=iplace_ua&google_cm'

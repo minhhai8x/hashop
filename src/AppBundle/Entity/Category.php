@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -22,9 +23,10 @@ class Category
     private $id;
 
     /**
-     * @var int
+     * @var ArrayCollection
      *
-     * @ORM\Column(name="parent_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="category", inversedBy="id")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     private $parentId;
 
@@ -42,6 +44,15 @@ class Category
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     */
+    public $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -120,5 +131,10 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function __toString()
+    {
+        return $this->name; 
     }
 }
