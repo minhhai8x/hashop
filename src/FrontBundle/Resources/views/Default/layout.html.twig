@@ -50,229 +50,29 @@
             <header id="header">
                <div class="container">
                   {% block header_top %}
-                  <div class="header_top wow animated">
-                     <!-- USER MENU -->
-                     <ul class="header_user">
-                        <li><i class="fa fa-lock"></i><a href="#login" id="customer_login_link">Log in</a></li>
-                        <li><i class="fa fa-user"></i><a href="#register" id="customer_register_link">Create an account</a></li>
-                     </ul>
-                     <!-- HEADER CART -->
-                     <div class="header_cart">
-                        <a href="#cart"><i class="fa fa-shopping-cart"></i><b>Cart:</b><span class="cart-total-items"><span class="count">0</span></span><span>items</span></a>
-                     </div>
-                  </div>
+                     {{ include('FrontBundle:Default:header_top.html.twig') }}
                   {% endblock %}
                   {% block header_main %}
-                  <div class="header_main wow animated">
-                     <!-- LOGO -->
-                     <div id="logo">
-                        <a href="/">
-                           <img src="{{ asset('assets/images/logo.png') }}" alt="Sunny Flowers">
-                           <div class="ins">
-                              <b>Sunny Flowers</b>
-                              <span>The biggest choice on the web</span>
-                           </div>
-                        </a>
-                     </div>
-                     <!-- HEADER SEARCH -->
-                     <div class="header_search">
-                        <form action="#search" method="get" class="search-form" role="search">
-                           <input id="search-field" name="q" type="text" placeholder=" " class="hint">
-                           <button id="search-submit" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                     </div>
-                  </div>
+                     {{ include('FrontBundle:Default:header_main.html.twig') }}
                   {% endblock %}
                </div>
             </header>
             {% endblock %}
+
             <!-- MEGAMENU -->
             {% block megamenu %}
-            <div id="megamenu" class="isStuck">
-               <div class="container">
-                  <ul class="sf-menu megamenu_desktop">
-                     <li class="megamenu__1">
-                        <a href="#" class="active">Home</a>
-                     </li>
-                     <li class="megamenu__2">
-                        <a href="#all">Products<span class="menu_badge">hot deals</span></a>
-                        <ul>
-                           <li>
-                              <div class="submenu">
-                                 <div class="row">
-                                    <div class="col-sm-3">
-                                       <h3><a href="#congratulation">Congratulation</a></h3>
-                                       <ul>
-                                          <li><a href="#asiatic-lilies">Asiatic Lilies</a></li>
-                                          <li><a href="#blooming-12-long-stemmed-assorted-rose-bouquet">Blooming 12 Long ...</a></li>
-                                          <li><a href="#bouquet-of-long-stemmed-roses-dozen-with-vase">Bouquet of Long S...</a></li>
-                                          <li><a href="#calla-lilies-with-matching-greens">Calla Lilies with...</a></li>
-                                          <li><a href="#classic-roses">Classic Roses</a></li>
-                                       </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                       <h3><a href="#corporate">Corporate</a></h3>
-                                       <ul>
-                                          <li><a href="#classic-roses">Classic Roses</a></li>
-                                          <li><a href="#coffee-cup-planter">Coffee Cup Planter</a></li>
-                                          <li><a href="#eforcase-refreshing-calla-lily-bridal-wedding-bouquet-flower-bouquets">Eforcase Refreshi...</a></li>
-                                          <li><a href="#flowering-fields-bouquet-with-vase">Flowering Fields ...</a></li>
-                                          <li><a href="#nearly-natural-29-in-set-of-12-african-lily-stems">Nearly Natural 29...</a></li>
-                                       </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                       <h3><a href="#family">Family</a></h3>
-                                       <ul>
-                                          <li><a href="#nearly-natural-29-in-set-of-12-african-lily-stems">Nearly Natural 29...</a></li>
-                                          <li><a href="#purifying-peace-lily-round-tin-pot">Purifying Peace L...</a></li>
-                                          <li><a href="#smile-and-shine-bouquet-by-teleflora">Smile And Shine B...</a></li>
-                                          <li><a href="#telefloras-enchanted-cottage">Teleflora's Encha...</a></li>
-                                          <li><a href="#telefloras-fall-in-love">Teleflora's Fall ...</a></li>
-                                       </ul>
-                                    </div>
-                                    <div class="col-sm-3">
-                                       <h3><a href="#get-well">Get well</a></h3>
-                                       <ul>
-                                          <li><a href="#bouquet-of-long-stemmed-roses-dozen-with-vase">Bouquet of Long S...</a></li>
-                                          <li><a href="#calla-lilies-with-matching-greens">Calla Lilies with...</a></li>
-                                          <li><a href="#classic-roses">Classic Roses</a></li>
-                                          <li><a href="#coffee-cup-planter">Coffee Cup Planter</a></li>
-                                          <li><a href="#eforcase-refreshing-calla-lily-bridal-wedding-bouquet-flower-bouquets">Eforcase Refreshi...</a></li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </li>
-                        </ul>
-                     </li>
-                     <li class="megamenu__5">
-                        <a href="#about-us">About us<span class="menu_badge">our team</span></a>
-                     </li>
-                     <li class="megamenu__6">
-                        <a href="#contact-us">Contact us</a>
-                     </li>
-                  </ul>
-               </div>
-            </div>
+               {{ include('FrontBundle:Default:megamenu.html.twig') }}
             {% endblock %}
+
             <!-- NIVOSLIDER -->
             {% block nivoslider %}
-            <div class="slider_parallax_wr">
-               <div class="slider_wrap">
-                  <div class="nivoSlider">
-                     <a href="#asiatic-lilies" class="nivo-imageLink">
-                     <img src="{{ asset('assets/images/slide1_image.jpg') }}" alt="" title="#htmlcaption-1">
-                     </a>
-                     <a href="#/blooming-12-long-stemmed-assorted-rose-bouquet" class="nivo-imageLink">
-                     <img src="{{ asset('assets/images/slide2_image.jpg') }}" alt="" title="#htmlcaption-2">
-                     </a>
-                     <a href="#bouquet-of-long-stemmed-roses-dozen-with-vase" class="nivo-imageLink">
-                     <img src="{{ asset('assets/images/slide3_image.jpg') }}" alt="" title="#htmlcaption-3">
-                     </a>
-                    </div>
-               </div>
-            </div>
-            <div class="caption_hidden">
-               <div id="htmlcaption-1">
-                  <a href="#products/asiatic-lilies">
-                     <div class="nivo-ins">
-                        <div class="container">
-                           <div class="nivo-bg">
-                              <h3>Flowers are the</h3>
-                              <h2>sweetest things God ever made</h2>
-                              <span class="btn_slider">shop now!</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-               <div id="htmlcaption-2">
-                  <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-                     <div class="nivo-ins">
-                        <div class="container">
-                           <div class="nivo-bg">
-                              <h3>20% Off</h3>
-                              <h2>on every item over $ 300</h2>
-                              <span class="btn_slider">shop now!</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-               <div id="htmlcaption-3">
-                  <a href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase">
-                     <div class="nivo-ins">
-                        <div class="container">
-                           <div class="nivo-bg">
-                              <h3>Return the Love on</h3>
-                              <h2>Mother’s Day</h2>
-                              <span class="btn_slider">shop now!</span>
-                           </div>
-                        </div>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <script type="text/javascript">
-               $(document).ready(function() {
-                 $('.nivoSlider').nivoSlider({
-                   effect:'fade',
-                   animSpeed:500,
-                   pauseTime:7000,
-                   startSlide:0,
-                   pauseOnHover:true,
-                   directionNav:false,
-                   directionNavHide:false,
-                   controlNav:true
-                 });
-               
-                 if(device.desktop() && $(window).width() >= 1200){
-                       // PARALLAX INIT
-                       $(window).bind('scroll',function(e){
-                         parallaxScroll1();
-                       });
-               
-                       function parallaxScroll1(){
-                         var scrolled = $(window).scrollTop();
-                         $('.slider_parallax_wr .slider_wrap').css('top',(-190+(scrolled*.9))+'px');
-                         $('.slider_parallax_wr .nivo-controlNav').css('top',(760-(scrolled*.9))+'px');
-                         $('.slider_parallax_wr .nivo-caption').css('top',(802-(scrolled*.9))+'px');
-                       }
-                     };
-                   });
-                 
-            </script>
+               {{ include('FrontBundle:Default:nivoslider.html.twig') }}
             {% endblock %}
+
             {% block showcase %}
-            <div class="container">
-               <!-- SHOWCASE CUSTOM BLOCKS -->
-               <div id="showcase">
-                  <div class="parallax_box">
-                     <div class="row">
-                        <div class="col-sm-12 custom_showcase opacity_block">
-                           <a href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase">
-                              <div class="ins wow animated">
-                                 <h4>Find the freshest flowers and hand tied</h4>
-                                 <h3>bouquets for all occasions</h3>
-                              </div>
-                           </a>
-                        </div>
-                     </div>
-                     <script type="text/javascript">
-                        (function($) {
-                          if(device.desktop() && $(window).width() >= 1200){
-                        // PARALLAX INIT
-                        $(window).load(function() {
-                        $('.parallax_box').parallax("50%", -0.4);
-                        });
-                        
-                        };
-                        })(jQuery);
-                     </script>
-                  </div>
-               </div>
-            </div>
+               {{ include('FrontBundle:Default:showcase.html.twig') }}
             {% endblock %}
+
             <!-- MAIN CONTENT -->
             {% block main %}
             <div id="main" role="main">
@@ -310,17 +110,9 @@
                                                 </div>
                                                 <div class="product_desc">What do we do when we want ...</div>
                                                 <div class="product_links">
-                                                   <!-- 
-                                                      This is just a regular add product form. 
-                                                      You should be able to add any valid input fields to it 
-                                                      -->
                                                    <form method="post" action="#cart/add">
-                                                      <!-- We can leave this in, since the select comes later, 
-                                                         so it will override if user picks something different. -->
                                                       <input type="hidden" name="id" value="1166524912">
-                                                      <!-- START BUY -->
                                                       <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                                      <!-- END BUY -->
                                                    </form>
                                                    <a class="btn" href="#products/asiatic-lilies"><i class="fa fa-info-circle"></i></a>
                                                 </div>
@@ -348,17 +140,9 @@
                                                 </div>
                                                 <div class="product_desc">We send a card, a gift or s...</div>
                                                 <div class="product_links">
-                                                   <!-- 
-                                                      This is just a regular add product form. 
-                                                      You should be able to add any valid input fields to it 
-                                                      -->
                                                    <form method="post" action="#cart/add">
-                                                      <!-- We can leave this in, since the select comes later, 
-                                                         so it will override if user picks something different. -->
                                                       <input type="hidden" name="id" value="1166525040">
-                                                      <!-- START BUY -->
                                                       <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                                      <!-- END BUY -->
                                                    </form>
                                                    <a class="btn" href="#products/blooming-12-long-stemmed-assorted-rose-bouquet"><i class="fa fa-info-circle"></i></a>
                                                 </div>
@@ -386,17 +170,9 @@
                                                 </div>
                                                 <div class="product_desc">But the most traditional th...</div>
                                                 <div class="product_links">
-                                                   <!-- 
-                                                      This is just a regular add product form. 
-                                                      You should be able to add any valid input fields to it 
-                                                      -->
                                                    <form method="post" action="#cart/add">
-                                                      <!-- We can leave this in, since the select comes later, 
-                                                         so it will override if user picks something different. -->
                                                       <input type="hidden" name="id" value="1166525216">
-                                                      <!-- START BUY -->
                                                       <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                                      <!-- END BUY -->
                                                    </form>
                                                    <a class="btn" href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase"><i class="fa fa-info-circle"></i></a>
                                                 </div>
@@ -430,17 +206,9 @@
                                                 </div>
                                                 <div class="product_desc">Flowers are universal gift ...</div>
                                                 <div class="product_links">
-                                                   <!-- 
-                                                      This is just a regular add product form. 
-                                                      You should be able to add any valid input fields to it 
-                                                      -->
                                                    <form method="post" action="#cart/add">
-                                                      <!-- We can leave this in, since the select comes later, 
-                                                         so it will override if user picks something different. -->
                                                       <input type="hidden" name="id" value="1166525272">
-                                                      <!-- START BUY -->
                                                       <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                                      <!-- END BUY -->
                                                    </form>
                                                    <a class="btn" href="#products/calla-lilies-with-matching-greens"><i class="fa fa-info-circle"></i></a>
                                                 </div>
@@ -468,17 +236,9 @@
                                                 </div>
                                                 <div class="product_desc">Flowers are unique and they...</div>
                                                 <div class="product_links">
-                                                   <!-- 
-                                                      This is just a regular add product form. 
-                                                      You should be able to add any valid input fields to it 
-                                                      -->
                                                    <form method="post" action="#cart/add">
-                                                      <!-- We can leave this in, since the select comes later, 
-                                                         so it will override if user picks something different. -->
                                                       <input type="hidden" name="id" value="1166525328">
-                                                      <!-- START BUY -->
                                                       <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                                      <!-- END BUY -->
                                                    </form>
                                                    <a class="btn" href="#products/classic-roses"><i class="fa fa-info-circle"></i></a>
                                                 </div>
@@ -508,9 +268,7 @@
                                                 <div class="product_links">
                                                    <form method="post" action="#cart/add">
                                                       <input type="hidden" name="id" value="1166525452">
-                                                      <!-- START BUY -->
                                                       <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                                      <!-- END BUY -->
                                                    </form>
                                                    <a class="btn" href="#products/coffee-cup-planter"><i class="fa fa-info-circle"></i></a>
                                                 </div>
@@ -524,131 +282,27 @@
                         </div>
                      </div>
                      {% endblock %}
+
+                     <!-- Column left -->
                      {% block column_left %}
-                     <div class="column_left column col-sm-3">
-                        <div class="widget widget_best_sellers">
-                           <h3 class="widget_header">Best Sellers</h3>
-                           <div class="widget_content">
-                              <div class="product_listing_sidebar">
-                                 <div class="wow product animated">
-                                    <div class="prod_inside clearfix">
-                                       <div class="product_img">  
-                                          <a href="#products/telefloras-fall-in-love">
-                                          <img src="{{ asset('assets/images/telefloras_fall_in_love_1_medium.png') }}" alt="Teleflora&#39;s Fall in Love">
-                                          </a>
-                                       </div>
-                                       <div class="product_info">
-                                          <div class="product_price">
-                                             <span class="money" data-currency-usd="$27.00">$27.00</span>
-                                          </div>
-                                          <div class="product_name">
-                                             <a href="#products/telefloras-fall-in-love">Teleflora's Fall in Love</a>
-                                          </div>
-                                          <div class="product_desc">Besides that they have othe...</div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="widget wow widget_banner animated">
-                           <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-                              <div class="ins">
-                                 <h3>-30<span>%</span></h3>
-                                 <h4>for spring flowers</h4>
-                              </div>
-                              <img src="{{ asset('assets/images/banner.png') }}" alt="-30 -30">
-                           </a>
-                        </div>
-                     </div>
-                     {% endblock %}
+                        {{ include('FrontBundle:Default:column_left.html.twig') }}
+                     {% endblock %}                     
+
                   </div>
                </div>
             </div>
             {% endblock %}
+
+            <!-- Custom bottom -->
             {% block custom_bottom %}
-            <div class="container">
-               <div class="custom_bottom wow animated">
-                  <div class="parallax_box1">
-                     <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-                     <span class="title1">Hot Offer!</span>
-                     <span class="title2">Fast Same Day Delivery</span>
-                     </a>
-                  </div>
-                  <script type="text/javascript">
-                     (function($) {
-                       if(device.desktop() && $(window).width() >= 1200){
-                         // PARALLAX INIT
-                         $(window).load(function() {
-                           $('.parallax_box1').parallax("right", -0.2);
-                         });
-                     
-                       };
-                     })(jQuery);
-                  </script>
-               </div>
-            </div>
+               {{ include('FrontBundle:Default:custom_bottom.html.twig') }}
             {% endblock %}
+
             <!-- FOOTER -->
             {% block footer %}
-            <footer>
-               <div class="footer_top">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-sm-4 col-xs-12 footer_block footer_block__1 wow animated">
-                           <h3>Flowers Store</h3>
-                           <div class="copyright">
-                              <p role="contentinfo">© 2017 Flowers store. All Rights Reserved. Design by az</p>
-                           </div>
-                           <div class="instagram_wr act">
-                              <h6>follow us on instagram</h6>
-                              <div id="instafeed"></div>
-                           </div>
-                        </div>
-                        <div class="col-sm-2 col-xs-4 footer_block footer_block__2 wow animated">
-                           <ul>
-                              <li class="active"><a href="#" title="">Home</a></li>
-                              <li><a href="#search" title="">Search</a></li>
-                              <li><a href="#pages/about-us" title="">About Us</a></li>
-                              <li><a href="#pages/contact-us" title="">Contact us</a></li>
-                              <li><a href="#pages/documentation" title="">Documentation</a></li>
-                              <li><a href="#blogs/blog" title="">Blog</a></li>
-                              <li><a href="#collections/all" title="">Products</a></li>
-                           </ul>
-                        </div>
-                        <div class="col-sm-2 col-xs-4 footer_block footer_block__3 wow animated">
-                           <ul>
-                              <li><a href="#collections/congratulation" title="">Congratulation</a></li>
-                              <li><a href="#collections/corporate" title="">Corporate</a></li>
-                              <li><a href="#collections/family" title="">Family</a></li>
-                              <li><a href="#collections/get-well" title="">Get well</a></li>
-                              <li><a href="#collections/funeral" title="">Funeral</a></li>
-                              <li><a href="#collections/love" title="">Love</a></li>
-                              <li><a href="#collections/mixed" title="">Mixed</a></li>
-                           </ul>
-                        </div>
-                        <div class="col-sm-2 col-xs-4 footer_block footer_block__4 wow animated">
-                           <ul>
-                              <li><a href="#"><span>Twitter</span></a></li>
-                              <li><a href="#"><span>Facebook</span></a></li>
-                              <li><a href="#"><span>Youtube</span></a></li>
-                              <li><a href="#"><span>Pinteresrt</span></a></li>
-                              <li><a href="#"><span>Google+</span></a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="container">
-                  <div class="footer_block__5 wow animated">
-                     <ul>
-                        <li class="contacts_address">123 St ABC, US</li>
-                        <li class="contacts_phone"><span>Phone:</span>+1 800 559 6580</li>
-                     </ul>
-                  </div>
-               </div>
-            </footer>
-            {% endblock %}
+               {{ include('FrontBundle:Default:footer.html.twig') }}
+            {% endblock %}      
+
          </div>
          <!-- / #wrapper2 -->
       </div>
