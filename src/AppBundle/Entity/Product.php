@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -75,7 +74,7 @@ class Product
 
     /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @var File
+     * @var UploadedFile
      */
     private $imageFile;
 
@@ -224,7 +223,7 @@ class Product
         $this->updatedAt = new \DateTime('now');
     }
 
-    public function setImageFile(File $image = null)
+    public function setImageFile(UploadedFile $image = null)
     {
         $this->imageFile = $image;
 
