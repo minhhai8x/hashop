@@ -1,0 +1,11 @@
+action.remove_item: Xóa mục này
+action.add_another_item: Thêm mục mới
+action.add_new_item: Thêm mục mới
+user.signout: Đăng xuất
+list.page_title: Danh sách
+list.row_actions: Thao tác
+edit.page_title: Chỉnh sửa
+new.page_title: Thêm mới
+search.page_title: Kết quả tìm kiếm
+label.empty: Chưa có
+label.null: ------

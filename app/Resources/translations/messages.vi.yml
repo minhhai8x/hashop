@@ -1,0 +1,24 @@
+new: Mới
+sale: Giảm giá
+file.name.label: Tên file
+file.name.placeholder: Nhập tên file
+main.image: Chọn làm ảnh đại diện
+action.delete: Xóa
+action.save: Lưu lại
+action.list: Danh sách
+add.edit.product: Thêm hoặc chỉnh sửa sản phẩm
+product.description: Mô tả
+product.name: Tên sản phẩm
+product.image: Hình sản phẩm
+product.price: Giá
+product.specprice: Giá khuyến mãi
+product.label: Sản phẩm
+category.label: Danh mục
+user.label: Tài khoản
+action.search: Tìm kiếm
+action.new: Thêm mới
+action.edit: Sửa
+category.name: Tên danh mục
+category.parent: Danh mục cha
+category.description: Mô tả
+label.form.empty_value: ------

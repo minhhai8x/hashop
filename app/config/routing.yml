@@ -27,8 +27,3 @@ easy_admin_bundle:
     resource: "@AdminBundle/Controller/AdminController.php"
     type:     annotation
     prefix:   /admin
-
-tweedegolf_media:
-    resource: "@TweedeGolfMediaBundle/Controller/"
-    type:     annotation
-    prefix:   /api

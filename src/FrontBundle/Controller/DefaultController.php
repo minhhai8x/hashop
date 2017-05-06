@@ -8,6 +8,12 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig');
+    	$productManager = $this->get('utils.product.manager');
+    	$homeProducts = $productManager->getProducts();
+    	$renderData = array(
+    		'products' => $homeProducts,
+    	);
+    	//var_dump($renderData);die;
+        return $this->render('FrontBundle:Default:index.html.twig', $renderData);
     }
 }

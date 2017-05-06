@@ -26,10 +26,9 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
 
             // Media Management
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle(),
-            new TweedeGolf\MediaBundle\TweedeGolfMediaBundle(),
+            //new Oneup\UploaderBundle\OneupUploaderBundle(),
+
             new FrontBundle\FrontBundle(),
         );
 

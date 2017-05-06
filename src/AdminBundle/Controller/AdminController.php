@@ -4,6 +4,7 @@ namespace AdminBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use AppBundle\Entity\Product;
+use AppBundle\Helpers\StringHelper;
 
 class AdminController extends BaseAdminController
 {
@@ -14,12 +15,20 @@ class AdminController extends BaseAdminController
             $editForm->remove('description');
             $editForm->add('description', 'textarea', array(
                 'attr' => array(
-	                'class' => 'tinymce',
-	                'data-theme' => 'advanced',
-	            )
+                    'class' => 'tinymce',
+                    'data-theme' => 'advanced',
+                )
             ));
         }
         return $editForm;
+    }
+
+    public function prePersistEntity($entity)
+    {
+        if($entity instanceof Product){
+            $slug = StringHelper::slugify($entity->getName());
+            $entity->setSlug($slug);
+        }
     }
 }
 

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Product
@@ -41,7 +42,14 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -51,6 +59,13 @@ class Product
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="spec_price", type="float")
+     */
+    private $specPrice;
 
     /**
      * @var datetime $created
@@ -67,16 +82,23 @@ class Product
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
+     * @var Image[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Image", cascade={"persist"})
+     * @ORM\JoinTable(name="product_images",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="image_id", referencedColumnName="id", unique=true)}
+     * )
      */
-    private $image;
+    private $images;
 
     /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @var UploadedFile
+     * Constructor
      */
-    private $imageFile;
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -109,6 +131,29 @@ class Product
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Product
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
@@ -155,6 +200,29 @@ class Product
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set specPrice
+     *
+     * @param float $specPrice
+     * @return Product
+     */
+    public function setSpecPrice($specPrice)
+    {
+        $this->specPrice = $specPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get specPrice
+     *
+     * @return float 
+     */
+    public function getSpecPrice()
+    {
+        return $this->specPrice;
     }
 
     /**
@@ -223,27 +291,13 @@ class Product
         $this->updatedAt = new \DateTime('now');
     }
 
-    public function setImageFile(UploadedFile $image = null)
+    /**
+     * Get images
+     *
+     * @return Image[]|ArrayCollection
+     */
+    public function getImages()
     {
-        $this->imageFile = $image;
-
-        if ($image instanceof UploadedFile) {
-            $this->setImage($image);
-        }
-    }
-
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    public function getImage()
-    {
-        return $this->image;
+        return $this->images;
     }
 }
