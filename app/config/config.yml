@@ -35,7 +35,7 @@ framework:
 
 # Twig Configuration
 twig:
-    debug: '%kernel.debug%'
+    debug: true
     strict_variables: '%kernel.debug%'
     paths:
         '%kernel.root_dir%/../vendor/javiereguiluz/easyadmin-bundle/Resources/views': easyadmin_template
@@ -101,7 +101,7 @@ easy_admin:
             label: product.label
             class: AppBundle\Entity\Product
             form:
-                fields: [{ property: 'name', label: 'product.name'}, { property: 'description', type: 'textarea', label: 'product.description' }, { property: 'price', label: 'product.price'}, { property: 'specprice', label: 'product.specprice', type: 'text'}, { property: 'images', type: 'collection', type_options: { entry_type: 'FrontBundle\Form\ImageType' }, label: 'product.image'}]
+                fields: [{ property: 'name', label: 'product.name'}, { property: 'category', type_options: { class: 'AppBundle\Entity\Category' }}, { property: 'description', type: 'textarea', label: 'product.description' }, { property: 'price', label: 'product.price'}, { property: 'specprice', label: 'product.specprice', type: 'text'}, { property: 'images', type: 'collection', type_options: { entry_type: 'FrontBundle\Form\ImageType' }, label: 'product.image'}]
             edit:
                 title: 'add.edit.product'
             list:

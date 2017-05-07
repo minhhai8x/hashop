@@ -16,11 +16,16 @@ class ProductRepository extends EntityRepository
     {
         $query    = $this->createQueryBuilder('p')
                     ->select("p.id, cat.id as catId, cat.name as catName, cat.slug as catSlug, p.slug as slug, p.name, p.description, p.price, p.specPrice")
-                    ->leftJoin('p.category', 'cat')
-                    ->setMaxResults($params['limit'])
-                    ->getQuery();
+                    ->leftJoin('p.category', 'cat');
 
+        if (isset($params['catSlug'])) {
+            $query = $query->where('cat.slug  = :catSlug')
+                           ->setParameter('catSlug', $params['catSlug']); 
+        }
+
+        $query = $query->setMaxResults($params['limit'])->getQuery();
         $results = $query->getResult();
+
         return $results;
     }
 

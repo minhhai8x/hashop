@@ -29,4 +29,12 @@ type.label: Loại
 quantity.label: Số lượng
 add_to_cart.label: Thêm vào giỏ hàng
 buy.label: Mua hàng
-
+sortby.label: Sắp xếp theo
+hot.deals.label: hot deals
+contact_us.label: Liên hệ
+your_name.label: Tên bạn
+your_email.label: Địa chỉ email
+your_phone_number.label: Số điện thoại
+your_message.label: Nội dung
+send.label: Gửi
+renew.label: Làm mới

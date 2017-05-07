@@ -37,22 +37,22 @@
             <div class="product_info">
                <div class="product_price">
                   {% if product.specPrice is defined and product.specPrice %}
-                     <span class="money" data-currency-usd="{{ product.specPrice }}">{{ product.specPrice }}</span>
-                     <span class="money compare-at-price" data-currency-usd="{{ product.price }}">{{ product.price }}</span>
+                     <span class="money">{{ product.specPrice }}</span>
+                     <span class="money compare-at-price">{{ product.price }}</span>
                   {% else %}
-                     <span class="money" data-currency-usd="{{ product.price }}">{{ product.price }}</span>
+                     <span class="money">{{ product.price }}</span>
                   {% endif %}
                </div>
                <div class="product_name">
-                  <a href="{{ url('front_product_detail') ~ product.slug }}">{{ product.name }}</a>
+                  <a href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">{{ product.name }}</a>
                </div>
-               <div class="product_desc">{{ product.shortdesc }} ...</div>
+               <div class="product_desc">{{ product.shortdesc|raw }} ...</div>
                <div class="product_links">
                   <form method="post" action="#cart/add">
                      <input type="hidden" name="id" value="{{ product.id }}">
                      <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
                   </form>
-                  <a class="btn" href="{{ url('front_product_detail') ~ product.slug }}"><i class="fa fa-info-circle"></i></a>
+                  <a class="btn" href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}"><i class="fa fa-info-circle"></i></a>
                </div>
             </div>
          </div>

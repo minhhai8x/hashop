@@ -83,7 +83,6 @@ class ProductManager
             $images = $this->getProductImages($product['id']);
             $product['mainImg'] = $images['mainImg'];
             $product['thumbImg'] = $images['thumbImg'];
-
         }
 
         return $product;
@@ -106,6 +105,10 @@ class ProductManager
             }
         }
 
+        if (!isset($result['mainImg'])) {
+            $result['mainImg'] = $this->container->getParameter('front_product_image_default');
+        }
+
         return $result;
     }
 
@@ -123,5 +126,81 @@ class ProductManager
         
         $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
         return $this->categoryRepo->findAllCategories($params);
+    }
+
+    /**
+     *
+     * Get category detail by slug
+     *
+     * @param  string  $slug    Slug name
+     * @return array   $results Category Informations
+     */
+    public function getCategoryBySlug($slug)
+    {
+        $category = $this->categoryRepo->getCategory($slug);
+        return $category;
+    }
+
+    /**
+     *
+     * Get product by category
+     *
+     * @param  array $params  Custom parameters
+     * @return array $results List of product
+     */
+    public function getProductByCategory($params = array())
+    {
+        $results = array();
+        $recordsPerPage = $this->container->getParameter('items_per_page');
+        
+        $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
+        $products = $this->productRepo->findAllProducts($params);
+
+        if ($products) {
+            foreach ($products as $item) {
+                $images = $this->getProductImages($item['id']);
+                $results[] = array(
+                    'id' => $item['id'],
+                    'name' => $item['name'],
+                    'price' => StringHelper::currency($item['price']),
+                    'specPrice' => StringHelper::currency($item['specPrice']),
+                    'slug' => $item['slug'],
+                    'catSlug' => $item['catSlug'],
+                    'mainImg' => $images['mainImg'],
+                    'thumbImg' => isset($images['thumbImg'][0]) ? $images['thumbImg'][0] : null,
+                    'shortdesc' => StringHelper::shortString($item['description']),
+                );
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     *
+     * Get mega menu
+     *
+     * @return array $results Megamenu items
+     */
+    public function getMegamenu()
+    {
+        $result = array();
+        $categories = $this->getAllCategories();
+        if (!empty($categories)) {
+            foreach ($categories as $key => $category) {
+                $result[$key]['info'] = array(
+                    'name' => $category['name'],
+                    'slug' => $category['slug'],
+                );
+
+                $result[$key]['products'] = array();
+                $products = $this->getProducts(array('catSlug' => $category['slug']));
+                if (!empty($products)) {
+                    $result[$key]['products'] = $products;
+                }
+            }
+        }
+
+        return $result;
     }
 }

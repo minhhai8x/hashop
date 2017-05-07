@@ -1,3 +1,4 @@
 parameters:
     front_product_image_path: /uploads/images/products/
+    front_product_image_default: /assets/images/no-image.png
     items_per_page: 10

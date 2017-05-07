@@ -13,11 +13,11 @@ class ProductController extends Controller
         $categories = $productManager->getAllCategories();
 
         $renderData = array(
-            'amount' => 100,
             'body_id' => $slug,
             'body_class' => 'template-product',
             'product' => array(),
             'categories' => $categories,
+            'amount' => 0,
         );
 
         if ($product) {
@@ -29,6 +29,24 @@ class ProductController extends Controller
     
     public function categoryAction($slug)
     {
-        var_dump($slug);die;
+        $productManager = $this->get('utils.product.manager');
+        $category       = $productManager->getCategoryBySlug($slug);
+        $categories     = $productManager->getAllCategories();
+        $products       = $productManager->getProductByCategory(array('catSlug' => $slug));
+        $megaMenu       = $productManager->getMegamenu();
+
+        $renderData = array(
+            'body_id'    => $slug,
+            'body_class' => 'template-collection',
+            'categories' => $categories,
+            'products'   => $products,
+            'megaMenu'   => $megaMenu,
+        );
+
+        if ($category) {
+            $renderData['category'] = $category;
+        }
+
+        return $this->render('FrontBundle:Category:index.html.twig', $renderData);
     }
 }

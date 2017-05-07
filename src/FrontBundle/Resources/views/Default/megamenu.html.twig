@@ -2,64 +2,35 @@
    <div class="container">
       <ul class="sf-menu megamenu_desktop">
          <li class="megamenu__1">
-            <a href="{{ url('front_homepage') }}" class="active">Home</a>
+            <a href="{{ url('front_homepage') }}" class="active">{{ 'homepage.label'|trans }}</a>
          </li>
          <li class="megamenu__2">
-            <a href="#all">Products<span class="menu_badge">hot deals</span></a>
+            <a href="#">{{ 'product.label'|trans }}<span class="menu_badge">{{ 'hot.deals.label'|trans }}</span></a>
             <ul>
                <li>
                   <div class="submenu">
                      <div class="row">
+                     {% if megaMenu is defined and megaMenu %}
+                     {% for menu in megaMenu %}
                         <div class="col-sm-3">
-                           <h3><a href="#congratulation">Congratulation</a></h3>
+                           <h3><a href="{{ url('front_category', {'slug': menu.info.slug}) }}">{{ menu.info.name }}</a></h3>
                            <ul>
-                              <li><a href="#asiatic-lilies">Asiatic Lilies</a></li>
-                              <li><a href="#blooming-12-long-stemmed-assorted-rose-bouquet">Blooming 12 Long ...</a></li>
-                              <li><a href="#bouquet-of-long-stemmed-roses-dozen-with-vase">Bouquet of Long S...</a></li>
-                              <li><a href="#calla-lilies-with-matching-greens">Calla Lilies with...</a></li>
-                              <li><a href="#classic-roses">Classic Roses</a></li>
+                              {% if menu.products is defined and menu.products %}
+                              {% for product in menu.products %}
+                                <li><a href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">{{ product.name }}</a></li>
+                              {% endfor %}
+                              {% endif %}
                            </ul>
                         </div>
-                        <div class="col-sm-3">
-                           <h3><a href="#corporate">Corporate</a></h3>
-                           <ul>
-                              <li><a href="#classic-roses">Classic Roses</a></li>
-                              <li><a href="#coffee-cup-planter">Coffee Cup Planter</a></li>
-                              <li><a href="#eforcase-refreshing-calla-lily-bridal-wedding-bouquet-flower-bouquets">Eforcase Refreshi...</a></li>
-                              <li><a href="#flowering-fields-bouquet-with-vase">Flowering Fields ...</a></li>
-                              <li><a href="#nearly-natural-29-in-set-of-12-african-lily-stems">Nearly Natural 29...</a></li>
-                           </ul>
-                        </div>
-                        <div class="col-sm-3">
-                           <h3><a href="#family">Family</a></h3>
-                           <ul>
-                              <li><a href="#nearly-natural-29-in-set-of-12-african-lily-stems">Nearly Natural 29...</a></li>
-                              <li><a href="#purifying-peace-lily-round-tin-pot">Purifying Peace L...</a></li>
-                              <li><a href="#smile-and-shine-bouquet-by-teleflora">Smile And Shine B...</a></li>
-                              <li><a href="#telefloras-enchanted-cottage">Teleflora's Encha...</a></li>
-                              <li><a href="#telefloras-fall-in-love">Teleflora's Fall ...</a></li>
-                           </ul>
-                        </div>
-                        <div class="col-sm-3">
-                           <h3><a href="#get-well">Get well</a></h3>
-                           <ul>
-                              <li><a href="#bouquet-of-long-stemmed-roses-dozen-with-vase">Bouquet of Long S...</a></li>
-                              <li><a href="#calla-lilies-with-matching-greens">Calla Lilies with...</a></li>
-                              <li><a href="#classic-roses">Classic Roses</a></li>
-                              <li><a href="#coffee-cup-planter">Coffee Cup Planter</a></li>
-                              <li><a href="#eforcase-refreshing-calla-lily-bridal-wedding-bouquet-flower-bouquets">Eforcase Refreshi...</a></li>
-                           </ul>
-                        </div>
+                     {% endfor %}
+                     {% endif %}
                      </div>
                   </div>
                </li>
             </ul>
          </li>
-         <li class="megamenu__5">
-            <a href="#about-us">About us<span class="menu_badge">our team</span></a>
-         </li>
-         <li class="megamenu__6">
-            <a href="#contact-us">Contact us</a>
+         <li class="megamenu__3">
+            <a href="{{ url('front_contact_us') }}">{{ 'contact_us.label'|trans }}</a>
          </li>
       </ul>
    </div>

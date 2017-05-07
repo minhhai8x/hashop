@@ -109,6 +109,29 @@ class Product
     {
         return $this->id;
     }
+    
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Product
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return array 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
     /**
      * Set name

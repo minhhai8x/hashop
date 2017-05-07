@@ -3,15 +3,15 @@ front_homepage:
     defaults: { _controller: FrontBundle:Default:index }
 
 front_category:
-    path: /{slug}
+    path: /category/{slug}
     defaults: { _controller: FrontBundle:Product:category, slug: null}
     methods: GET
 
 front_product_detail:
-    path: /{category}/{slug}
+    path: /product/{category}/{slug}
     defaults: { _controller: FrontBundle:Product:detail, category: null, slug: null }
     methods: GET
 
-front_upload:
-    path: /product-upload
-    defaults: { _controller: FrontBundle:Default:index }
+front_contact_us:
+    path: /contact-us
+    defaults: { _controller: FrontBundle:Default:contactUs }

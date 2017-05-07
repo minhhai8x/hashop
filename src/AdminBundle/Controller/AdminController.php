@@ -22,6 +22,21 @@ class AdminController extends BaseAdminController
         }
         return $editForm;
     }
+    
+    public function createNewForm($entity, array $entityProperties)
+    {
+        $newForm = parent::createNewForm($entity, $entityProperties);
+        if($entity instanceof Product){
+            $newForm->remove('description');
+            $newForm->add('description', 'textarea', array(
+                'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'advanced',
+                )
+            ));
+        }
+        return $newForm;
+    }
 
     public function prePersistEntity($entity)
     {

@@ -22,4 +22,16 @@ class CategoryRepository extends EntityRepository
         $results = $query->getResult();
         return $results;
     }
+
+    public function getCategory($slug)
+    {
+        $query   = $this->createQueryBuilder('cat')
+                    ->select('cat.id, cat.name, cat.slug, cat.description')
+                    ->where('cat.slug = :slug')
+                    ->setParameter('slug', $slug)
+                    ->getQuery();
+
+        $results = $query->getOneOrNullResult();
+        return $results;
+    }
 }
