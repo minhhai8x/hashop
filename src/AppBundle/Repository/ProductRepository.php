@@ -15,7 +15,7 @@ class ProductRepository extends EntityRepository
     public function findAllProducts($params)
     {
         $query    = $this->createQueryBuilder('p')
-                    ->select("p.id, cat.id as catId, cat.name as catName, CONCAT(cat.slug,'/', p.slug) as slug, p.name, p.description, p.price, p.specPrice")
+                    ->select("p.id, cat.id as catId, cat.name as catName, cat.slug as catSlug, p.slug as slug, p.name, p.description, p.price, p.specPrice")
                     ->leftJoin('p.category', 'cat')
                     ->setMaxResults($params['limit'])
                     ->getQuery();
@@ -27,7 +27,8 @@ class ProductRepository extends EntityRepository
     public function getProduct($slug)
     {
         $query   = $this->createQueryBuilder('p')
-                    ->select('p.id, p.name, p.slug, p.description, p.price, p.specPrice')
+                    ->select('p.id, p.name, p.slug, p.description, p.price, p.specPrice, cat.name as catName, cat.slug as catSlug')
+                    ->leftJoin('p.category', 'cat')
                     ->where('p.slug = :slug')
                     ->setParameter('slug', $slug)
                     ->getQuery();

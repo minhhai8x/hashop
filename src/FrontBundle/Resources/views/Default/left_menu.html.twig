@@ -1,0 +1,14 @@
+<div class="widget widget__collections">
+   <h3 class="widget_header">{{ 'category.label'|trans }}</h3>
+   <div class="widget_content">
+   {% if categories is defined and categories %}
+      <ul class="list">
+         {% for category in categories %}
+         <li class="{{ category.slug }}">
+            <a href="{{ url('front_category', {'slug': category.slug}) }}" title="{{ category.name }}">{{ category.name }}</a>
+         </li>
+         {% endfor %}
+      </ul>
+   {% endif %}   
+   </div>
+</div>

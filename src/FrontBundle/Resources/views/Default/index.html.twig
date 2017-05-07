@@ -19,10 +19,12 @@
          product product__{{ product.id }} animated">
          <div class="prod_inside clearfix">
             <div class="product_img">
-               <a class="img_change" href="{{ url('front_homepage') ~ product.slug }}">
+               <a class="img_change" href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">
                <span class="ins">
                <img src="{{ product.mainImg }}" alt="{{ product.name }}">
-               <img class="img__2" src="{{ asset('assets/images/asiatic_lilies_2_medium.png') }}" alt="{{ product.name }}">
+               {% if product.thumbImg is not null%}
+                  <img class="img__2" src="{{ product.thumbImg }}" alt="{{ product.name }}">
+               {% endif %}
                </span>
                {% if product.specPrice is defined and product.specPrice %}
                    <span class="product_badge sale">{{ 'sale'|trans }}</span>
@@ -42,7 +44,7 @@
                   {% endif %}
                </div>
                <div class="product_name">
-                  <a href="{{ url('front_homepage') ~ product.slug }}">{{ product.name }}</a>
+                  <a href="{{ url('front_product_detail') ~ product.slug }}">{{ product.name }}</a>
                </div>
                <div class="product_desc">{{ product.shortdesc }} ...</div>
                <div class="product_links">
@@ -50,73 +52,13 @@
                      <input type="hidden" name="id" value="{{ product.id }}">
                      <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
                   </form>
-                  <a class="btn" href="{{ url('front_homepage') ~ product.slug }}"><i class="fa fa-info-circle"></i></a>
+                  <a class="btn" href="{{ url('front_product_detail') ~ product.slug }}"><i class="fa fa-info-circle"></i></a>
                </div>
             </div>
          </div>
       </div>
       {% endfor %}
       {% endif %}
-      <!-- <div class="wow col-sm-4 
-         product product__2 animated">
-         <div class="prod_inside clearfix">
-            <div class="product_img">
-               <a class="img_change" href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-               <span class="ins">
-               <img src="{{ asset('assets/images/blooming_12_long_stemmed_assorted_rose_bouquet_1_medium.png') }}" alt="Blooming 12 Long Stemmed Assorted Rose Bouquet">
-               <img class="img__2" src="{{ asset('assets/images/blooming_12_long_stemmed_assorted_rose_bouquet_2_medium.png') }}" alt="Blooming 12 Long Stemmed Assorted Rose Bouquet">
-               </span>
-               <span class="product_badge new">New</span>
-               </a>
-            </div>
-            <div class="product_info">
-               <div class="product_price">
-                  <span class="money" data-currency-usd="$16.00">$16.00</span>
-               </div>
-               <div class="product_name">
-                  <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">Blooming 12 Long Stemm...</a>
-               </div>
-               <div class="product_desc">We send a card, a gift or s...</div>
-               <div class="product_links">
-                  <form method="post" action="#cart/add">
-                     <input type="hidden" name="id" value="1166525040">
-                     <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                  </form>
-                  <a class="btn" href="#products/blooming-12-long-stemmed-assorted-rose-bouquet"><i class="fa fa-info-circle"></i></a>
-               </div>
-            </div>
-         </div>
-      </div> -->
-      <!-- <div class="wow col-sm-4 
-         product product__3 animated">
-         <div class="prod_inside clearfix">
-            <div class="product_img">
-               <a class="img_change" href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase">
-               <span class="ins">
-               <img src="{{ asset('assets/images/bouquet_of_long_stemmed_roses__dozen__-_with_vase_1_medium.png') }}" alt="Bouquet of Long Stemmed Roses (Dozen) - With Vase">
-               <img class="img__2" src="{{ asset('assets/images/bouquet_of_long_stemmed_roses__dozen__-_with_vase_2_medium.png') }}" alt="Bouquet of Long Stemmed Roses (Dozen) - With Vase">
-               </span>
-               <span class="product_badge new">New</span>
-               </a>
-            </div>
-            <div class="product_info">
-               <div class="product_price">
-                  <span class="money" data-currency-usd="$17.00">$17.00</span>
-               </div>
-               <div class="product_name">
-                  <a href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase">Bouquet of Long Stemme...</a>
-               </div>
-               <div class="product_desc">But the most traditional th...</div>
-               <div class="product_links">
-                  <form method="post" action="#cart/add">
-                     <input type="hidden" name="id" value="1166525216">
-                     <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                  </form>
-                  <a class="btn" href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase"><i class="fa fa-info-circle"></i></a>
-               </div>
-            </div>
-         </div>
-      </div> -->
    </div>
 </div>
 </div>

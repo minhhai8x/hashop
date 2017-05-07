@@ -10,12 +10,14 @@ class ProductManager
     protected $em;
     protected $container;
     protected $productRepo;
+    protected $categoryRepo;
 
     public function __construct(EntityManager $em, $container)
     {
         $this->em = $em;
         $this->container = $container;
         $this->productRepo = $em->getRepository('AppBundle:Product');
+        $this->categoryRepo = $em->getRepository('AppBundle:Category');
     }
 
     /**
@@ -42,8 +44,9 @@ class ProductManager
                     'price' => StringHelper::currency($item['price']),
                     'specPrice' => StringHelper::currency($item['specPrice']),
                     'slug' => $item['slug'],
+                    'catSlug' => $item['catSlug'],
                     'mainImg' => $images['mainImg'],
-                    'thumbImg' => $images['thumbImg'][0],
+                    'thumbImg' => isset($images['thumbImg'][0]) ? $images['thumbImg'][0] : null,
                     'shortdesc' => StringHelper::shortString($item['description']),
                 );
             }
@@ -73,7 +76,17 @@ class ProductManager
      */
     public function getProductBySlug($slug)
     {
-        return $this->productRepo->getProduct($slug);
+        $product = $this->productRepo->getProduct($slug);
+        if ($product) {
+            $product['price'] = StringHelper::currency($product['price']);
+            $product['specPrice'] = StringHelper::currency($product['specPrice']);
+            $images = $this->getProductImages($product['id']);
+            $product['mainImg'] = $images['mainImg'];
+            $product['thumbImg'] = $images['thumbImg'];
+
+        }
+
+        return $product;
     }
 
     public function getProductImages($productId)
@@ -81,6 +94,7 @@ class ProductManager
         $result = array();
         $imagePath = $this->container->getParameter('front_product_image_path');
         $images = $this->productRepo->getProductImages($productId);
+
         if ($images) {
             foreach ($images as $image) {
                 if ($image['isMain']) {
@@ -93,5 +107,21 @@ class ProductManager
         }
 
         return $result;
+    }
+
+    /**
+     *
+     * Get all categories
+     *
+     * @param  array $params  Custom parameters
+     * @return array $results List of category
+     */
+    public function getAllCategories($params = array())
+    {
+        $results = array();
+        $recordsPerPage = $this->container->getParameter('items_per_page');
+        
+        $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
+        return $this->categoryRepo->findAllCategories($params);
     }
 }

@@ -6,26 +6,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProductController extends Controller
 {
-    public function detailAction($slug)
+    public function detailAction($category, $slug)
     {
-        $productImagePath = $this->getParameter('product_image_path');
-        $productManager = $this->container->get('utils.product.manager');
+        $productManager = $this->get('utils.product.manager');
         $product = $productManager->getProductBySlug($slug);
+        $categories = $productManager->getAllCategories();
 
         $renderData = array(
             'amount' => 100,
             'body_id' => $slug,
             'body_class' => 'template-product',
-            'product' => array(),  
+            'product' => array(),
+            'categories' => $categories,
         );
 
         if ($product) {
             $renderData['product'] = $product;
-            $productImage = $productImagePath . $product['image'];
-            $renderData['product_image'] = $productImage;
         }
 
         return $this->render('FrontBundle:Product:detail.html.twig', $renderData);
     }
-
+    
+    public function categoryAction($slug)
+    {
+        var_dump($slug);die;
+    }
 }

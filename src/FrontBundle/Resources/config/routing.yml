@@ -2,14 +2,16 @@ front_homepage:
     path:     /
     defaults: { _controller: FrontBundle:Default:index }
 
-# front_product:
-#     path: /product
-#     defaults: { _controller: FrontBundle:Product:index }
+front_category:
+    path: /{slug}
+    defaults: { _controller: FrontBundle:Product:category, slug: null}
+    methods: GET
 
 front_product_detail:
-    path: /product-detail/{slug}
-    defaults: { _controller: FrontBundle:Product:detail }
+    path: /{category}/{slug}
+    defaults: { _controller: FrontBundle:Product:detail, category: null, slug: null }
     methods: GET
+
 front_upload:
     path: /product-upload
     defaults: { _controller: FrontBundle:Default:index }

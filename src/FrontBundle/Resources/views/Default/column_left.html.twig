@@ -1,36 +1,9 @@
 <div class="column_left column col-sm-3">
-   <div class="widget widget_best_sellers">
-      <h3 class="widget_header">Best Sellers</h3>
-      <div class="widget_content">
-         <div class="product_listing_sidebar">
-            <div class="wow product animated">
-               <div class="prod_inside clearfix">
-                  <div class="product_img">  
-                     <a href="#products/telefloras-fall-in-love">
-                     <img src="{{ asset('assets/images/telefloras_fall_in_love_1_medium.png') }}" alt="Teleflora&#39;s Fall in Love">
-                     </a>
-                  </div>
-                  <div class="product_info">
-                     <div class="product_price">
-                        <span class="money" data-currency-usd="$27.00">$27.00</span>
-                     </div>
-                     <div class="product_name">
-                        <a href="#products/telefloras-fall-in-love">Teleflora's Fall in Love</a>
-                     </div>
-                     <div class="product_desc">Besides that they have othe...</div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="widget wow widget_banner animated">
-      <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-         <div class="ins">
-            <h3>-30<span>%</span></h3>
-            <h4>for spring flowers</h4>
-         </div>
-         <img src="{{ asset('assets/images/banner.png') }}" alt="-30 -30">
-      </a>
-   </div>
+   <!-- Best sellers -->
+   {{ include('FrontBundle:Product:best_sellers.html.twig') }}
+   <!-- END Best sellers -->
+
+   <!-- Best sellers -->
+   {{ include('FrontBundle:Product:promotions.html.twig') }}
+   <!-- END Best sellers -->
 </div>

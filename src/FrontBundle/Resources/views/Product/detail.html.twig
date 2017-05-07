@@ -54,9 +54,9 @@
    <div class="container">
       {% if product is defined and product %}
         <ul class="breadcrumb">
-         <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="Back to the frontpage">Home</a></li>
+         <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="{{ 'back_to.the_frontpage'|trans }}">{{ 'homepage.label'|trans }}</a></li>
          <li>
-            <a href="/collections/congratulation" title="">Congratulation</a> 
+            <a href="{{ url('front_category', {'slug': product.catSlug}) }}" title="{{ product.catName }}">{{ product.catName }}</a> 
          </li>
          <li><span class="page-title">{{ product.name }}</span></li>
       </ul>  
@@ -68,58 +68,52 @@
          <div class="column_center">
          {% if product is defined and product %}
             <div id="main_content" class="col-sm-9">
-               <div itemscope="" itemtype="http://schema.org/Product" class="product-scope">
-                  <meta itemprop="url" content="https://theme140-flowers.myshopify.com/products/blooming-12-long-stemmed-assorted-rose-bouquet">
-                  <meta itemprop="image" content="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_1_grande.png?v=1424095642">
+               <div class="product-scope">
                   <div class="product_wrap">
                      <div class="row">
                         <div class="col-sm-6 col-lg-5 product_images">
-                           <div class="zoomWrapper"><img id="elevatezoom_big" src="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_1_large.png?v=1424095642" alt="Blooming 12 Long Stemmed Assorted Rose Bouquet" data-zoom-image="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_1_grande.png?v=1424095642"></div>
+                           <div class="zoomWrapper"><img id="elevatezoom_big" src="{{ product.mainImg }}" alt="{{ product.name }}" data-zoom-image="{{ product.mainImg }}"></div>
+                           {% if product.thumbImg is defined and product.thumbImg %}
                            <div class="bx-wrapper">
                               <div class="bx-viewport">
                                  <div id="elevatezoom_gallery">
-                                 <a href="#" data-image="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_2_large.png?v=1424095642" data-zoom-image="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_2_grande.png?v=1424095642" class="bx-clone">
-                                    <img src="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_2_compact.png?v=1424095642" alt="Blooming 12 Long Stemmed Assorted Rose Bouquet">
+                                 {% for thumb in product.thumbImg %}
+                                 <a href="#" data-image="{{ thumb }}" data-zoom-image="{{ thumb }}" class="bx-clone">
+                                    <img src="{{ thumb }}" alt="{{ product.name }}">
                                     </a>
-                                <a href="#" data-image="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_3_large.png?v=1424095642" data-zoom-image="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_3_grande.png?v=1424095642" class="bx-clone">
-                                    <img src="//cdn.shopify.com/s/files/1/0770/6219/products/blooming_12_long_stemmed_assorted_rose_bouquet_3_compact.png?v=1424095642" alt="Blooming 12 Long Stemmed Assorted Rose Bouquet">
-                                    </a>
-
+                                 {% endfor %}      
                                  </div>
                               </div>
                            </div>
+                           {% endif %}
                         </div>
                         <div class="col-sm-6 col-lg-7">
                            <div itemprop="name" class="product_name">{{ product.name }}</div>
                            <form action="/cart/add" method="post" enctype="multipart/form-data" class="form-horizontal" id="product-actions">
                               <div class="options clearfix">
                                  <div id="product_price">
-                                    <p class="price product-price"><span class="money" data-currency-usd="$16.00" data-currency="USD">$16.00</span></p>
+                                    <p class="price product-price">
+                                    <span class="money">
+                                    {% if product.specPrice is defined and product.specPrice %}
+                                       {{ product.specPrice }}
+                                    {% else %}
+                                       {{ product.price }}
+                                    {% endif %}
+                                    </span></p>
                                  </div>
                                  <div id="purchase">
-                                    <label for="quantity">Qty: </label><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">    
-                                    <div class="variants-wrapper clearfix hidden">
-                                       <div class="selector-wrapper">
-                                          <select class="single-option-selector" data-option="option1" id="product-select-option-0">
-                                             <option value="Default Title">Default Title</option>
-                                          </select>
-                                       </div>
-                                       <select id="product-select" name="id" style="display: none;">
-                                          <option value="1166525040">Default Title - $16.00</option>
-                                       </select>
-                                    </div>
-                                    <button class="btn" type="submit" id="add-to-cart">Add to cart</button>
+                                    <label for="quantity">{{ 'quantity.label'|trans }}: </label><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">    
+                                    <button class="btn" type="submit" id="add-to-cart">{{ 'buy.label'|trans }}</button>
                                  </div>
                               </div>
                               <!-- /.options -->
                            </form>
                            <div class="product_details">
-                              <div class="product_type">Type: <a href="/collections/types?q=Wildflowers" title="Wildflowers">Wildflowers</a></div>
-                              <div class="product_vendor">Vendor: <a href="/collections/vendors?q=Flowers%20store" title="Flowers store">Flowers store</a></div>
+                              <div class="product_type">{{ 'category.label'|trans }}: <a href="{{ url('front_category', {'slug': product.catSlug}) }}" title="{{ product.catName }}">{{ product.catName }}</a></div>
                            </div>
                            <div id="product_description" class="rte" itemprop="description">
-                              <h4>Description:</h4>
-                              <p>We send a card, a gift or something like that. But the most traditional thing that we do is to present flowers. Flowers are universal gift and believe us - even if you are not a fan, it doesn't matter because it is very pleasant to get flowers. Flowers are unique and they are worth our admiring. Flowers have two unique peculiarities because they have very unbelievable appearance and unique smell.</p>
+                              <h4>{{ 'description.label'|trans }}:</h4>
+                              {{ product.description|raw }}
                            </div>
                         </div>
                      </div>
@@ -127,57 +121,11 @@
                   </div>
                   <!-- /.product_wrap -->
                </div>
-               <div class="widget_related_products">
-                  <h3>Other fine products</h3>
-                  <div class="widget_content">
-                     <ul class="row product_listing_main product_listing_related">
-                        <li class="wow col-sm-3 product product__1 animated" style="visibility: visible;">
-                           <div class="prod_inside clearfix">
-                              <div class="product_img">
-                                 <a href="/collections/congratulation/products/asiatic-lilies" title="Asiatic Lilies"><img src="//cdn.shopify.com/s/files/1/0770/6219/products/asiatic_lilies_1_compact.png?v=1424095633" alt="Asiatic Lilies"></a>
-                              </div>
-                              <div class="product_info">
-                                 <div class="product_name"><a href="/products/asiatic-lilies" title="Asiatic Lilies">Asiatic Lilies</a></div>
-                                 <div class="product_price"><span class="money" data-currency-usd="$15.00" data-currency="USD">$15.00</span></div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="wow col-sm-3 product product__2 animated" style="visibility: visible;">
-                           <div class="prod_inside clearfix">
-                              <div class="product_img">
-                                 <a href="/collections/congratulation/products/bouquet-of-long-stemmed-roses-dozen-with-vase" title="Bouquet of Long Stemmed Roses (Dozen) - With Vase"><img src="//cdn.shopify.com/s/files/1/0770/6219/products/bouquet_of_long_stemmed_roses__dozen__-_with_vase_1_compact.png?v=1424095652" alt="Bouquet of Long Stemmed Roses (Dozen) - With Vase"></a>
-                              </div>
-                              <div class="product_info">
-                                 <div class="product_name"><a href="/products/bouquet-of-long-stemmed-roses-dozen-with-vase" title="Bouquet of Long Stemmed Roses (Dozen) - With Vase">Bouquet of Long S...</a></div>
-                                 <div class="product_price"><span class="money" data-currency-usd="$17.00" data-currency="USD">$17.00</span></div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="wow col-sm-3 product product__3 animated" style="visibility: visible;">
-                           <div class="prod_inside clearfix">
-                              <div class="product_img">
-                                 <a href="/collections/congratulation/products/calla-lilies-with-matching-greens" title="Calla Lilies with Matching Greens"><img src="//cdn.shopify.com/s/files/1/0770/6219/products/calla_lilies_with_matching_greens_1_compact.png?v=1424095662" alt="Calla Lilies with Matching Greens"></a>
-                              </div>
-                              <div class="product_info">
-                                 <div class="product_name"><a href="/products/calla-lilies-with-matching-greens" title="Calla Lilies with Matching Greens">Calla Lilies with...</a></div>
-                                 <div class="product_price"><span class="money" data-currency-usd="$18.00" data-currency="USD">$18.00</span></div>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="wow col-sm-3 product product__4 animated" style="visibility: visible;">
-                           <div class="prod_inside clearfix">
-                              <div class="product_img">
-                                 <a href="/collections/congratulation/products/classic-roses" title="Classic Roses"><img src="//cdn.shopify.com/s/files/1/0770/6219/products/classic_roses_1_compact.png?v=1424095671" alt="Classic Roses"></a>
-                              </div>
-                              <div class="product_info">
-                                 <div class="product_name"><a href="/products/classic-roses" title="Classic Roses">Classic Roses</a></div>
-                                 <div class="product_price"><span class="money" data-currency-usd="$19.00" data-currency="USD">$19.00</span></div>
-                              </div>
-                           </div>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
+
+               <!-- Product related -->
+               {{ include('FrontBundle:Product:product_related.html.twig') }}
+               <!-- END Product related -->
+
                <script>
                   jQuery(function($) {
                       /* product image zoom */
@@ -209,7 +157,7 @@
                   
                       /* thumbs slider */
                       $('#elevatezoom_gallery').bxSlider({
-                          infiniteLoop: true,
+                          infiniteLoop: false,
                           minSlides: 1,
                           maxSlides: 3,
                           moveSlides: 1,
@@ -256,73 +204,14 @@
             {% endif %}
          </div>
          <div class="column_left column col-sm-3">
-            <div class="widget widget__collections">
-               <h3 class="widget_header">Collections</h3>
-               <div class="widget_content">
-                  <ul class="list">
-                     <li class="congratulation">
-                        <a href="/collections/congratulation" title="Congratulation">Congratulation</a>
-                     </li>
-                     <li class="corporate">
-                        <a href="/collections/corporate" title="Corporate">Corporate</a>
-                     </li>
-                     <li class="family">
-                        <a href="/collections/family" title="Family">Family</a>
-                     </li>
-                     <li class="funeral">
-                        <a href="/collections/funeral" title="Funeral">Funeral</a>
-                     </li>
-                     <li class="get-well">
-                        <a href="/collections/get-well" title="Get well">Get well</a>
-                     </li>
-                     <li class="love">
-                        <a href="/collections/love" title="Love">Love</a>
-                     </li>
-                     <li class="mixed">
-                        <a href="/collections/mixed" title="Mixed">Mixed</a>
-                     </li>
-                     <li class="monthly">
-                        <a href="/collections/monthly" title="Monthly">Monthly</a>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-            <div class="widget widget__types">
-               <h3 class="widget_header">Product Types</h3>
-               <div class="widget_content">
-                  <ul class="list">
-                     <li class="Artificial flowers"><a href="/collections/types?q=Artificial%20flowers" title="Artificial flowers">Artificial flowers</a></li>
-                     <li class="Exquisite flowers"><a href="/collections/types?q=Exquisite%20flowers" title="Exquisite flowers">Exquisite flowers</a></li>
-                     <li class="Garden flowers"><a href="/collections/types?q=Garden%20flowers" title="Garden flowers">Garden flowers</a></li>
-                     <li class="Wildflowers"><a href="/collections/types?q=Wildflowers" title="Wildflowers">Wildflowers</a></li>
-                  </ul>
-               </div>
-            </div>
-            <div class="widget widget_best_sellers">
-               <h3 class="widget_header">Best Sellers</h3>
-               <div class="widget_content">
-                  <div class="product_listing_sidebar">
-                     <div class="wow product animated" style="visibility: visible;">
-                        <div class="prod_inside clearfix">
-                           <div class="product_img">  
-                              <a href="/collections/congratulation/products/telefloras-fall-in-love">
-                              <img src="//cdn.shopify.com/s/files/1/0770/6219/products/telefloras_fall_in_love_1_medium.png?v=1424095748" alt="Teleflora's Fall in Love">
-                              </a>
-                           </div>
-                           <div class="product_info">
-                              <div class="product_price">
-                                 <span class="money" data-currency-usd="$27.00" data-currency="USD">$27.00</span>
-                              </div>
-                              <div class="product_name">
-                                 <a href="/collections/congratulation/products/telefloras-fall-in-love">Teleflora's Fall in Love</a>
-                              </div>
-                              <div class="product_desc">Besides that they have othe...</div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+            <!-- Left menu -->
+            {{ include('FrontBundle:Default:left_menu.html.twig') }}
+            <!-- END Left menu -->
+
+            <!-- Best sellers -->
+            {{ include('FrontBundle:Product:best_sellers.html.twig') }}
+            <!-- END Best sellers -->
+            
          </div>
       </div>
    </div>

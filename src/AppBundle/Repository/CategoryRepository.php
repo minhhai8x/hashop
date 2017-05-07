@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+	public function findAllCategories($params)
+    {
+        $query    = $this->createQueryBuilder('cat')
+                    ->select("cat.id, cat.name, cat.slug")
+                    ->setMaxResults($params['limit'])
+                    ->getQuery();
+
+        $results = $query->getResult();
+        return $results;
+    }
 }
