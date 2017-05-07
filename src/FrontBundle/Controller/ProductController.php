@@ -9,15 +9,17 @@ class ProductController extends Controller
     public function detailAction($category, $slug)
     {
         $productManager = $this->get('utils.product.manager');
-        $product = $productManager->getProductBySlug($slug);
-        $categories = $productManager->getAllCategories();
+        $product        = $productManager->getProductBySlug($slug);
+        $categories     = $productManager->getAllCategories();
+        $megaMenu       = $productManager->getMegamenu();
 
         $renderData = array(
-            'body_id' => $slug,
+            'body_id'    => $slug,
             'body_class' => 'template-product',
-            'product' => array(),
+            'product'    => array(),
             'categories' => $categories,
-            'amount' => 0,
+            'megaMenu'   => $megaMenu,
+            'amount'     => 0,
         );
 
         if ($product) {
