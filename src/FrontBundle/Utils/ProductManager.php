@@ -77,12 +77,13 @@ class ProductManager
     public function getProductBySlug($slug)
     {
         $product = $this->productRepo->getProduct($slug);
+        $imageDefault = $this->container->getParameter('front_product_image_default');
         if ($product) {
             $product['price'] = StringHelper::currency($product['price']);
             $product['specPrice'] = StringHelper::currency($product['specPrice']);
             $images = $this->getProductImages($product['id']);
-            $product['mainImg'] = $images['mainImg'];
-            $product['thumbImg'] = $images['thumbImg'];
+            $product['mainImg'] = isset($images['mainImg']) ? $images['mainImg'] : $imageDefault;
+            $product['thumbImg'] = isset($images['thumbImg']) ? $images['thumbImg'] : array();
         }
 
         return $product;
