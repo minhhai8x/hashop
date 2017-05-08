@@ -3,50 +3,38 @@
       <div class="container">
          <div class="row">
             <div class="col-sm-4 col-xs-12 footer_block footer_block__1 wow animated">
-               <h3>Sunny Flowers</h3>
+               <h3>{{ global_configs.wsName }}</h3>
                <div class="copyright">
-                  <p role="contentinfo">© 2017 Sunny Flowers. All Rights Reserved. Design by az</p>
+                  <p role="contentinfo">{{ global_configs.wsCopyright }}</p>
                </div>
             </div>
             <div class="col-sm-2 col-xs-4 footer_block footer_block__2 wow animated">
                <ul>
-                  <li class="active"><a href="#" title="">Home</a></li>
-                  <li><a href="#search" title="">Search</a></li>
-                  <li><a href="#pages/about-us" title="">About Us</a></li>
-                  <li><a href="#pages/contact-us" title="">Contact us</a></li>
-                  <li><a href="#pages/documentation" title="">Documentation</a></li>
-                  <li><a href="#blogs/blog" title="">Blog</a></li>
-                  <li><a href="#collections/all" title="">Products</a></li>
+                  <li><a href="{{ url('front_homepage') }}" class="active">{{ 'homepage.label'|trans }}</a></li>
+                  <li><a href="{{ url('front_contact_us') }}">{{ 'contact_us.label'|trans }}</a></li>
                </ul>
             </div>
-            <div class="col-sm-2 col-xs-4 footer_block footer_block__3 wow animated">
+
+            {% if megaMenu is defined and megaMenu %}
+            <div class="col-sm-2 col-xs-4 footer_block wow animated">
                <ul>
-                  <li><a href="#collections/congratulation" title="">Congratulation</a></li>
-                  <li><a href="#collections/corporate" title="">Corporate</a></li>
-                  <li><a href="#collections/family" title="">Family</a></li>
-                  <li><a href="#collections/get-well" title="">Get well</a></li>
-                  <li><a href="#collections/funeral" title="">Funeral</a></li>
-                  <li><a href="#collections/love" title="">Love</a></li>
-                  <li><a href="#collections/mixed" title="">Mixed</a></li>
+               {% for menu in megaMenu %}
+               {% if (loop.index-1) is divisible by(5) and loop.index > 5 %}
+                  </ul></div><div class="col-sm-2 col-xs-4 footer_block wow animated"><ul>
+               {% endif %}
+                  <li class="active"><a href="{{ url('front_category', {'slug': menu.info.slug}) }}">{{ menu.info.name }}</a></li>
+               {% endfor %}
                </ul>
             </div>
-            <div class="col-sm-2 col-xs-4 footer_block footer_block__4 wow animated">
-               <ul>
-                  <li><a href="#"><span>Twitter</span></a></li>
-                  <li><a href="#"><span>Facebook</span></a></li>
-                  <li><a href="#"><span>Youtube</span></a></li>
-                  <li><a href="#"><span>Pinteresrt</span></a></li>
-                  <li><a href="#"><span>Google+</span></a></li>
-               </ul>
-            </div>
+            {% endif %}
          </div>
       </div>
    </div>
    <div class="container">
       <div class="footer_block__5 wow animated">
          <ul>
-            <li class="contacts_address">123 St ABC, US</li>
-            <li class="contacts_phone"><span>Phone:</span>+1 800 9999</li>
+            <li class="contacts_address">{{ global_configs.wsAddress }}</li>
+            <li class="contacts_phone"><span>{{ 'website_phone.label'|trans }}:</span>{{ global_configs.wsPhone }}</li>
          </ul>
       </div>
    </div>

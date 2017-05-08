@@ -1,76 +1,77 @@
 {% extends 'FrontBundle:Default:layout.html.twig' %}
-
 {% block main %}
 <div id="main" role="main">
-<div class="container">
-<div class="row sidebar_left ">
-{% block column_center %}
-<div class="column_center">
-<div id="main_content" class="col-sm-9">
-<div class="index-scope">
-<h2 class="page_heading">Featured products</h2>
-<p class="heading_text"></p>
-<div class="product-listing__index">
-<div class="product_listing_main">
-   <div class="row">
-   {% if products is defined and products %}
-   {% for product in products %}
-      <div class="wow col-sm-4 
-         product product__{{ product.id }} animated">
-         <div class="prod_inside clearfix">
-            <div class="product_img">
-               <a class="img_change" href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">
-               <span class="ins">
-               <img src="{{ product.mainImg }}" alt="{{ product.name }}">
-               {% if product.thumbImg is not null%}
-                  <img class="img__2" src="{{ product.thumbImg }}" alt="{{ product.name }}">
-               {% endif %}
-               </span>
-               {% if product.specPrice is defined and product.specPrice %}
-                   <span class="product_badge sale">{{ 'sale'|trans }}</span>
-               {% endif %}
-               {% if product.isNew is defined and product.isNew %}
-                   <span class="product_badge new">{{ 'new'|trans }}</span>
-               {% endif %}
-               </a>
-            </div>
-            <div class="product_info">
-               <div class="product_price">
-                  {% if product.specPrice is defined and product.specPrice %}
-                     <span class="money">{{ product.specPrice }}</span>
-                     <span class="money compare-at-price">{{ product.price }}</span>
-                  {% else %}
-                     <span class="money">{{ product.price }}</span>
-                  {% endif %}
-               </div>
-               <div class="product_name">
-                  <a href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">{{ product.name }}</a>
-               </div>
-               <div class="product_desc">{{ product.shortdesc|raw }} ...</div>
-               <div class="product_links">
-                  <form method="post" action="#cart/add">
-                     <input type="hidden" name="id" value="{{ product.id }}">
-                     <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                  </form>
-                  <a class="btn" href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}"><i class="fa fa-info-circle"></i></a>
+   <div class="container">
+      <div class="row sidebar_left ">
+         {% block column_center %}
+         <div class="column_center">
+            <div id="main_content" class="col-sm-9">
+               <div class="index-scope">
+                  <h2 class="page_heading">Featured products</h2>
+                  <p class="heading_text"></p>
+                  <div class="product-listing__index">
+                     {% if products is defined and products %}
+                     <div class="product_listing_main">
+                        <div class="row">
+                           {% for product in products %}
+                           {% if (loop.index-1) is divisible by(3) and loop.index > 3 %}
+                              </div></div><div class="product_listing_main"><div class="row">
+                           {% endif %}
+                           <div class="wow col-sm-4 product product__{{ product.id }} animated">
+                              <div class="prod_inside clearfix">
+                                 <div class="product_img">
+                                    <a class="img_change" href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">
+                                    <span class="ins">
+                                    <img src="{{ product.mainImg }}" alt="{{ product.name }}">
+                                    {% if product.thumbImg is not null%}
+                                    <img class="img__2" src="{{ product.thumbImg }}" alt="{{ product.name }}">
+                                    {% endif %}
+                                    </span>
+                                    {% if product.specPrice is defined and product.specPrice %}
+                                    <span class="product_badge sale">{{ 'sale'|trans }}</span>
+                                    {% endif %}
+                                    {% if product.isNew is defined and product.isNew %}
+                                    <span class="product_badge new">{{ 'new'|trans }}</span>
+                                    {% endif %}
+                                    </a>
+                                 </div>
+                                 <div class="product_info">
+                                    <div class="product_price">
+                                       {% if product.specPrice is defined and product.specPrice %}
+                                       <span class="money">{{ product.specPrice }}</span>
+                                       <span class="money compare-at-price">{{ product.price }}</span>
+                                       {% else %}
+                                       <span class="money">{{ product.price }}</span>
+                                       {% endif %}
+                                    </div>
+                                    <div class="product_name">
+                                       <a href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">{{ product.name }}</a>
+                                    </div>
+                                    <div class="product_desc">{{ product.shortdesc }} ...</div>
+                                    <div class="product_links">
+                                       <form method="post" action="#cart/add">
+                                          <input type="hidden" name="id" value="{{ product.id }}">
+                                          <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
+                                       </form>
+                                       <a class="btn" href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}"><i class="fa fa-info-circle"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           {% endfor %}
+                        </div>
+                     </div>
+                     {% endif %}
+                  </div>
                </div>
             </div>
          </div>
+         {% endblock %}
+         <!-- Column left -->
+         {% block column_left %}
+         {{ include('FrontBundle:Default:column_left.html.twig') }}
+         {% endblock %}                     
       </div>
-      {% endfor %}
-      {% endif %}
    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-{% endblock %}
-<!-- Column left -->
-{% block column_left %}
-{{ include('FrontBundle:Default:column_left.html.twig') }}
-{% endblock %}                     
-</div>
-</div>
 </div>
 {% endblock %}

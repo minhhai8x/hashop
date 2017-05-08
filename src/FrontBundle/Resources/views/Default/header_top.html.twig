@@ -1,11 +1,15 @@
 <div class="header_top wow animated">
    <!-- USER MENU -->
    <ul class="header_user">
-      <li><i class="fa fa-lock"></i><a href="#login" id="customer_login_link">Log in</a></li>
-      <li><i class="fa fa-user"></i><a href="#register" id="customer_register_link">Create an account</a></li>
+      <li><i class="fa fa-lock"></i><a href="#login" id="customer_login_link">{{ 'login.label'|trans }}</a></li>
+      <li><i class="fa fa-user"></i><a href="#register" id="customer_register_link">{{ 'create_an_account.label'|trans }}</a></li>
    </ul>
    <!-- HEADER CART -->
    <div class="header_cart">
-      <a href="#cart"><i class="fa fa-shopping-cart"></i><b>Cart:</b><span class="cart-total-items"><span class="count">0</span></span><span>items</span></a>
+      <a href="#cart">
+        <i class="fa fa-shopping-cart"></i>
+        <b>{{ 'cart.label'|trans }}:</b>
+        <span class="cart-total-items"><span class="count">0</span></span><span>{{ 'items.label'|trans }}</span>
+      </a>
    </div>
 </div>

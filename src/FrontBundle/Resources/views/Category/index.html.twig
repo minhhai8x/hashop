@@ -103,6 +103,9 @@
                                  <div class="product_listing_main">
                                     <div class="row">
                                     {% for product in products %}
+                                    {% if (loop.index-1) is divisible by(3) and loop.index > 3 %}
+                                      </div></div><div class="product_listing_main"><div class="row">
+                                    {% endif %}
                                        <div class="wow col-sm-4 product product__{{ product.id }} animated">
                                           <div class="prod_inside clearfix">
                                              <div class="product_img">

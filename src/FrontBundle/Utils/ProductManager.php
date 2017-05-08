@@ -11,6 +11,7 @@ class ProductManager
     protected $container;
     protected $productRepo;
     protected $categoryRepo;
+    protected $configRepo;
 
     public function __construct(EntityManager $em, $container)
     {
@@ -18,6 +19,7 @@ class ProductManager
         $this->container = $container;
         $this->productRepo = $em->getRepository('AppBundle:Product');
         $this->categoryRepo = $em->getRepository('AppBundle:Category');
+        $this->configRepo = $em->getRepository('AppBundle:Configuration');
     }
 
     /**
@@ -203,5 +205,16 @@ class ProductManager
         }
 
         return $result;
+    }
+
+    /**
+     *
+     * Get Global configurations
+     *
+     * @return array $results Global configurations
+     */
+    public function getGlobalConfigs()
+    {
+        return $this->configRepo->getConfigs();
     }
 }

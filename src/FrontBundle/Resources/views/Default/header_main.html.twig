@@ -1,11 +1,11 @@
 <div class="header_main wow animated">
    <!-- LOGO -->
    <div id="logo">
-      <a href="/">
-         <img src="{{ asset('assets/images/logo.png') }}" alt="Sunny Flowers">
+      <a href="{{ url('front_homepage') }}">
+         <img src="{{ asset('assets/images/logo.png') }}" alt="{{ global_configs.wsName }}">
          <div class="ins">
-            <b>Sunny Flowers</b>
-            <span>The biggest choice on the web</span>
+            <b>{{ global_configs.wsName }}</b>
+            <span>{{ global_configs.wsSlogan }}</span>
          </div>
       </a>
    </div>

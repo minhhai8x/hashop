@@ -10,6 +10,7 @@ imports:
 parameters:
     locale: vi
     app.path.product_images: /uploads/images/products
+    app.path.website_images: /assets/images
 
 framework:
     #esi: ~
@@ -106,13 +107,19 @@ easy_admin:
                 title: 'add.edit.product'
             list:
                 fields: ['id', 'images', { property: 'name', label: 'product.name'}, { property: 'price', label: 'product.price'}, { property: 'specprice', label: 'product.specprice', type: 'text'} ]    
-
+        Configuration:
+            label: website_config.label
+            class: AppBundle\Entity\Configuration
+            disabled_actions: ['new', 'search']
+            form:
+                fields: [{ property: 'wsName', label: 'website_name.label'}, { property: 'wsTitle', label: 'website_title.label'}, { property: 'wsSlogan', label: 'website_slogan.label'}, { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label'}, { property: 'wsAddress', label: 'website_address.label'}, { property: 'wsPhone', label: 'website_phone.label'}, { property: 'wsCopyright', label: 'website_copyright.label'}]
     design:
         brand_color: '#1ABC9C'
         menu:
             - { entity: 'User', icon: 'user' }
             - { entity: 'Category', icon: 'file-text-o' }
             - { entity: 'Product', icon: 'list' }
+            - { entity: 'Configuration', icon: 'cogs' }
 
 # Vich configuration
 vich_uploader:
@@ -123,6 +130,11 @@ vich_uploader:
             upload_destination: '%kernel.root_dir%/../web/uploads/images/products'
             delete_on_update:   true
             delete_on_remove:   true
+        ws_logo_image:
+            uri_prefix:         '%app.path.website_images%'
+            upload_destination: '%kernel.root_dir%/../web/assets/images'
+            delete_on_update:   true
+            delete_on_remove:   true       
 
 stfalcon_tinymce:
     include_jquery: false
