@@ -33,7 +33,7 @@ class ProductManager
     {
         $results = array();
         $recordsPerPage = $this->container->getParameter('items_per_page');
-        
+
         $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
         $products = $this->productRepo->findAllProducts($params);
 
@@ -104,7 +104,7 @@ class ProductManager
                 } else {
                     $result['thumbImg'][] = $imagePath . $image['image'];
                 }
-                
+
             }
         }
 
@@ -126,7 +126,7 @@ class ProductManager
     {
         $results = array();
         $recordsPerPage = $this->container->getParameter('items_per_page');
-        
+
         $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
         return $this->categoryRepo->findAllCategories($params);
     }
@@ -155,7 +155,7 @@ class ProductManager
     {
         $results = array();
         $recordsPerPage = $this->container->getParameter('items_per_page');
-        
+
         $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
         $products = $this->productRepo->findAllProducts($params);
 
@@ -216,5 +216,39 @@ class ProductManager
     public function getGlobalConfigs()
     {
         return $this->configRepo->getConfigs();
+    }
+
+    /**
+     *
+     * Get product related
+     *
+     * @param  integer $productId  Product ID
+     * @param  integer $categoryId  Category ID
+     * @return array $results List of product
+     */
+    public function getProductsRelated($productId, $categoryId)
+    {
+        $results = array();
+        $recordsPerPage = $this->container->getParameter('items_per_page');
+        $products = $this->productRepo->getProductsRelated($productId, $categoryId);
+
+        if ($products) {
+            foreach ($products as $item) {
+                $images = $this->getProductImages($item['id']);
+                $results[] = array(
+                    'id' => $item['id'],
+                    'name' => $item['name'],
+                    'price' => StringHelper::currency($item['price']),
+                    'specPrice' => StringHelper::currency($item['specPrice']),
+                    'slug' => $item['slug'],
+                    'catSlug' => $item['catSlug'],
+                    'mainImg' => $images['mainImg'],
+                    'thumbImg' => isset($images['thumbImg'][0]) ? $images['thumbImg'][0] : null,
+                    'shortdesc' => StringHelper::shortString($item['description']),
+                );
+            }
+        }
+
+        return $results;
     }
 }

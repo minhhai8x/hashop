@@ -52,3 +52,5 @@ website_logo.label: Logo
 website_address.label: Địa chỉ
 website_phone.label: Điện thoại
 website_copyright.label: Bản quyền
+no_product.label: Không có sản phẩm nào!
+product_same_category.label: Sản phẩm cùng danh mục

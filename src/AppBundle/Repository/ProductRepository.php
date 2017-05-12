@@ -20,7 +20,7 @@ class ProductRepository extends EntityRepository
 
         if (isset($params['catSlug'])) {
             $query = $query->where('cat.slug  = :catSlug')
-                           ->setParameter('catSlug', $params['catSlug']); 
+                           ->setParameter('catSlug', $params['catSlug']);
         }
 
         $query = $query->setMaxResults($params['limit'])->getQuery();
@@ -32,7 +32,7 @@ class ProductRepository extends EntityRepository
     public function getProduct($slug)
     {
         $query   = $this->createQueryBuilder('p')
-                    ->select('p.id, p.name, p.slug, p.description, p.price, p.specPrice, cat.name as catName, cat.slug as catSlug')
+                    ->select('p.id, p.name, p.slug, p.description, p.price, p.specPrice, cat.name as catName, cat.slug as catSlug, cat.id as catId')
                     ->leftJoin('p.category', 'cat')
                     ->where('p.slug = :slug')
                     ->setParameter('slug', $slug)
@@ -52,5 +52,19 @@ class ProductRepository extends EntityRepository
                     ->getQuery();
 
         return $query->getResult();
+    }
+
+    public function getProductsRelated($productId, $categoryId)
+    {
+        $query   = $this->createQueryBuilder('p')
+                    ->select('p.id, p.name, p.slug, p.description, p.price, p.specPrice, cat.name as catName, cat.slug as catSlug')
+                    ->join('p.category', 'cat')
+                    ->where('p.id != :pId')
+                    ->andWhere('cat.id = :catId')
+                    ->setParameters(array('pId' => $productId, 'catId' => $categoryId))
+                    ->getQuery();
+
+        $results = $query->getResult();
+        return $results;
     }
 }

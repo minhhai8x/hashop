@@ -8,10 +8,11 @@ class ProductController extends Controller
 {
     public function detailAction($category, $slug)
     {
-        $productManager = $this->get('utils.product.manager');
-        $product        = $productManager->getProductBySlug($slug);
-        $categories     = $productManager->getAllCategories();
-        $megaMenu       = $productManager->getMegamenu();
+        $productManager  = $this->get('utils.product.manager');
+        $product         = $productManager->getProductBySlug($slug);
+        $categories      = $productManager->getAllCategories();
+        $megaMenu        = $productManager->getMegamenu();
+        $productsRelated = $productManager->getProductsRelated($product['id'], $product['catId']);
 
         $renderData = array(
             'body_id'    => $slug,
@@ -20,6 +21,7 @@ class ProductController extends Controller
             'categories' => $categories,
             'megaMenu'   => $megaMenu,
             'amount'     => 0,
+            'productsRelated' => $productsRelated,
         );
 
         if ($product) {
@@ -28,7 +30,7 @@ class ProductController extends Controller
 
         return $this->render('FrontBundle:Product:detail.html.twig', $renderData);
     }
-    
+
     public function categoryAction($slug)
     {
         $productManager = $this->get('utils.product.manager');

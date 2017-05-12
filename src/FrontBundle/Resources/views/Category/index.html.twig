@@ -49,12 +49,12 @@
             <ul class="breadcrumb">
                <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="{{ 'back_to.the_frontpage'|trans }}">{{ 'homepage.label'|trans }}</a></li>
                <li>
-                  <a href="{{ url('front_category', {'slug': category.slug}) }}" title="{{ category.name }}">{{ category.name }}</a> 
+                  <a href="{{ url('front_category', {'slug': category.slug}) }}" title="{{ category.name }}">{{ category.name }}</a>
                </li>
             </ul>
             {% else %}
             {{ include('FrontBundle:Default:breadcrumb_404.html.twig') }}
-            {% endif %} 
+            {% endif %}
             <div class="row sidebar_left ">
                <div class="column_center">
                   {% if category is defined and category %}
@@ -64,40 +64,12 @@
                            <h1 class="page_heading">{{ category.name }}</h1>
                         </div>
                         <div class="page_content">
+                           {% if products is defined and products %}
+
                            <!-- products sorting -->
-                           <div class="sort_by">
-                              <label>{{ 'sortby.label'|trans }}</label> 
-                              <select class="sort-by form-control">
-                                 <option value="manual">Featured</option>
-                                 <option value="best-selling">Best Selling</option>
-                                 <option value="title-ascending">Name: A-Z</option>
-                                 <option value="title-descending">Name: Z-A</option>
-                                 <option value="price-ascending">Price: Low to High</option>
-                                 <option value="price-descending">Price: High to Low</option>
-                                 <option value="created-ascending">Oldest to Newest</option>
-                                 <option value="created-descending">Newest to Oldest</option>
-                              </select>
-                           </div>
-                           <script>
-                              Shopify.queryParams = {};
-                              if (location.search.length) {
-                                for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
-                                  aKeyValue = aCouples[i].split('=');
-                                  if (aKeyValue.length > 1) {
-                                    Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
-                                  }
-                                }
-                              }
-                              jQuery('.sort-by')
-                                .val('title-ascending')
-                                .on('change', function() {
-                                  Shopify.queryParams.sort_by = jQuery(this).val();
-                                  location.search = jQuery.param(Shopify.queryParams);
-                                });
-                           </script>
+                           {{ include('FrontBundle:Default:sorting.html.twig') }}
 
                            <!-- products listing -->
-                           {% if products is defined and products %}
                            <div class="product-listing__collection">
                               <div class="product_listing_main">
                                  <div class="product_listing_main">
@@ -155,6 +127,10 @@
 
                            <!-- pagination -->
                            {{ include('FrontBundle:Default:pagination.html.twig') }}
+                           {% else %}
+                              <div class="text-center">
+                                <h1 class="page_heading">{{ 'no_product.label'|trans }}</h1>
+                              </div>
                            {% endif %}
                         </div>
                      </div>
@@ -179,7 +155,7 @@
       <!-- FOOTER -->
       {% block footer %}
       {{ include('FrontBundle:Default:footer.html.twig') }}
-      {% endblock %}      
+      {% endblock %}
    </div>
    <!-- / #wrapper2 -->
 </div>
