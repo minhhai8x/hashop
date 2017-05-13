@@ -65,7 +65,7 @@ class Product
      *
      * @ORM\Column(name="spec_price", type="float")
      */
-    private $specPrice;
+    private $specPrice = 0;
 
     /**
      * @var datetime $created
@@ -76,7 +76,7 @@ class Product
 
     /**
      * @var datetime $updated
-     * 
+     *
      * @ORM\Column(name="updated_at", type="datetime", nullable = true)
      */
     private $updatedAt;
@@ -103,13 +103,13 @@ class Product
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-    
+
     /**
      * Set category
      *
@@ -126,7 +126,7 @@ class Product
     /**
      * Get category
      *
-     * @return array 
+     * @return array
      */
     public function getCategory()
     {
@@ -149,7 +149,7 @@ class Product
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -172,7 +172,7 @@ class Product
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -195,7 +195,7 @@ class Product
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -218,7 +218,7 @@ class Product
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
@@ -241,7 +241,7 @@ class Product
     /**
      * Get specPrice
      *
-     * @return float 
+     * @return float
      */
     public function getSpecPrice()
     {
@@ -264,7 +264,7 @@ class Product
     /**
      * Get created_at
      *
-     * @return DateTime 
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -287,7 +287,7 @@ class Product
     /**
      * Get updated_at
      *
-     * @return DateTime 
+     * @return DateTime
      */
     public function getUpdatedAt()
     {

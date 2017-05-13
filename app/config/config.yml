@@ -95,7 +95,7 @@ easy_admin:
             form:
                 fields: [{ property: 'name', label: 'category.name'}, 'slug', { property: 'parentId', label: 'category.parent'}, { property: 'description', label: 'category.description'}]
             list:
-                fields: ['id', { property: 'name', label: 'category.name'}, { property: 'parentId', label: 'category.parent'}, { property: 'products', label: 'product.label'}]    
+                fields: ['id', { property: 'name', label: 'category.name'}, { property: 'parentId', label: 'category.parent'}, { property: 'products', label: 'product.label'}]
             # templates:
             #     field_array: ':easy_admin:field_array.html.twig'
         Product:
@@ -106,7 +106,7 @@ easy_admin:
             edit:
                 title: 'add.edit.product'
             list:
-                fields: ['id', 'images', { property: 'name', label: 'product.name'}, { property: 'price', label: 'product.price'}, { property: 'specprice', label: 'product.specprice', type: 'text'} ]    
+                fields: ['id', 'images', { property: 'name', label: 'product.name'}, { property: 'price', label: 'product.price'}, { property: 'specprice', label: 'product.specprice', type: 'text'} ]
         Configuration:
             label: website_config.label
             class: AppBundle\Entity\Configuration
@@ -134,7 +134,7 @@ vich_uploader:
             uri_prefix:         '%app.path.website_images%'
             upload_destination: '%kernel.root_dir%/../web/assets/images'
             delete_on_update:   true
-            delete_on_remove:   true       
+            delete_on_remove:   true
 
 stfalcon_tinymce:
     include_jquery: false

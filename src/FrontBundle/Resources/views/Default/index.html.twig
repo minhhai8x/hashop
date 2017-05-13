@@ -7,7 +7,7 @@
          <div class="column_center">
             <div id="main_content" class="col-sm-9">
                <div class="index-scope">
-                  <h2 class="page_heading">Featured products</h2>
+                  <h2 class="page_heading">{{ 'new_product.label'|trans }}</h2>
                   <p class="heading_text"></p>
                   <div class="product-listing__index">
                      {% if products is defined and products %}
@@ -70,7 +70,7 @@
          <!-- Column left -->
          {% block column_left %}
          {{ include('FrontBundle:Default:column_left.html.twig') }}
-         {% endblock %}                     
+         {% endblock %}
       </div>
    </div>
 </div>

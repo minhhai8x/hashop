@@ -22,7 +22,7 @@ class AdminController extends BaseAdminController
     //     }
     //     return $editForm;
     // }
-    
+
     // public function createNewForm($entity, array $entityProperties)
     // {
     //     $newForm = parent::createNewForm($entity, $entityProperties);
@@ -39,6 +39,14 @@ class AdminController extends BaseAdminController
     // }
 
     public function prePersistEntity($entity)
+    {
+        if($entity instanceof Product){
+            $slug = StringHelper::slugify($entity->getName());
+            $entity->setSlug($slug);
+        }
+    }
+
+    public function preUpdateEntity($entity)
     {
         if($entity instanceof Product){
             $slug = StringHelper::slugify($entity->getName());
