@@ -55,3 +55,7 @@ website_copyright.label: Bản quyền
 no_product.label: Không có sản phẩm nào!
 product_same_category.label: Sản phẩm cùng danh mục
 new_product.label: Sản phẩm mới
+website_logo_size.label: Kích thước tối đa của logo là 50x50
+product.specprice.tip: Giá khuyến mãi của sản phẩm, không khuyến mãi thì để mặc định = 0
+product.image.tip: "Lưu ý: chọn duy nhất 1 hình làm hình đại diện, các hình khác sẽ tự động làm thumbnail cho sản phẩm"
+is_showed.label: Hiển thị

@@ -93,6 +93,13 @@ class Product
     private $images;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_showed", type="boolean")
+     */
+    private $isShowed = true;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -322,5 +329,28 @@ class Product
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set isShowed
+     *
+     * @param boolean $isShowed
+     * @return Product
+     */
+    public function setIsShowed($isShowed)
+    {
+        $this->isShowed = $isShowed;
+
+        return $this;
+    }
+
+    /**
+     * Get isShowed
+     *
+     * @return boolean
+     */
+    public function getIsShowed()
+    {
+        return $this->isShowed;
     }
 }

@@ -1,4 +1,9 @@
 services:
-#    admin.example:
-#        class: AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    namer.product_image_file:
+        class: AppBundle\Helpers\ProductImageNamer
+        tags:
+            - { name: namer }
+    namer.website_logo_file:
+        class: AppBundle\Helpers\WebsiteLogoNamer
+        tags:
+            - { name: namer }

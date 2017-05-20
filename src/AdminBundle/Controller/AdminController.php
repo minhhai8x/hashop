@@ -4,6 +4,7 @@ namespace AdminBundle\Controller;
 
 use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Category;
 use AppBundle\Helpers\StringHelper;
 
 class AdminController extends BaseAdminController
@@ -44,11 +45,21 @@ class AdminController extends BaseAdminController
             $slug = StringHelper::slugify($entity->getName());
             $entity->setSlug($slug);
         }
+
+        if($entity instanceof Category){
+            $slug = StringHelper::slugify($entity->getName());
+            $entity->setSlug($slug);
+        }
     }
 
     public function preUpdateEntity($entity)
     {
         if($entity instanceof Product){
+            $slug = StringHelper::slugify($entity->getName());
+            $entity->setSlug($slug);
+        }
+
+        if($entity instanceof Category){
             $slug = StringHelper::slugify($entity->getName());
             $entity->setSlug($slug);
         }
