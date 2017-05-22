@@ -1,5 +1,17 @@
 <div id="pagination">
-   <span class="page current">1</span>
-   <span class="page"><a href="#page=2" title="">2</a></span>
-   <span class="next"><a href="#page=2" title="">{{ 'next.label'|trans }} »</a></span>
+    {% if currentPage > 1 %}
+        <span class="prev"><a href="{{ url('front_category', {'slug': categorySlug, 'page': currentPage-1}) }}" title="{{ 'prev.label'|trans }}">« {{ 'prev.label'|trans }}</a></span>
+    {% endif %}
+
+    {% for i in 1..totalPage %}
+        {% if i ==  currentPage %}
+            <span class="page current">{{ i }}</span>
+        {% else %}
+            <span class="page"><a href="{{ url('front_category', {'slug': categorySlug, 'page': i}) }}" title="{{ 'page.label'|trans }} {{ i }}">{{ i }}</a></span>
+        {% endif %}
+    {% endfor %}
+
+    {% if currentPage != totalPage %}
+        <span class="next"><a href="{{ url('front_category', {'slug': categorySlug, 'page': currentPage+1}) }}" title="{{ 'next.label'|trans }}">{{ 'next.label'|trans }} »</a></span>
+    {% endif %}
 </div>

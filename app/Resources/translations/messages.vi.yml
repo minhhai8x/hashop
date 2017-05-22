@@ -43,7 +43,9 @@ create_an_account.label: Tạo tài khoản
 cart.label: Giỏ hàng
 items.label: sp
 best_sellers.label: Sản phẩm bán chạy
+prev.label: Trang trước
 next.label: Trang kế
+page.label: Trang
 website_config.label: Tùy chỉnh website
 website_name.label: Tên website
 website_title.label: Tiêu đề

@@ -3,8 +3,8 @@ front_homepage:
     defaults: { _controller: FrontBundle:Default:index }
 
 front_category:
-    path: /category/{slug}
-    defaults: { _controller: FrontBundle:Product:category, slug: null}
+    path: /category/{slug}/{page}
+    defaults: { _controller: FrontBundle:Product:category, slug: null, page: 1}
     methods: GET
 
 front_product_detail:

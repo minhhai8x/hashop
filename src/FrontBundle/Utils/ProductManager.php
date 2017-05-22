@@ -153,16 +153,20 @@ class ProductManager
      */
     public function getProductByCategory($params = array())
     {
-        $results = array();
-        $recordsPerPage = $this->container->getParameter('items_per_page');
+        $results = array('data' => array(), 'total' => 0);
+        $recordsPerPage = $this->container->getParameter('items_category_per_page');
 
-        $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
-        $products = $this->productRepo->findAllProducts($params);
+        $params['page']   = isset($params['page']) ? $params['page'] : 1;
+        $params['limit']  = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
+        $params['offset'] = ($params['page'] - 1) * $params['limit'];
+        $products = $this->productRepo->getAllProducts($params);
 
-        if ($products) {
-            foreach ($products as $item) {
+        if (isset($products['data']) && !empty($products['data'])) {
+            $results['total'] = $products['total'];
+            $results['limit'] = $params['limit'];
+            foreach ($products['data'] as $item) {
                 $images = $this->getProductImages($item['id']);
-                $results[] = array(
+                $results['data'][] = array(
                     'id' => $item['id'],
                     'name' => $item['name'],
                     'price' => StringHelper::currency($item['price']),

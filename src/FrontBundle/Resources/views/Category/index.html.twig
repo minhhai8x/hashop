@@ -126,7 +126,10 @@
                            </div>
 
                            <!-- pagination -->
-                           {{ include('FrontBundle:Default:pagination.html.twig') }}
+                           {% if paginator is defined %}
+                              {{ paginator|raw }}
+                           {% endif %}
+
                            {% else %}
                               <div class="text-center">
                                 <h1 class="page_heading">{{ 'no_product.label'|trans }}</h1>
