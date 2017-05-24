@@ -7,3 +7,7 @@ services:
         class: AppBundle\Helpers\WebsiteLogoNamer
         tags:
             - { name: namer }
+    namer.banner_image_file:
+        class: AppBundle\Helpers\BannerImageNamer
+        tags:
+            - { name: namer }

@@ -1,25 +1,33 @@
+{% if bestSellers is defined and bestSellers %}
 <div class="widget widget_best_sellers">
    <h3 class="widget_header">{{ 'best_sellers.label'|trans }}</h3>
    <div class="widget_content">
       <div class="product_listing_sidebar">
+         {% for best_seller in bestSellers %}
          <div class="wow product animated">
             <div class="prod_inside clearfix">
-               <div class="product_img">  
-                  <a href="/collections/congratulation/products/telefloras-fall-in-love">
-                  <img src="//cdn.shopify.com/s/files/1/0770/6219/products/telefloras_fall_in_love_1_medium.png?v=1424095748" alt="Teleflora's Fall in Love">
+               <div class="product_img">
+                  <a href="{{ url('front_product_detail', {'category': best_seller.catSlug, 'slug': best_seller.slug}) }}">
+                  <img src="{{ best_seller.mainImg }}" alt="{{ best_seller.name }}">
                   </a>
                </div>
                <div class="product_info">
                   <div class="product_price">
-                     <span class="money" data-currency-usd="$27.00" data-currency="USD">$27.00</span>
+                     {% if best_seller.specPrice is defined and best_seller.specPrice %}
+                       <span class="money">{{ best_seller.specPrice }}</span>
+                     {% else %}
+                       <span class="money">{{ best_seller.price }}</span>
+                     {% endif %}
                   </div>
                   <div class="product_name">
-                     <a href="/collections/congratulation/products/telefloras-fall-in-love">Teleflora's Fall in Love</a>
+                     <a href="{{ url('front_product_detail', {'category': best_seller.catSlug, 'slug': best_seller.slug}) }}">{{ best_seller.name }}</a>
                   </div>
-                  <div class="product_desc">Besides that they have othe...</div>
+                  <div class="product_desc">{{ best_seller.shortdesc }} ...</div>
                </div>
             </div>
          </div>
+         {% endfor %}
       </div>
    </div>
 </div>
+{% endif %}

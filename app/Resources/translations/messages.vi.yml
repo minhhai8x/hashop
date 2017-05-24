@@ -15,6 +15,7 @@ product.specprice: Giá khuyến mãi
 product.label: Sản phẩm
 category.label: Danh mục
 user.label: Tài khoản
+banner.label: Băng ron quảng cáo
 action.search: Tìm kiếm
 action.new: Thêm mới
 action.edit: Sửa
@@ -61,3 +62,8 @@ website_logo_size.label: Kích thước tối đa của logo là 50x50
 product.specprice.tip: Giá khuyến mãi của sản phẩm, không khuyến mãi thì để mặc định = 0
 product.image.tip: "Lưu ý: chọn duy nhất 1 hình làm hình đại diện, các hình khác sẽ tự động làm thumbnail cho sản phẩm"
 is_showed.label: Hiển thị
+is_best_seller.label: Sản phẩm bán chạy
+top_banner.label: Top Banner
+left_banner.label: Left Banner
+bottom_banner.label: Bottom Banner
+slider.label: Slider

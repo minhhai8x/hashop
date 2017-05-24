@@ -95,6 +95,13 @@ class Product
     /**
      * @var boolean
      *
+     * @ORM\Column(name="is_best_seller", type="boolean")
+     */
+    private $isBestSeller = false;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="is_showed", type="boolean")
      */
     private $isShowed = true;
@@ -329,6 +336,29 @@ class Product
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set isBestSeller
+     *
+     * @param boolean $isBestSeller
+     * @return Product
+     */
+    public function setIsBestSeller($isBestSeller)
+    {
+        $this->isBestSeller = $isBestSeller;
+
+        return $this;
+    }
+
+    /**
+     * Get isBestSeller
+     *
+     * @return boolean
+     */
+    public function getIsBestSeller()
+    {
+        return $this->isBestSeller;
     }
 
     /**

@@ -1,78 +1,49 @@
+{% if banners is defined and banners.slider is defined and banners.slider %}
 <div class="slider_parallax_wr">
-   <div class="slider_wrap">
-      <div class="nivoSlider">
-         <a href="#asiatic-lilies" class="nivo-imageLink">
-         <img src="{{ asset('assets/images/slide1_image.jpg') }}" alt="" title="#htmlcaption-1">
-         </a>
-         <a href="#/blooming-12-long-stemmed-assorted-rose-bouquet" class="nivo-imageLink">
-         <img src="{{ asset('assets/images/slide2_image.jpg') }}" alt="" title="#htmlcaption-2">
-         </a>
-         <a href="#bouquet-of-long-stemmed-roses-dozen-with-vase" class="nivo-imageLink">
-         <img src="{{ asset('assets/images/slide3_image.jpg') }}" alt="" title="#htmlcaption-3">
-         </a>
-        </div>
-   </div>
+ <div class="slider_wrap">
+  <div class="nivoSlider">
+   {% for slider in banners.slider %}
+   <a href="{{ slider.link|default('#') }}" class="nivo-imageLink">
+     <img src="{{ banner_path }}/{{ slider.image }}" alt="{{ slider.title }}" title="#htmlcaption-{{ slider.id }}">
+   </a>
+  {% endfor %}
+</div>
+</div>
 </div>
 <div class="caption_hidden">
-   <div id="htmlcaption-1">
-      <a href="#products/asiatic-lilies">
-         <div class="nivo-ins">
-            <div class="container">
-               <div class="nivo-bg">
-                  <h3>Flowers are the</h3>
-                  <h2>sweetest things God ever made</h2>
-                  <span class="btn_slider">shop now!</span>
-               </div>
-            </div>
-         </div>
-      </a>
-   </div>
-   <div id="htmlcaption-2">
-      <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-         <div class="nivo-ins">
-            <div class="container">
-               <div class="nivo-bg">
-                  <h3>20% Off</h3>
-                  <h2>on every item over $ 300</h2>
-                  <span class="btn_slider">shop now!</span>
-               </div>
-            </div>
-         </div>
-      </a>
-   </div>
-   <div id="htmlcaption-3">
-      <a href="#products/bouquet-of-long-stemmed-roses-dozen-with-vase">
-         <div class="nivo-ins">
-            <div class="container">
-               <div class="nivo-bg">
-                  <h3>Return the Love on</h3>
-                  <h2>Mother’s Day</h2>
-                  <span class="btn_slider">shop now!</span>
-               </div>
-            </div>
-         </div>
-      </a>
-   </div>
+{% for slider in banners.slider %}
+<div id="htmlcaption-{{ slider.id }}">
+  <a href="{{ slider.link|default('#') }}">
+    <div class="nivo-ins">
+      <div class="container">
+        <div class="nivo-bg">
+          <h3>{{ slider.title }}</h3>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+{% endfor %}
 </div>
 <script type="text/javascript">
-   $(document).ready(function() {
-     $('.nivoSlider').nivoSlider({
-       effect:'fade',
-       animSpeed:500,
-       pauseTime:7000,
-       startSlide:0,
-       pauseOnHover:true,
-       directionNav:false,
-       directionNavHide:false,
-       controlNav:true
-     });
-   
-     if(device.desktop() && $(window).width() >= 1200){
+ $(document).ready(function() {
+   $('.nivoSlider').nivoSlider({
+     effect:'fade',
+     animSpeed:500,
+     pauseTime:7000,
+     startSlide:0,
+     pauseOnHover:true,
+     directionNav:false,
+     directionNavHide:false,
+     controlNav:true
+   });
+
+   if(device.desktop() && $(window).width() >= 1200){
            // PARALLAX INIT
            $(window).bind('scroll',function(e){
              parallaxScroll1();
            });
-   
+
            function parallaxScroll1(){
              var scrolled = $(window).scrollTop();
              $('.slider_parallax_wr .slider_wrap').css('top',(-190+(scrolled*.9))+'px');
@@ -81,5 +52,6 @@
            }
          };
        });
-     
+
 </script>
+{% endif %}

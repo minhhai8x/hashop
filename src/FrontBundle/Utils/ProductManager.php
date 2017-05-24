@@ -117,22 +117,6 @@ class ProductManager
 
     /**
      *
-     * Get all categories
-     *
-     * @param  array $params  Custom parameters
-     * @return array $results List of category
-     */
-    public function getAllCategories($params = array())
-    {
-        $results = array();
-        $recordsPerPage = $this->container->getParameter('items_per_page');
-
-        $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
-        return $this->categoryRepo->findAllCategories($params);
-    }
-
-    /**
-     *
      * Get category detail by slug
      *
      * @param  string  $slug    Slug name
@@ -185,45 +169,6 @@ class ProductManager
 
     /**
      *
-     * Get mega menu
-     *
-     * @return array $results Megamenu items
-     */
-    public function getMegamenu()
-    {
-        $result = array();
-        $categories = $this->getAllCategories();
-        if (!empty($categories)) {
-            foreach ($categories as $key => $category) {
-                $result[$key]['info'] = array(
-                    'name' => $category['name'],
-                    'slug' => $category['slug'],
-                );
-
-                $result[$key]['products'] = array();
-                $products = $this->getProducts(array('catSlug' => $category['slug']));
-                if (!empty($products)) {
-                    $result[$key]['products'] = $products;
-                }
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     *
-     * Get Global configurations
-     *
-     * @return array $results Global configurations
-     */
-    public function getGlobalConfigs()
-    {
-        return $this->configRepo->getConfigs();
-    }
-
-    /**
-     *
      * Get product related
      *
      * @param  integer $productId  Product ID
@@ -238,6 +183,37 @@ class ProductManager
 
         if ($products) {
             foreach ($products as $item) {
+                $images = $this->getProductImages($item['id']);
+                $results[] = array(
+                    'id' => $item['id'],
+                    'name' => $item['name'],
+                    'price' => StringHelper::currency($item['price']),
+                    'specPrice' => StringHelper::currency($item['specPrice']),
+                    'slug' => $item['slug'],
+                    'catSlug' => $item['catSlug'],
+                    'mainImg' => $images['mainImg'],
+                    'thumbImg' => isset($images['thumbImg'][0]) ? $images['thumbImg'][0] : null,
+                    'shortdesc' => StringHelper::shortString($item['description']),
+                );
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     *
+     * Get product best seller
+     *
+     * @return array $results List of product
+     */
+    public function getProductsBestSeller()
+    {
+        $results = array();
+        $bestSellers  = $this->productRepo->getProductsBestSeller();
+
+        if ($bestSellers) {
+            foreach ($bestSellers as $item) {
                 $images = $this->getProductImages($item['id']);
                 $results[] = array(
                     'id' => $item['id'],

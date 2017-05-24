@@ -11,6 +11,7 @@ parameters:
     locale: vi
     app.path.product_images: /uploads/images/products
     app.path.website_images: /assets/images
+    app.path.banner_images: /uploads/images/banners
 
 framework:
     #esi: ~
@@ -40,6 +41,8 @@ twig:
     strict_variables: '%kernel.debug%'
     paths:
         '%kernel.root_dir%/../vendor/javiereguiluz/easyadmin-bundle/Resources/views': easyadmin_template
+    globals:
+        banner_path: %app.path.banner_images%
 
 # Doctrine Configuration
 doctrine:
@@ -102,7 +105,15 @@ easy_admin:
             label: product.label
             class: AppBundle\Entity\Product
             form:
-                fields: [{ property: 'name', label: 'product.name'}, { property: 'category', type_options: { class: 'AppBundle\Entity\Category' }}, { property: 'description', type: 'textarea', label: 'product.description' }, { property: 'price', label: 'product.price'}, { property: 'specprice', label: 'product.specprice', type: 'text', help: 'product.specprice.tip'}, { property: 'images', type: 'collection', type_options: { entry_type: 'FrontBundle\Form\ImageType' }, label: 'product.image', help: 'product.image.tip'}, { property: 'isShowed', label: 'is_showed.label', type: 'checkbox'}]
+                fields:
+                    - { property: 'name', label: 'product.name'}
+                    - { property: 'category', type_options: { class: 'AppBundle\Entity\Category' }}
+                    - { property: 'description', type: 'textarea', label: 'product.description' }
+                    - { property: 'price', label: 'product.price'}
+                    - { property: 'specprice', label: 'product.specprice', type: 'text', help: 'product.specprice.tip'}
+                    - { property: 'images', type: 'collection', type_options: { entry_type: 'FrontBundle\Form\ImageType' }, label: 'product.image', help: 'product.image.tip'}
+                    - { property: 'isShowed', label: 'is_showed.label', type: 'checkbox'}
+                    - { property: 'isBestSeller', label: 'is_best_seller.label', type: 'checkbox'}
             edit:
                 title: 'add.edit.product'
             list:
@@ -112,14 +123,37 @@ easy_admin:
             class: AppBundle\Entity\Configuration
             disabled_actions: ['new', 'search', 'delete']
             form:
-                fields: [{ property: 'wsName', label: 'website_name.label'}, { property: 'wsTitle', label: 'website_title.label'}, { property: 'wsSlogan', label: 'website_slogan.label'}, { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label', help: 'website_logo_size.label'}, { property: 'wsAddress', label: 'website_address.label'}, { property: 'wsPhone', label: 'website_phone.label'}, { property: 'wsCopyright', label: 'website_copyright.label'}]
+                fields:
+                    - { property: 'wsName', label: 'website_name.label'}
+                    - { property: 'wsTitle', label: 'website_title.label'}
+                    - { property: 'wsSlogan', label: 'website_slogan.label'}
+                    - { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label', help: 'website_logo_size.label'}
+                    - { property: 'wsAddress', label: 'website_address.label'}
+                    - { property: 'wsPhone', label: 'website_phone.label'}
+                    - { property: 'wsCopyright', label: 'website_copyright.label'}
                 actions: ['-list']
             list:
-                fields: [{ property: 'wsName', label: 'website_name.label'}, { property: 'wsTitle', label: 'website_title.label'}, { property: 'wsSlogan', label: 'website_slogan.label'}, { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label'}, { property: 'wsAddress', label: 'website_address.label'}, { property: 'wsPhone', label: 'website_phone.label'}]
+                fields:
+                    - { property: 'wsName', label: 'website_name.label'}
+                    - { property: 'wsTitle', label: 'website_title.label'}
+                    - { property: 'wsSlogan', label: 'website_slogan.label'}
+                    - { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label'}
+                    - { property: 'wsAddress', label: 'website_address.label'}
+                    - { property: 'wsPhone', label: 'website_phone.label'}
+        Banner:
+            label: banner.label
+            class: AppBundle\Entity\Banner
+            disabled_actions: ['search']
+            form:
+                fields: [ 'title', 'link', { property: imageFile, type: vich_image }, 'type']
+            list:
+                fields: [ 'title', 'link', { property: image, type: image, base_path: '%app.path.banner_images%' }, 'type']
+
     design:
         brand_color: '#1ABC9C'
         menu:
             - { entity: 'User', icon: 'user' }
+            - { entity: 'Banner', icon: 'image' }
             - { entity: 'Category', icon: 'file-text-o' }
             - { entity: 'Product', icon: 'list' }
             - { entity: 'Configuration', icon: 'cogs' }
@@ -140,6 +174,12 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
             namer: namer.website_logo_file
+        banner_images:
+            uri_prefix:         '%app.path.banner_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/banners'
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer: namer.banner_image_file
 
 stfalcon_tinymce:
     include_jquery: false

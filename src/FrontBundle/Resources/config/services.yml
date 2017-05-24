@@ -1,7 +1,10 @@
 services:
-#    front.example:
-#        class: FrontBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    utils.global.manager:
+        class: FrontBundle\Utils\GlobalManager
+        arguments: ['@doctrine.orm.entity_manager','@service_container']
     utils.product.manager:
         class: FrontBundle\Utils\ProductManager
+        arguments: ['@doctrine.orm.entity_manager','@service_container']
+    utils.banner.manager:
+        class: FrontBundle\Utils\BannerManager
         arguments: ['@doctrine.orm.entity_manager','@service_container']

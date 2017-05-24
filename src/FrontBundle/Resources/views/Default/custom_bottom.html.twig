@@ -1,21 +1,26 @@
-<div class="container">
-   <div class="custom_bottom wow animated">
-      <div class="parallax_box1">
-         <a href="#products/blooming-12-long-stemmed-assorted-rose-bouquet">
-         <span class="title1">Hot Offer!</span>
-         <span class="title2">Fast Same Day Delivery</span>
-         </a>
-      </div>
-      <script type="text/javascript">
-         (function($) {
-           if(device.desktop() && $(window).width() >= 1200){
-             // PARALLAX INIT
-             $(window).load(function() {
-               $('.parallax_box1').parallax("right", -0.2);
-             });
-         
-           };
-         })(jQuery);
-      </script>
-   </div>
-</div>
+{% if banners is defined and banners.bottom is defined and banners.bottom %}
+  {% for bottom_banner in banners.bottom %}
+    <div class="container">
+       <div class="custom_bottom wow animated">
+          <div>
+             <a href="{{ bottom_banner.link|default('#') }}">
+               <span class="title2">{{ bottom_banner.title }}</span>
+               <span class="title2">&nbsp;</span>
+               <img src="{{ banner_path }}/{{ bottom_banner.image }}" alt="{{ bottom_banner.title }}" title="{{ bottom_banner.title }}">
+             </a>
+          </div>
+       </div>
+    </div>
+  {% endfor %}
+  <!-- <script type="text/javascript">
+     (function($) {
+       if(device.desktop() && $(window).width() >= 1200){
+         // PARALLAX INIT
+         $(window).load(function() {
+           $('.parallax_box1').parallax("right", -0.2);
+         });
+
+       };
+     })(jQuery);
+  </script> -->
+{% endif %}

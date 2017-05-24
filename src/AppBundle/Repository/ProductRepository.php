@@ -96,4 +96,16 @@ class ProductRepository extends EntityRepository
             'total' => $total,
         );
     }
+
+    public function getProductsBestSeller()
+    {
+        $query   = $this->createQueryBuilder('p')
+                    ->select("p.id, cat.id as catId, cat.name as catName, cat.slug as catSlug, p.slug as slug, p.name, p.description, p.price, p.specPrice")
+                    ->where('p.isBestSeller = 1')
+                    ->leftJoin('p.category', 'cat')
+                    ->getQuery();
+
+        $results = $query->getResult();
+        return $results;
+    }
 }

@@ -8,11 +8,15 @@ class ProductController extends Controller
 {
     public function detailAction($category, $slug)
     {
+
+        $globalManager   = $this->get('utils.global.manager');
+        $categories      = $globalManager->getAllCategories();
+        $megaMenu        = $globalManager->getMegamenu();
+
         $productManager  = $this->get('utils.product.manager');
         $product         = $productManager->getProductBySlug($slug);
-        $categories      = $productManager->getAllCategories();
-        $megaMenu        = $productManager->getMegamenu();
         $productsRelated = $productManager->getProductsRelated($product['id'], $product['catId']);
+        $bestSellers     = $productManager->getProductsBestSeller();
 
         $renderData = array(
             'body_id'    => $slug,
@@ -22,6 +26,7 @@ class ProductController extends Controller
             'megaMenu'   => $megaMenu,
             'amount'     => 0,
             'productsRelated' => $productsRelated,
+            'bestSellers'  => $bestSellers,
         );
 
         if ($product) {
@@ -33,14 +38,17 @@ class ProductController extends Controller
 
     public function categoryAction($slug, $page)
     {
+        $globalManager  = $this->get('utils.global.manager');
+        $categories     = $globalManager->getAllCategories();
+        $megaMenu       = $globalManager->getMegamenu();
+
         $productManager = $this->get('utils.product.manager');
         $category       = $productManager->getCategoryBySlug($slug);
-        $categories     = $productManager->getAllCategories();
+        $bestSellers    = $productManager->getProductsBestSeller();
         $products       = $productManager->getProductByCategory(array(
             'catSlug' => $slug,
             'page'    => (int) $page,
          ));
-        $megaMenu       = $productManager->getMegamenu();
 
         $renderData = array(
             'body_id'    => $slug,
@@ -48,6 +56,7 @@ class ProductController extends Controller
             'categories' => $categories,
             'products'   => $products['data'],
             'megaMenu'   => $megaMenu,
+            'bestSellers' => $bestSellers,
         );
 
         if ($category) {

@@ -1,9 +1,12 @@
-<div class="widget wow widget_banner animated">
-  <a href="#">
-     <div class="ins">
-        <h3>-30<span>%</span></h3>
-        <h4>for spring flowers</h4>
-     </div>
-     <img src="{{ asset('assets/images/banner.png') }}" alt="-30 -30">
-  </a>
-</div>
+{% if banners is defined and banners.left is defined and banners.left %}
+  {% for left_banner in banners.left %}
+    <div class="widget wow widget_banner animated">
+      <a href="{{ left_banner.link|default('#') }}">
+        <div class="ins">
+          <h4>{{ left_banner.title }}</h4>
+        </div>
+        <img src="{{ banner_path }}/{{ left_banner.image }}" alt="{{ left_banner.title }}">
+      </a>
+    </div>
+  {% endfor %}
+{% endif %}
