@@ -17,7 +17,8 @@ class ProductRepository extends EntityRepository
         $query    = $this->createQueryBuilder('p')
                     ->select("p.id, cat.id as catId, cat.name as catName, cat.slug as catSlug, p.slug as slug, p.name, p.description, p.price, p.specPrice")
                     ->where('p.isShowed = 1')
-                    ->leftJoin('p.category', 'cat');
+                    ->leftJoin('p.category', 'cat')
+                    ->orderBy('p.updatedAt', 'DESC');
 
         if (isset($params['catSlug'])) {
             $query = $query->andWhere('cat.slug  = :catSlug')
@@ -65,6 +66,7 @@ class ProductRepository extends EntityRepository
                     ->andWhere('cat.id = :catId')
                     ->andWhere('p.isShowed = 1')
                     ->setParameters(array('pId' => $productId, 'catId' => $categoryId))
+                    ->orderBy('p.updatedAt', 'DESC')
                     ->getQuery();
 
         $results = $query->getResult();
@@ -76,7 +78,8 @@ class ProductRepository extends EntityRepository
         $query    = $this->createQueryBuilder('p')
                     ->select("p.id, cat.id as catId, cat.name as catName, cat.slug as catSlug, p.slug as slug, p.name, p.description, p.price, p.specPrice")
                     ->where('p.isShowed = 1')
-                    ->leftJoin('p.category', 'cat');
+                    ->leftJoin('p.category', 'cat')
+                    ->orderBy('p.updatedAt', 'DESC');
 
         if (isset($params['catSlug'])) {
             $query = $query->andWhere('cat.slug  = :catSlug')
@@ -103,6 +106,7 @@ class ProductRepository extends EntityRepository
                     ->select("p.id, cat.id as catId, cat.name as catName, cat.slug as catSlug, p.slug as slug, p.name, p.description, p.price, p.specPrice")
                     ->where('p.isBestSeller = 1')
                     ->leftJoin('p.category', 'cat')
+                    ->orderBy('p.updatedAt', 'DESC')
                     ->getQuery();
 
         $results = $query->getResult();

@@ -56,13 +56,13 @@
         <ul class="breadcrumb">
          <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="{{ 'back_to.the_frontpage'|trans }}">{{ 'homepage.label'|trans }}</a></li>
          <li>
-            <a href="{{ url('front_category', {'slug': product.catSlug}) }}" title="{{ product.catName }}">{{ product.catName }}</a> 
+            <a href="{{ url('front_category', {'slug': product.catSlug}) }}" title="{{ product.catName }}">{{ product.catName }}</a>
          </li>
          <li><span class="page-title">{{ product.name }}</span></li>
-      </ul>  
+      </ul>
       {% else %}
         {{ include('FrontBundle:Default:breadcrumb_404.html.twig') }}
-      {% endif %} 
+      {% endif %}
 
       <div class="row sidebar_left ">
          <div class="column_center">
@@ -77,11 +77,14 @@
                            <div class="bx-wrapper">
                               <div class="bx-viewport">
                                  <div id="elevatezoom_gallery">
-                                 {% for thumb in product.thumbImg %}
-                                 <a href="#" data-image="{{ thumb }}" data-zoom-image="{{ thumb }}" class="bx-clone">
-                                    <img src="{{ thumb }}" alt="{{ product.name }}">
+                                    <a href="#" data-image="{{ product.mainImg }}" data-zoom-image="{{ product.mainImg }}" class="bx-clone">
+                                      <img src="{{ product.mainImg }}" alt="{{ product.name }}">
                                     </a>
-                                 {% endfor %}      
+                                 {% for thumb in product.thumbImg %}
+                                    <a href="#" data-image="{{ thumb }}" data-zoom-image="{{ thumb }}" class="bx-clone">
+                                      <img src="{{ thumb }}" alt="{{ product.name }}">
+                                    </a>
+                                 {% endfor %}
                                  </div>
                               </div>
                            </div>
@@ -102,7 +105,7 @@
                                     </span></p>
                                  </div>
                                  <div id="purchase">
-                                    <label for="quantity">{{ 'quantity.label'|trans }}: </label><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">    
+                                    <label for="quantity">{{ 'quantity.label'|trans }}: </label><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
                                     <button class="btn" type="submit" id="add-to-cart">{{ 'buy.label'|trans }}</button>
                                  </div>
                               </div>
@@ -147,14 +150,14 @@
                               });
                           // };
                       });
-                  
+
                       /* big image fancybox */
-                      $("#elevatezoom_big").bind("click", function() { 
+                      $("#elevatezoom_big").bind("click", function() {
                           var ez = $('#elevatezoom_big').data('elevateZoom');
                           $.fancybox(ez.getGalleryList());
                           return false;
                       });
-                  
+
                       /* thumbs slider */
                       $('#elevatezoom_gallery').bxSlider({
                           infiniteLoop: false,
@@ -183,7 +186,7 @@
                           var message = variant ? "Sold Out" : "Unavailable";
                           jQuery('#product_price .price').text(message);
                       };
-                  
+
                       if (variant && variant.featured_image) {
                               var originalImage = $(".product_images img");
                               var newImage = variant.featured_image;
@@ -193,10 +196,10 @@
                                       $(element).attr('src', newImageSizedSrc);
                               });
                       }
-                  
+
                   };
-                  
-                  
+
+
                </script>
             </div>
             {% else %}
@@ -211,7 +214,7 @@
             <!-- Best sellers -->
             {{ include('FrontBundle:Product:best_sellers.html.twig') }}
             <!-- END Best sellers -->
-            
+
          </div>
       </div>
    </div>
@@ -221,7 +224,7 @@
     <!-- FOOTER -->
     {% block footer %}
        {{ include('FrontBundle:Default:footer.html.twig') }}
-    {% endblock %}      
+    {% endblock %}
 
  </div>
  <!-- / #wrapper2 -->

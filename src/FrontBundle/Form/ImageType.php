@@ -18,12 +18,6 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array(
-                    'label' => 'file.name.label',
-                    'attr' => array(
-                        'placeholder' => 'file.name.placeholder',
-                    ),
-                ))
             ->add('imageFile', VichFileType::class)
             ->add('isMain', CheckboxType::class, array(
                     'label' => 'main.image',
