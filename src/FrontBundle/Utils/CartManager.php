@@ -48,10 +48,6 @@ class CartManager
     $product = $this->productManager->getProductById($itemId);
     $cart    = $this->getCart();
 
-    $cartData['price'] = $product['specPrice'] ? $product['specPrice'] : $product['price'];
-    $cart['data'][$itemId]['quantity'] =  (int) $itemData['quantity'];
-    $cart['data'][$itemId]['subtotal'] = $cart['data'][$itemId]['quantity'] * $cartData['price'];
-
     if ($product) {
       $cartData['price'] = $product['specPrice'] ? $product['specPrice'] : $product['price'];
       $cart['data'][$itemId]['quantity'] =  (int) $itemData['quantity'];
