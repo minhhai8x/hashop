@@ -118,6 +118,9 @@ class CartManager
     $em->persist($product);
     $em->flush();
 
+    // Reset cart
+    $this->session->remove('cart');
+
     return $order;
   }
 }
