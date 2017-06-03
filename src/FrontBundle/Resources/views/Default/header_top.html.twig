@@ -6,10 +6,10 @@
    </ul>
    <!-- HEADER CART -->
    <div class="header_cart">
-      <a href="#cart">
+      <a href="{{ url('front_cart') }}">
         <i class="fa fa-shopping-cart"></i>
         <b>{{ 'cart.label'|trans }}:</b>
-        <span class="cart-total-items"><span class="count">0</span></span><span>{{ 'items.label'|trans }}</span>
+        <span class="cart-total-items"><span class="count">{{ cart_total() }}</span></span><span>{{ 'items.label'|trans }}</span>
       </a>
    </div>
 </div>

@@ -71,12 +71,13 @@ class CartManager
 
   public function getCart()
   {
-    $result = array('data' => array(), 'total' => 0);
+    $result = array('data' => array(), 'total' => 0, 'count' => 0);
     $cart = $this->session->get('cart', array());
     if ($cart && $cart['data']) {
       $result['data'] = $cart['data'];
       foreach ($cart['data'] as $item) {
         $result['total'] += $item['subtotal'];
+        $result['count']++;
       }
 
     }
