@@ -67,3 +67,14 @@ top_banner.label: Top Banner
 left_banner.label: Left Banner
 bottom_banner.label: Bottom Banner
 slider.label: Slider
+cart.label: Giỏ hàng
+total.label: Tổng cộng
+subtotal.label: Thành tiền
+shopping_cart.label: Giỏ hàng của bạn
+continue_shopping.label: Tiếp tục mua hàng
+update_cart.label: Cập nhật giỏ hàng
+checkout.label: Thanh toán
+cart_empty.label: Giỏ hàng của bạn chưa có sản phẩm nào!
+here.label: Ở đây
+shipping_address.label: Địa chỉ giao hàng
+note.label: Ghi chú

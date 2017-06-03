@@ -2,6 +2,8 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Helpers\StringHelper;
+
 class AppExtension extends \Twig_Extension
 {
 	protected $globalManager;
@@ -17,7 +19,8 @@ class AppExtension extends \Twig_Extension
 
     public function getFunctions() {
         return array(
-            'global_configs' => new \Twig_Function_Method($this, 'getGlobalConfigs')
+            'global_configs' => new \Twig_Function_Method($this, 'getGlobalConfigs'),
+            'price_format' => new \Twig_Function_Method($this, 'priceFormat')
         );
     }
 
@@ -32,5 +35,10 @@ class AppExtension extends \Twig_Extension
         $globalConfigs->logoImage = $logoImage;
 
         return $globalConfigs;
+    }
+
+    public function priceFormat($price)
+    {
+        return StringHelper::currency($price);
     }
 }

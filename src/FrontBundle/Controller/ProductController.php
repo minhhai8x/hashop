@@ -3,6 +3,7 @@
 namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FrontBundle\Form\BuyCartType;
 
 class ProductController extends Controller
 {
@@ -18,6 +19,11 @@ class ProductController extends Controller
         $productsRelated = $productManager->getProductsRelated($product['id'], $product['catId']);
         $bestSellers     = $productManager->getProductsBestSeller();
 
+        $form = $this->createForm(new BuyCartType(), array(), array(
+            'action' => $this->generateUrl('front_cart'),
+            'method' => 'POST',
+        ));
+
         $renderData = array(
             'body_id'    => $slug,
             'body_class' => 'template-product',
@@ -27,6 +33,7 @@ class ProductController extends Controller
             'amount'     => 0,
             'productsRelated' => $productsRelated,
             'bestSellers'  => $bestSellers,
+            'form' => $form->createView()
         );
 
         if ($product) {

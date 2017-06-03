@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-7">
                            <div itemprop="name" class="product_name">{{ product.name }}</div>
-                           <form action="/cart/add" method="post" enctype="multipart/form-data" class="form-horizontal" id="product-actions">
+                           {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
                               <div class="options clearfix">
                                  <div id="product_price">
                                     <p class="price product-price">
@@ -105,12 +105,13 @@
                                     </span></p>
                                  </div>
                                  <div id="purchase">
-                                    <label for="quantity">{{ 'quantity.label'|trans }}: </label><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
+                                    <label for="quantity">{{ 'quantity.label'|trans }}: </label>
+                                    {{ form_widget(form.quantity, {'id': 'quantity'}) }}
+                                    {{ form_widget(form.hidden_id, {'value': product.id}) }}
                                     <button class="btn" type="submit" id="add-to-cart">{{ 'buy.label'|trans }}</button>
                                  </div>
                               </div>
-                              <!-- /.options -->
-                           </form>
+                           {{ form_end(form) }}
                            <div class="product_details">
                               <div class="product_type">{{ 'category.label'|trans }}: <a href="{{ url('front_category', {'slug': product.catSlug}) }}" title="{{ product.catName }}">{{ product.catName }}</a></div>
                            </div>

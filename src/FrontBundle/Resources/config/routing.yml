@@ -15,3 +15,15 @@ front_product_detail:
 front_contact_us:
     path: /contact-us
     defaults: { _controller: FrontBundle:Default:contactUs }
+
+front_cart:
+    path: /cart
+    defaults: { _controller: FrontBundle:Cart:index }
+
+front_cart_update:
+    path: /cart/update
+    defaults: { _controller: FrontBundle:Cart:update }
+
+front_cart_checkout:
+    path: /cart/checkout
+    defaults: { _controller: FrontBundle:Cart:checkout }

@@ -107,11 +107,23 @@ class Product
     private $isShowed = true;
 
     /**
+     * @var Order[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Order", cascade={"persist"})
+     * @ORM\JoinTable(name="order_detail",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    private $orders;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -336,6 +348,16 @@ class Product
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Get orders
+     *
+     * @return Order[]|ArrayCollection
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 
     /**

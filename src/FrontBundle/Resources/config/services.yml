@@ -8,3 +8,10 @@ services:
     utils.banner.manager:
         class: FrontBundle\Utils\BannerManager
         arguments: ['@doctrine.orm.entity_manager','@service_container']
+    utils.cart.manager:
+        class: FrontBundle\Utils\CartManager
+        arguments: ['@service_container']
+    app.form.type.cart:
+        class: AppBundle\Form\CartType
+        tags:
+            - { name: form.type }

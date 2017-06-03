@@ -66,7 +66,26 @@ class ProductManager
      */
     public function getProductById($id)
     {
-        return $this->productRepo->find($id);
+        $result  = array();
+        $product = $this->productRepo->find($id);
+
+        if ($product) {
+            $result['id'] = $product->getId();
+            $result['name'] = $product->getName();
+            $result['price'] = $product->getPrice();
+            $result['specPrice'] = $product->getSpecPrice();
+            $images = $this->getProductImages($product->getId());
+            $result['mainImg'] = isset($images['mainImg']) ? $images['mainImg'] : $imageDefault;
+            $result['thumbImg'] = isset($images['thumbImg']) ? $images['thumbImg'] : array();
+            $result['catName']  = $product->getCategory()->getName();
+            $result['url']  = $this->container->get('router')->generate('front_product_detail', array(
+                'category' => $product->getCategory()->getSlug(),
+                'slug' => $product->getSlug(),
+                )
+            );
+        }
+
+        return $result;
     }
 
     /**
