@@ -3,11 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Order
  *
- * @ORM\Table(name="order")
+ * @ORM\Table(name="orders")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderRepository")
  */
 class Order
@@ -24,9 +25,23 @@ class Order
     /**
      * @var string
      *
+     * @ORM\Column(name="order_no", type="string", length=256)
+     */
+    private $orderNo;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="customer_name", type="string", length=512)
      */
     private $customerName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="customer_email", type="string", length=512, nullable = true)
+     */
+    private $customerEmail;
 
     /**
      * @var string
@@ -47,7 +62,14 @@ class Order
      *
      * @ORM\Column(name="total", type="float")
      */
-    private $total;
+    private $total = 0;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="customer_note", type="text", nullable = true)
+     */
+    private $customerNote;
 
     /**
      * @var datetime $created
@@ -62,6 +84,48 @@ class Order
      * @ORM\Column(name="updated_at", type="datetime", nullable = true)
      */
     private $updatedAt;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="order", cascade={"persist"})
+     */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
+    public function addProduct(\AppBundle\Entity\Product $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Set orderNo
+     *
+     * @param string $time
+     * @return Order
+     */
+    public function setOrderNo($time)
+    {
+        $this->orderNo = 'SNF' . base64_encode($time);
+
+        return $this;
+    }
+
+    /**
+     * Get orderNo
+     *
+     * @return string
+     */
+    public function getOrderNo()
+    {
+        return $this->orderNo;
+    }
 
     /**
      * Set customerName
@@ -84,6 +148,29 @@ class Order
     public function getCustomerName()
     {
         return $this->customerName;
+    }
+
+    /**
+     * Set customerEmail
+     *
+     * @param string $customerEmail
+     * @return Order
+     */
+    public function setCustomerEmail($customerEmail)
+    {
+        $this->customerEmail = $customerEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get customerEmail
+     *
+     * @return string
+     */
+    public function getCustomerEmail()
+    {
+        return $this->customerEmail;
     }
 
     /**
@@ -153,6 +240,29 @@ class Order
     public function getTotal()
     {
         return $this->total;
+    }
+
+    /**
+     * Set customerNote
+     *
+     * @param string $customerNote
+     * @return Order
+     */
+    public function setCustomerNote($customerNote)
+    {
+        $this->customerNote = $customerNote;
+
+        return $this;
+    }
+
+    /**
+     * Get customerNote
+     *
+     * @return string
+     */
+    public function getCustomerNote()
+    {
+        return $this->customerNote;
     }
 
     /**

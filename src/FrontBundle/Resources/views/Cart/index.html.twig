@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9">
                                        <div class="item_remove pull-right">
-                                          <a href="#"><i class="fa fa-times"></i></a>
+                                          <a data-id="{{ item.id }}" onclick="removeCart(this);"><i class="fa fa-times"></i></a>
                                        </div>
                                        <div class="product_name">
                                           <a href="{{ item.url }}">
@@ -146,6 +146,19 @@
                   window.location = "{{ url('front_cart') }}";
                }
             });
+         }
+
+         function removeCart(data)
+         {
+            if (confirm("{{ 'are_you_sure_delete.label'|trans }}") == true) {
+                $.ajax({url: "{{ url('front_cart_remove_item') }}",
+                  type: 'POST',
+                  data: {'id': data.getAttribute('data-id')},
+                  success: function(result){
+                     window.location = "{{ url('front_cart') }}";
+                  }
+               });
+            }
          }
       </script>
    </div>

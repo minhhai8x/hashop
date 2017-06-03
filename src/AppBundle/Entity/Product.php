@@ -126,6 +126,13 @@ class Product
         $this->orders = new ArrayCollection();
     }
 
+    public function addOrder(\AppBundle\Entity\Order $order)
+    {
+        $this->orders[] = $order;
+
+        return $this;
+    }
+
     /**
      * Get id
      *

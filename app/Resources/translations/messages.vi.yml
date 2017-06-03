@@ -78,3 +78,6 @@ cart_empty.label: Giỏ hàng của bạn chưa có sản phẩm nào!
 here.label: Ở đây
 shipping_address.label: Địa chỉ giao hàng
 note.label: Ghi chú
+are_you_sure_delete.label: Bạn có chắc chắn muốn xoá ?
+order_success.label: Đặt hàng thành công
+cart_success_message.label: Đơn hàng của bạn là

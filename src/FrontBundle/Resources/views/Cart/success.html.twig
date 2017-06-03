@@ -47,48 +47,17 @@
          <div class="container">
             <ul class="breadcrumb">
                <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="{{ 'back_to.the_frontpage'|trans }}">{{ 'homepage.label'|trans }}</a></li>
-               <li><span class="page-title">{{ 'checkout.label'|trans }}</span></li>
+               <li><span class="page-title">{{ 'order_success.label'|trans }}</span></li>
             </ul>
             <div class="row sidebar_left ">
                <div class="column_center">
                   <div id="main_content" class="col-sm-9">
                      <div class="contact-scope">
-                        <h1 class="page_heading">{{ 'checkout.label'|trans }}</h1>
-                        {{ form_start(form, {'attr': {'class':'contact-form', 'accept-charset': 'UTF-8'}}) }}
-                           <input type="hidden" value="contact" name="form_type"><input type="hidden" name="utf8" value="✓">
-                           <div id="contactFormWrapper">
-                              <div class="row">
-                                 <div class="col-sm-4 form-group">
-                                    <label class="sr-only">{{ 'your_name.label'|trans }}:</label>
-                                    {{ form_widget(form.customer_name, {'attr': {'placeholder': 'your_name.label'|trans }}) }}
-                                 </div>
-                                 <div class="col-sm-4 form-group">
-                                    <label class="sr-only">{{ 'your_email.label'|trans }}:</label>
-                                    {{ form_widget(form.customer_email, {'attr': {'placeholder': 'your_email.label'|trans }}) }}
-                                 </div>
-                                 <div class="col-sm-4 form-group">
-                                    <label class="sr-only">{{ 'your_phone_number.label'|trans }}:</label>
-                                    {{ form_widget(form.customer_phone, {'attr': {'placeholder': 'your_phone_number.label'|trans }}) }}
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-sm-12 form-group">
-                                    <label class="sr-only">{{ 'shipping_address.label'|trans }}:</label>
-                                    {{ form_widget(form.customer_address, {'attr': {'placeholder': 'shipping_address.label'|trans }}) }}
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-sm-12 form-group">
-                                    <label class="sr-only">{{ 'note.label'|trans }}:</label>
-                                    {{ form_widget(form.customer_note, {'attr': {'placeholder': 'note.label'|trans }}) }}
-                                 </div>
-                              </div>
-                              <div class="btn-toolbar form-group">
-                                 <input type="submit" id="contactFormSubmit" value="{{ 'buy.label'|trans }}" class="btn btn-primary">
-                              </div>
-                           </div>
-                           <!-- contactFormWrapper -->
-                        {{ form_end(form) }}
+                        <h3 class="page_heading">{{ 'order_success.label'|trans }}</h3>
+                        <div>
+                           <h1 style="text-transform: initial;">{{ 'cart_success_message.label'|trans }}: {{ orderNo }}</h1>
+                           <h1>{{ 'continue_shopping.label'|trans }} <a href="{{ url('front_homepage') }}">{{ 'here.label'|trans }}</a>.</h1>
+                        </div>
                      </div>
                   </div>
                </div>

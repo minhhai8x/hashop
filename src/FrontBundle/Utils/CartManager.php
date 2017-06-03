@@ -2,10 +2,14 @@
 
 namespace FrontBundle\Utils;
 
+use AppBundle\Entity\Order;
+use AppBundle\Entity\Product;
+
 class CartManager
 {
   protected $session;
   protected $productManager;
+  protected $container;
 
 
   /**
@@ -17,6 +21,7 @@ class CartManager
   {
     $this->session = $container->get('session');
     $this->productManager = $container->get('utils.product.manager');
+    $this->container = $container;
   }
 
   public function addItem($itemData)
@@ -61,9 +66,9 @@ class CartManager
   {
     $cart = $this->getCart();
 
-    if (isset($cart[$id]) && --$cart[$id] == 0)
+    if (isset($cart['data'][$id]))
     {
-      unset($cart[$id]);
+      unset($cart['data'][$id]);
     }
 
     $this->session->set('cart', $cart);
@@ -83,5 +88,36 @@ class CartManager
     }
 
     return $result;
+  }
+
+  public function createNewOrder($data)
+  {
+    $em    = $this->container->get('doctrine.orm.entity_manager');
+    $order = new Order();
+    $order->setOrderNo(time());
+    $order->setCustomerName($data['customer_name']);
+    $order->setCustomerEmail($data['customer_email']);
+    $order->setCustomerAddress($data['customer_address']);
+    $order->setCustomerPhone($data['customer_phone']);
+
+    $cart = $this->session->get('cart', array());
+    if ($cart['data']) {
+      $productRepo = $em->getRepository('AppBundle:Product');
+      foreach ($cart['data'] as $item) {
+        $product = $productRepo->find($item['id']);
+        $product->addOrder($order);
+        $order->addProduct($product);
+      }
+    }
+
+    $order->setTotal($cart['total']);
+    $order->setCustomerNote($data['customer_note']);
+    $order->setCreatedAt(new \Datetime());
+
+    $em->persist($order);
+    $em->persist($product);
+    $em->flush();
+
+    return $order;
   }
 }

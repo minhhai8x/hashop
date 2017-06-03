@@ -27,3 +27,11 @@ front_cart_update:
 front_cart_checkout:
     path: /cart/checkout
     defaults: { _controller: FrontBundle:Cart:checkout }
+
+front_cart_remove_item:
+    path: /cart/remove-item
+    defaults: { _controller: FrontBundle:Cart:removeItem }
+
+front_cart_success:
+    path: /cart/success
+    defaults: { _controller: FrontBundle:Cart:success }

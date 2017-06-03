@@ -45,4 +45,4 @@
 
 *.DS_Store
 
-/app/assets/*
+/web/assets/*
