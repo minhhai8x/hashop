@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new AdminBundle\AdminBundle(),
-            
+
             // Easy Admin
             new FOS\UserBundle\FOSUserBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
@@ -30,6 +30,8 @@ class AppKernel extends Kernel
             //new Oneup\UploaderBundle\OneupUploaderBundle(),
 
             new FrontBundle\FrontBundle(),
+
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

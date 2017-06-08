@@ -35,3 +35,7 @@ front_cart_remove_item:
 front_cart_success:
     path: /cart/success
     defaults: { _controller: FrontBundle:Cart:success }
+
+front_contact_success:
+    path: /contact/success
+    defaults: { _controller: FrontBundle:Default:contactSuccess }

@@ -10,3 +10,7 @@ search.page_title: Kết quả tìm kiếm
 label.empty: Chưa có
 label.null: ------
 search.no_results: Không tìm thấy kết quả
+show.page_title: Thông tin
+delete_modal.title: Xoá
+delete_modal.content: Bạn có chắc chắn muốn xoá ?
+delete_modal.action: Xoá

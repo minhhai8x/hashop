@@ -13,7 +13,9 @@
 <script src="{{ asset('assets/js/jquery.ui.totop.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/jquery.formstyler.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/wow.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/jquery.bxslider.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/jquery.elevatezoom.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/jquery.fancybox-2.1.5.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block wrapper %}
 <div id="wrapper">
@@ -33,7 +35,7 @@
       {% endblock %}
       <!-- MEGAMENU -->
       {% block megamenu %}
-      {{ include('FrontBundle:Default:megamenu.html.twig') }}
+         {{ include('FrontBundle:Default:megamenu.html.twig') }}
       {% endblock %}
       <!-- nivoslider -->
       {% block nivoslider %}{% endblock %}
@@ -45,43 +47,17 @@
          <div class="container">
             <ul class="breadcrumb">
                <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="{{ 'back_to.the_frontpage'|trans }}">{{ 'homepage.label'|trans }}</a></li>
-               <li><span class="page-title">{{ 'contact_us.label'|trans }}</span></li>
+               <li><span class="page-title">{{ 'contact_success.label'|trans }}</span></li>
             </ul>
             <div class="row sidebar_left ">
                <div class="column_center">
                   <div id="main_content" class="col-sm-9">
                      <div class="contact-scope">
-                        <h1 class="page_heading">{{ 'contact_us.label'|trans }}</h1>
-                        {{ form_start(form, {'attr': {'class':'contact-form', 'accept-charset': 'UTF-8'}}) }}
-                           <input type="hidden" value="contact" name="form_type"><input type="hidden" name="utf8" value="✓">
-                           <div id="contactFormWrapper">
-                              <div class="row">
-                                 <div class="col-sm-4 form-group">
-                                    <label class="sr-only">{{ 'your_name.label'|trans }}:</label>
-                                    {{ form_widget(form.contact_name, {'attr': {'placeholder': 'your_name.label'|trans }}) }}
-                                 </div>
-                                 <div class="col-sm-4 form-group">
-                                    <label class="sr-only">{{ 'your_email.label'|trans }}:</label>
-                                    {{ form_widget(form.contact_email, {'attr': {'placeholder': 'your_email.label'|trans }}) }}
-                                 </div>
-                                 <div class="col-sm-4 form-group">
-                                    <label class="sr-only">{{ 'your_phone_number.label'|trans }}:</label>
-                                    {{ form_widget(form.contact_phone, {'attr': {'placeholder': 'your_phone_number.label'|trans }}) }}
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-sm-12 form-group">
-                                    <label class="sr-only">{{ 'your_message.label'|trans }}:</label>
-                                    {{ form_widget(form.contact_note, {'attr': {'placeholder': 'note.label'|trans }}) }}
-                                 </div>
-                              </div>
-                              <div class="btn-toolbar form-group">
-                                 <input type="submit" id="contactFormSubmit" value="{{ 'send.label'|trans }}" class="btn btn-primary">
-                                 <input type="reset" value="{{ 'renew.label'|trans }}" class="btn btn-info">
-                              </div>
-                           </div>
-                           <!-- contactFormWrapper -->
-                        {{ form_end(form) }}
+                        <h3 class="page_heading">{{ 'contact_success.label'|trans }}</h3>
+                        <div>
+                           <h1 style="text-transform: initial;">{{ 'contact_success_message.label'|trans }}</h1>
+                           <h1>{{ 'continue_shopping.label'|trans }} <a href="{{ url('front_homepage') }}">{{ 'here.label'|trans }}</a>.</h1>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -101,6 +77,7 @@
       {% block footer %}
       {{ include('FrontBundle:Default:footer.html.twig') }}
       {% endblock %}
+
    </div>
    <!-- / #wrapper2 -->
 </div>

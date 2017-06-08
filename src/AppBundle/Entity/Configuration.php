@@ -48,9 +48,9 @@ class Configuration
     private $wsSlogan;
 
     /**
-     * 
+     *
      * @Vich\UploadableField(mapping="ws_logo_image", fileNameProperty="wsLogo")
-     * 
+     *
      * @var UploadedFile
      */
     private $wsLogoFile;
@@ -72,6 +72,13 @@ class Configuration
     /**
      * @var string
      *
+     * @ORM\Column(name="ws_email", type="string", length=255)
+     */
+    private $wsEmail;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="ws_phone", type="string", length=255, nullable=true)
      */
     private $wsPhone;
@@ -86,7 +93,7 @@ class Configuration
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -109,7 +116,7 @@ class Configuration
     /**
      * Get wsName
      *
-     * @return string 
+     * @return string
      */
     public function getWsName()
     {
@@ -132,7 +139,7 @@ class Configuration
     /**
      * Get wsTitle
      *
-     * @return string 
+     * @return string
      */
     public function getWsTitle()
     {
@@ -155,7 +162,7 @@ class Configuration
     /**
      * Get wsSlogan
      *
-     * @return string 
+     * @return string
      */
     public function getWsSlogan()
     {
@@ -179,7 +186,7 @@ class Configuration
     /**
      * Get wsLogoFile
      *
-     * @return File|null 
+     * @return File|null
      */
     public function getWsLogoFile()
     {
@@ -223,11 +230,34 @@ class Configuration
     /**
      * Get wsAddress
      *
-     * @return string 
+     * @return string
      */
     public function getWsAddress()
     {
         return $this->wsAddress;
+    }
+
+    /**
+     * Get wsEmail
+     *
+     * @return string
+     */
+    public function getWsEmail()
+    {
+        return $this->wsEmail;
+    }
+
+    /**
+     * Set wsEmail
+     *
+     * @param string $wsEmail
+     * @return Configuration
+     */
+    public function setWsEmail($wsEmail)
+    {
+        $this->wsEmail = $wsEmail;
+
+        return $this;
     }
 
     /**
@@ -246,7 +276,7 @@ class Configuration
     /**
      * Get wsPhone
      *
-     * @return string 
+     * @return string
      */
     public function getWsPhone()
     {
@@ -269,7 +299,7 @@ class Configuration
     /**
      * Get wsCopyright
      *
-     * @return string 
+     * @return string
      */
     public function getWsCopyright()
     {
@@ -278,6 +308,6 @@ class Configuration
 
     public function __toString()
     {
-        return $this->wsName; 
+        return $this->wsName;
     }
 }

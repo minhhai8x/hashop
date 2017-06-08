@@ -53,6 +53,8 @@ website_title.label: Tiêu đề
 website_slogan.label: Slogan
 website_logo.label: Logo
 website_address.label: Địa chỉ
+website_email.label: Email
+website_email_subject.label: Email từ khách hàng
 website_phone.label: Điện thoại
 website_copyright.label: Bản quyền
 no_product.label: Không có sản phẩm nào!
@@ -81,3 +83,18 @@ note.label: Ghi chú
 are_you_sure_delete.label: Bạn có chắc chắn muốn xoá ?
 order_success.label: Đặt hàng thành công
 cart_success_message.label: Đơn hàng của bạn là
+contact_success.label: Ghi nhận thông tin thành công
+contact_success_message.label: Chúng tôi đã ghi nhận thông tin của bạn, chúng tôi sẽ liên hệ bạn trong vòng 24h. Xin cảm ơn!
+contact_title.label: Lời nhắn từ khách hàng
+order.label: Đơn hàng
+action.show: Xem
+order_no.label: Mã đơn hàng
+order_customer_name.label: Tên khách hàng
+order_email.label: Email
+order_address.label: Địa chỉ
+order_phone.label: Điện thoại
+order_total.label: Tổng cộng
+order_note.label: Ghi chú
+action.cancel: Huỷ
+statistics.label: Thống kê
+statistics.title: Thống kê đơn hàng

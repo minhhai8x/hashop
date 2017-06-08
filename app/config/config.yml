@@ -129,6 +129,7 @@ easy_admin:
                     - { property: 'wsSlogan', label: 'website_slogan.label'}
                     - { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label', help: 'website_logo_size.label'}
                     - { property: 'wsAddress', label: 'website_address.label'}
+                    - { property: 'wsEmail', label: 'website_email.label'}
                     - { property: 'wsPhone', label: 'website_phone.label'}
                     - { property: 'wsCopyright', label: 'website_copyright.label'}
                 actions: ['-list']
@@ -149,6 +150,16 @@ easy_admin:
             list:
                 fields: [ 'title', 'link', { property: image, type: image, base_path: '%app.path.banner_images%' }, 'type']
 
+        Order:
+            label: order.label
+            class: AppBundle\Entity\Order
+            disabled_actions: ['edit']
+            show:
+                fields: [ { property: 'orderNo', label: 'order_no.label'}, { property: 'customerName', label: 'order_customer_name.label'}, { property: 'customerEmail', label: 'order_email.label'}, { property: 'customerAddress', label: 'order_address.label'}, { property: 'customerPhone', label: 'order_phone.label'}, { property: 'total', label: 'order_total.label'}, { property: 'customerNote', label: 'order_note.label'}]
+            list:
+                actions: ['show']
+                fields: [ { property: 'orderNo', label: 'order_no.label'}, { property: 'customerName', label: 'order_customer_name.label'}, { property: 'customerEmail', label: 'order_email.label'}, { property: 'customerAddress', label: 'order_address.label'}, { property: 'customerPhone', label: 'order_phone.label'}, { property: 'total', label: 'order_total.label'}, { property: 'customerNote', label: 'order_note.label'}]
+
     design:
         brand_color: '#1ABC9C'
         menu:
@@ -156,6 +167,8 @@ easy_admin:
             - { entity: 'Banner', icon: 'image' }
             - { entity: 'Category', icon: 'file-text-o' }
             - { entity: 'Product', icon: 'list' }
+            - { entity: 'Order', icon: 'money' }
+            - { label: 'statistics.label', route: 'admin_index', icon: 'pie-chart'}
             - { entity: 'Configuration', icon: 'cogs' }
 
 # Vich configuration

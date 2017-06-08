@@ -15,3 +15,6 @@ services:
         class: AppBundle\Form\CartType
         tags:
             - { name: form.type }
+    utils.email.manager:
+        class: FrontBundle\Utils\EmailManager
+        arguments: ['@doctrine.orm.entity_manager','@service_container', '@templating']
