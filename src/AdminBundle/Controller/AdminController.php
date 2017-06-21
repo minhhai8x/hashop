@@ -6,6 +6,7 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Banner;
+use AppBundle\Entity\Image;
 use AppBundle\Helpers\StringHelper;
 
 class AdminController extends BaseAdminController
@@ -40,7 +41,7 @@ class AdminController extends BaseAdminController
             $slug = StringHelper::slugify($entity->getName());
             $entity->setSlug($slug);
 
-            $this->_setThumbImages($entity->getImages());
+            $this->_setThumbImages($slug, $entity->getImages());
         }
 
         if($entity instanceof Category){
@@ -63,6 +64,10 @@ class AdminController extends BaseAdminController
     public function preUpdateEntity($entity)
     {
         if($entity instanceof Product){
+            // update product images
+            $adminGlobalManager = $this->get('utils.admin.global.manager');
+            $adminGlobalManager->updateProductImages($entity->getId(), $entity->getImages());
+
             $slug = StringHelper::slugify($entity->getName());
             $entity->setSlug($slug);
 

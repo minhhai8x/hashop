@@ -11,3 +11,6 @@ services:
         class: AppBundle\Helpers\BannerImageNamer
         tags:
             - { name: namer }
+    utils.admin.global.manager:
+        class: AdminBundle\Utils\GlobalManager
+        arguments: ['@doctrine.orm.entity_manager','@service_container']        
