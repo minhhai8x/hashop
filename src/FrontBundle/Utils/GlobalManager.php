@@ -37,7 +37,7 @@ class GlobalManager
         $recordsPerPage = $this->container->getParameter('items_per_page');
 
         $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
-        return $this->categoryRepo->findAllCategories($params);
+        return $this->categoryRepo->findAllCategoriesLevel1($params);
     }
 
     /**
@@ -49,19 +49,23 @@ class GlobalManager
     public function getMegamenu()
     {
         $result = array();
-        $categories = $this->getAllCategories();
+        $recordsPerPage  = $this->container->getParameter('items_per_page');
+        $params['limit'] = isset($params['limit']) ? $params['limit'] : $recordsPerPage;
+        $categories = $this->categoryRepo->findAllCategoriesLevel1($params);
         if (!empty($categories)) {
             foreach ($categories as $key => $category) {
                 $result[$key]['info'] = array(
-                    'name' => $category['name'],
-                    'slug' => $category['slug'],
+                    'name' => $category->getName(),
+                    'pid'  => $category->getParentId() ? $category->getParentId()->getId() : null,
+                    'slug' => $category->getSlug(),
+                    'subData' => $this->getSubCategoryById($category->getId()),
                 );
 
-                $result[$key]['products'] = array();
-                $products = $this->productManager->getProducts(array('catSlug' => $category['slug']));
-                if (!empty($products)) {
-                    $result[$key]['products'] = $products;
-                }
+                // $result[$key]['products'] = array();
+                // $products = $this->productManager->getProducts(array('catSlug' => $category->getSlug()));
+                // if (!empty($products)) {
+                //     $result[$key]['products'] = $products;
+                // }
             }
         }
 
@@ -77,5 +81,29 @@ class GlobalManager
     public function getGlobalConfigs()
     {
         return $this->configRepo->getConfigs();
+    }
+
+    /**
+     *
+     * Get Category by slug
+     *
+     * @param  string  $slug
+     * @return Category|null $category
+     */
+    public function getCategoryBySlug($slug)
+    {
+        return $this->categoryRepo->findOneBySlug($slug);
+    }
+
+    /**
+     *
+     * Get Sub Category by Id
+     *
+     * @param  integer  $categoryId
+     * @return array
+     */
+    public function getSubCategoryById($categoryId)
+    {
+        return  $this->categoryRepo->getSubCategoriesById($categoryId);
     }
 }

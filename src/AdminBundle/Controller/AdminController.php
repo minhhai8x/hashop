@@ -45,6 +45,17 @@ class AdminController extends BaseAdminController
 
         if($entity instanceof Category){
             $slug = StringHelper::slugify($entity->getName());
+            if ($entity->getParentId()) {
+                $slug = $entity->getParentId()->getSlug() . '-' . $slug;
+            }
+
+            $globalManager = $this->get('utils.global.manager');
+            $category      = $globalManager->getCategoryBySlug($slug);
+
+            if ($category) {
+                $slug .= '-'. time();
+            }
+
             $entity->setSlug($slug);
         }
     }
@@ -60,6 +71,17 @@ class AdminController extends BaseAdminController
 
         if($entity instanceof Category){
             $slug = StringHelper::slugify($entity->getName());
+            if ($entity->getParentId()) {
+                $slug = $entity->getParentId()->getSlug() . '-' . $slug;
+            }
+
+            $globalManager = $this->get('utils.global.manager');
+            $category      = $globalManager->getCategoryBySlug($slug);
+
+            if ($category && $category->getId() != $entity->getId()) {
+                $slug .= '-'. time();
+            }
+
             $entity->setSlug($slug);
         }
     }

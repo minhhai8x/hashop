@@ -19,10 +19,12 @@
             <div class="col-sm-2 col-xs-4 footer_block wow animated">
                <ul>
                {% for menu in megaMenu %}
-               {% if (loop.index-1) is divisible by(5) and loop.index > 5 %}
-                  </ul></div><div class="col-sm-2 col-xs-4 footer_block wow animated"><ul>
-               {% endif %}
-                  <li class="active"><a href="{{ url('front_category', {'slug': menu.info.slug}) }}">{{ menu.info.name }}</a></li>
+               {% if menu.info.pid is null %}
+                  {% if (loop.index-1) is divisible by(5) and loop.index > 5 %}
+                     </ul></div><div class="col-sm-2 col-xs-4 footer_block wow animated"><ul>
+                  {% endif %}
+                     <li class="active"><a href="{{ url('front_category', {'slug': menu.info.slug}) }}">{{ menu.info.name }}</a></li>
+               {% endif %}   
                {% endfor %}
                </ul>
             </div>

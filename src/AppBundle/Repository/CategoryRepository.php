@@ -12,11 +12,33 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
-	public function findAllCategories($params)
+    public function findAllCategories($params)
+    {
+        $query    = $this->createQueryBuilder('cat')
+                    ->setMaxResults($params['limit'])
+                    ->getQuery();
+
+        $results = $query->getResult();
+        return $results;
+    }
+
+    public function findAllCategoriesLevel1($params)
+    {
+        $query    = $this->createQueryBuilder('cat')
+                    ->where('cat.parentId IS NULL')
+                    ->setMaxResults($params['limit'])
+                    ->getQuery();
+
+        $results = $query->getResult();
+        return $results;
+    }
+
+    public function getSubCategoriesById($parentId)
     {
         $query    = $this->createQueryBuilder('cat')
                     ->select("cat.id, cat.name, cat.slug")
-                    ->setMaxResults($params['limit'])
+                    ->where('cat.parentId = :parentId')
+                    ->setParameter('parentId', $parentId)
                     ->getQuery();
 
         $results = $query->getResult();

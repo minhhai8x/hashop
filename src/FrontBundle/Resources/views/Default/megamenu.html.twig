@@ -14,13 +14,13 @@
                      {% for menu in megaMenu %}
                         <div class="col-sm-3">
                            <h3><a href="{{ url('front_category', {'slug': menu.info.slug}) }}">{{ menu.info.name }}</a></h3>
+                           {% if menu.info.subData is defined and menu.info.subData %}
                            <ul>
-                              {% if menu.products is defined and menu.products %}
-                              {% for product in menu.products %}
-                                <li><a href="{{ url('front_product_detail', {'category': product.catSlug, 'slug': product.slug}) }}">{{ product.name }}</a></li>
+                              {% for submenu in menu.info.subData %}
+                                <li><a href="{{ url('front_category', {'slug': submenu.slug}) }}">{{ submenu.name }}</a></li>
                               {% endfor %}
-                              {% endif %}
                            </ul>
+                           {% endif %}
                         </div>
                      {% endfor %}
                      {% endif %}

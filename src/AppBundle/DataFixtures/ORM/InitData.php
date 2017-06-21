@@ -24,6 +24,7 @@ class InitData implements FixtureInterface
         $config->setWsAddress('123 ABC St, VN');
         $config->setWsPhone('+1 800 9999');
         $config->setWsCopyright('© 2017 SUNNY FLOWERS. ALL RIGHTS RESERVED. DESIGN BY AZ');
+        $config->setWsEmail('minhhaiweb@gmail.com');
 
         $manager->persist($config);
         $manager->flush();
