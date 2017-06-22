@@ -52,6 +52,13 @@ class Category
     private $description;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="orderby", type="integer")
+     */
+    private $orderby = 0;
+
+    /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
     public $products;
@@ -64,7 +71,7 @@ class Category
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -87,7 +94,7 @@ class Category
     /**
      * Get parentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentId()
     {
@@ -110,7 +117,7 @@ class Category
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -133,7 +140,7 @@ class Category
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -156,15 +163,38 @@ class Category
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
         return $this->description;
     }
 
+    /**
+     * Set orderby
+     *
+     * @param integer $orderby
+     * @return Category
+     */
+    public function setOrderby($orderby)
+    {
+        $this->orderby = $orderby;
+
+        return $this;
+    }
+
+    /**
+     * Get orderby
+     *
+     * @return integer
+     */
+    public function getOrderby()
+    {
+        return $this->orderby;
+    }
+
     public function __toString()
     {
-        return $this->name; 
+        return $this->name;
     }
 }

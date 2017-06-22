@@ -96,9 +96,9 @@ easy_admin:
             label: category.label
             class: AppBundle\Entity\Category
             form:
-                fields: [{ property: 'name', label: 'category.name'}, { property: 'parentId', label: 'category.parent'}, { property: 'description', label: 'category.description'}]
+                fields: [{ property: 'name', label: 'category.name'}, { property: 'parentId', label: 'category.parent'}, { property: 'description', label: 'category.description'}, { property: 'orderby', label: 'category.orderby', type: 'integer'}]
             list:
-                fields: ['id', { property: 'name', label: 'category.name'}, { property: 'parentId', label: 'category.parent'}, { property: 'products', label: 'product.label'}]
+                fields: ['id', { property: 'name', label: 'category.name'}, { property: 'parentId', label: 'category.parent'}, { property: 'orderby', label: 'category.orderby'}, { property: 'products', label: 'product.label'}]
             # templates:
             #     field_array: ':easy_admin:field_array.html.twig'
         Product:

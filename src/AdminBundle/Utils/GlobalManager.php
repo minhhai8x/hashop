@@ -44,6 +44,13 @@ class GlobalManager
                     // delete image
                     $this->deleteProductImage($img['id']);
 
+                    // remove image file
+                    $path = $this->container->getParameter('app.path.product_images');
+                    $imagePath = '.' . $path . DIRECTORY_SEPARATOR . $img['image'];
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+
                     // set main image
                     if ($img['isMain']) {
                         $setMainImage = true;

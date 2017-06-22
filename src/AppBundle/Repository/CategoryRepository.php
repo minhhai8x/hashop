@@ -16,6 +16,7 @@ class CategoryRepository extends EntityRepository
     {
         $query    = $this->createQueryBuilder('cat')
                     ->setMaxResults($params['limit'])
+                    ->orderBy('cat.orderby', 'ASC')
                     ->getQuery();
 
         $results = $query->getResult();
@@ -27,6 +28,7 @@ class CategoryRepository extends EntityRepository
         $query    = $this->createQueryBuilder('cat')
                     ->where('cat.parentId IS NULL')
                     ->setMaxResults($params['limit'])
+                    ->orderBy('cat.orderby', 'ASC')
                     ->getQuery();
 
         $results = $query->getResult();
@@ -39,6 +41,7 @@ class CategoryRepository extends EntityRepository
                     ->select("cat.id, cat.name, cat.slug")
                     ->where('cat.parentId = :parentId')
                     ->setParameter('parentId', $parentId)
+                    ->orderBy('cat.orderby', 'ASC')
                     ->getQuery();
 
         $results = $query->getResult();
@@ -51,6 +54,7 @@ class CategoryRepository extends EntityRepository
                     ->select('cat.id, cat.name, cat.slug, cat.description')
                     ->where('cat.slug = :slug')
                     ->setParameter('slug', $slug)
+                    ->orderBy('cat.orderby', 'ASC')
                     ->getQuery();
 
         $results = $query->getOneOrNullResult();

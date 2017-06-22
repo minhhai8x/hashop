@@ -22,6 +22,7 @@ action.edit: Sửa
 category.name: Tên danh mục
 category.parent: Danh mục cha
 category.description: Mô tả
+category.orderby: Thứ tự
 label.form.empty_value: ------
 back_to.the_frontpage: Trở về trang chủ
 homepage.label: Trang chủ
