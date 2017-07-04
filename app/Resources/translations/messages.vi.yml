@@ -99,3 +99,18 @@ order_note.label: Ghi chú
 action.cancel: Huỷ
 statistics.label: Thống kê
 statistics.title: Thống kê đơn hàng
+statistics.vertical.axis.title: Số lượng đơn hàng
+statistics.horizontal.axis.title: Tháng
+statistics.data.serie.name: Số đơn hàng
+month.jan.label: Tháng 1
+month.feb.label: Tháng 2
+month.mar.label: Tháng 3
+month.apr.label: Tháng 4
+month.may.label: Tháng 5
+month.jun.label: Tháng 6
+month.jul.label: Tháng 7
+month.aug.label: Tháng 8
+month.sep.label: Tháng 9
+month.oct.label: Tháng 10
+month.nov.label: Tháng 11
+month.dec.label: Tháng 12

@@ -11,6 +11,7 @@ class GlobalManager
     protected $container;
     protected $productRepo;
     protected $imageRepo;
+    protected $orderRepo;
 
     public function __construct(EntityManager $em, $container)
     {
@@ -18,6 +19,7 @@ class GlobalManager
         $this->container = $container;
         $this->productRepo = $em->getRepository('AppBundle:Product');
         $this->imageRepo = $em->getRepository('AppBundle:Image');
+        $this->orderRepo = $em->getRepository('AppBundle:Order');
     }
 
     /**
@@ -73,5 +75,19 @@ class GlobalManager
         $image = $this->imageRepo->find($imageId);
         $this->em->remove($image);
         $this->em->flush();
+    }
+
+    public function getCurrentYearOrderStatistics()
+    {
+        // Init number of orders for each month (from Jan to Dec)
+        $result = array_fill(1, 12, 0);
+        $orderStatistics = $this->orderRepo->getOrderStatistics();
+        if ($orderStatistics) {
+            foreach ($orderStatistics as $order) {
+                $result[$order['month']] = (int) $order['number'];
+            }
+        }
+
+        return $result;
     }
 }

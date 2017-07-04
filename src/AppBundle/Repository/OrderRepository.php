@@ -12,5 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class OrderRepository extends EntityRepository
 {
+    public function getOrderStatistics($year = null)
+    {
+        $year  = $year ? $year : date('Y');
+        $query = $this->createQueryBuilder('o')
+                      ->select("COUNT(o.id) as number, MONTH(o.createdAt) as month")
+                      ->where('YEAR(o.createdAt) = :currentYear')
+                      ->setParameter('currentYear', $year)
+                      ->groupBy('month')
+                      ->getQuery();
 
+        $results = $query->getResult();
+
+        return $results;
+    }
 }
