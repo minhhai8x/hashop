@@ -12,13 +12,13 @@
       {% block head_stylesheets %}
          <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all">
          <link href="{{ asset('assets/css/assets.css') }}" rel="stylesheet" type="text/css" media="all">
-         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all">
+         <link href="{{ asset('assets/css/'~global_configs.theme_style) }}" rel="stylesheet" type="text/css" media="all">
          <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" media="all">
          <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" type="text/css" media="all">
          <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css" media="all">
          <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}" type="text/css">
       {% endblock %}
-      
+
       {% block head_javascript %}
          <script src="{{ asset('assets/js/jquery.min.js') }}" type="text/javascript"></script>
          <script src="{{ asset('assets/js/jquery-migrate-1.2.1.min.js') }}" type="text/javascript"></script>
@@ -87,7 +87,7 @@
             <!-- FOOTER -->
             {% block footer %}
                {{ include('FrontBundle:Default:footer.html.twig') }}
-            {% endblock %}      
+            {% endblock %}
 
          </div>
          <!-- / #wrapper2 -->

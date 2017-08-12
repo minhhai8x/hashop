@@ -8,6 +8,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Banner;
 use AppBundle\Entity\Image;
 use AppBundle\Helpers\StringHelper;
+use AppBundle\Entity\Configuration;
 
 class AdminController extends BaseAdminController
 {
@@ -20,6 +21,14 @@ class AdminController extends BaseAdminController
              '1' => 'top_banner.label', '2' => 'left_banner.label', '3' => 'bottom_banner.label', '4' => 'slider.label'
              )));
         }
+
+        if($entity instanceof Configuration){
+            $editForm->remove('wsTheme');
+            $editForm->add('wsTheme', 'choice', array('choices' => array(
+             '0' => 'website_theme_default.label', '1' => 'website_theme_orange.label'
+             )));
+        }
+
         return $editForm;
     }
 

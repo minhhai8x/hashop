@@ -132,6 +132,7 @@ easy_admin:
                     - { property: 'wsTitle', label: 'website_title.label'}
                     - { property: 'wsSlogan', label: 'website_slogan.label'}
                     - { property: 'wsLogoFile', type:'vich_image', label: 'website_logo.label', help: 'website_logo_size.label'}
+                    - { property: 'wsTheme', label: 'website_theme.label'}
                     - { property: 'wsAddress', label: 'website_address.label'}
                     - { property: 'wsEmail', label: 'website_email.label'}
                     - { property: 'wsPhone', label: 'website_phone.label'}

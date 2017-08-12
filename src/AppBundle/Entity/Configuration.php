@@ -91,6 +91,13 @@ class Configuration
     private $wsCopyright;
 
     /**
+     * @var smallint
+     *
+     * @ORM\Column(name="ws_theme", type="smallint")
+     */
+    private $wsTheme = 0;
+
+    /**
      * Get id
      *
      * @return integer
@@ -304,6 +311,29 @@ class Configuration
     public function getWsCopyright()
     {
         return $this->wsCopyright;
+    }
+
+    /**
+     * Set wsTheme
+     *
+     * @param smallint $wsTheme
+     * @return Configuration
+     */
+    public function setWsTheme($wsTheme)
+    {
+        $this->wsTheme = $wsTheme;
+
+        return $this;
+    }
+
+    /**
+     * Get wsTheme
+     *
+     * @return smallint
+     */
+    public function getWsTheme()
+    {
+        return $this->wsTheme;
     }
 
     public function __toString()

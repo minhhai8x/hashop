@@ -37,6 +37,17 @@ class AppExtension extends \Twig_Extension
 
         $globalConfigs->logoImage = $logoImage;
 
+        $theme = $globalConfigs->getWsTheme();
+        switch ($theme) {
+            case 1:
+                $globalConfigs->theme_style = 'style_orange.css';
+                break;
+
+            default:
+                $globalConfigs->theme_style = 'style.css';
+                break;
+        }
+
         return $globalConfigs;
     }
 

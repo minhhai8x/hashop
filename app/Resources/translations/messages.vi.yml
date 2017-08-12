@@ -58,6 +58,9 @@ website_email.label: Email
 website_email_subject.label: Email từ khách hàng
 website_phone.label: Điện thoại
 website_copyright.label: Bản quyền
+website_theme.label: Chủ đề
+website_theme_default.label: Mặc định
+website_theme_orange.label: Cam
 no_product.label: Không có sản phẩm nào!
 product_same_category.label: Sản phẩm cùng danh mục
 new_product.label: Sản phẩm mới
