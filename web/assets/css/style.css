@@ -74,8 +74,8 @@
                            1. CSS RESET
 ********************************************************************************************************/
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, 
-del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, textarea, button
 {
 	margin: 0;
@@ -396,7 +396,7 @@ textarea:focus::-webkit-input-placeholder {
 .visuallyhidden {
 	display: none;
 }
- 
+
 .left {
 	float: left;
 }
@@ -451,23 +451,23 @@ textarea:focus::-webkit-input-placeholder {
 	position: absolute;
 	top: 0;
 	right: 0;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 .jq-selectbox__dropdown {
 	width: 100%;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 
 .jq-selectbox.opened .jq-selectbox__trigger i {
@@ -602,13 +602,13 @@ textarea:focus::-webkit-input-placeholder {
      -moz-border-radius: 4px;
           border-radius: 4px;
 
-    
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 .cookies_container .cookie_ok {
 	margin: 10px 0 10px 20px;
@@ -736,13 +736,13 @@ a:hover, a:focus {
 .product_name a {
 	font-weight: bold;
 	color: #2e2e2e;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 .product_name a:hover {
 	color: #8dbf41;
@@ -925,13 +925,13 @@ textarea.form-control {
 	border: 1px solid #79b103;
 	border-radius: 0;
 	box-shadow: none !important;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 
 .btn a {
@@ -957,7 +957,7 @@ textarea.form-control {
 	z-index: 1;
 	color: #ffffff;
 	background: #bbbbbb;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -975,13 +975,13 @@ textarea.form-control {
 	border-radius: 50%;
 	border: 2px solid #bbbbbb;
 	opacity:0;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .btn-cart:hover:after {
 	top: -3px;
@@ -1023,7 +1023,7 @@ textarea.form-control {
 	text-align: center;
 	text-decoration: none;
 	text-shadow: 1px 1px 0 rgba(0, 0, 0, .3);
-	
+
 -webkit-transition: color .4s ease-in-out;
 			transition: color .4s ease-in-out;
 }
@@ -1035,7 +1035,7 @@ textarea.form-control {
 }
 .old_browsers a:hover {
 	color: #e90b00;
-	
+
 }
 
 
@@ -1133,7 +1133,8 @@ html, body {
 
 /* 8.1 HEADER */
 #header {
-	margin-bottom: 62px;
+	margin-bottom: 0px;
+	background-image: url(../images/header_bg.png);
 }
 
 .header_top {
@@ -1147,7 +1148,7 @@ html, body {
 }
 
 header #logo {
-	margin-top: 21px;
+	margin-top: 0px;
 	float: left;
 }
 header #logo img {
@@ -1184,7 +1185,7 @@ header #logo .ins {
 }
 header #logo a:hover b,
 header #logo a:hover span {
-	 
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1206,7 +1207,7 @@ header #logo a:after {
 	width: 0;
 	height: 0;
 	z-index: 12;
-	
+
 -webkit-transition: .5s ease-in-out;
 	   -moz-transition: .5s ease-in-out;
 	    -ms-transition: .5s ease-in-out;
@@ -1233,7 +1234,7 @@ header #logo a:hover:after,
 header #logo a:hover:before {
 	width: 110%;
 	height: 188%;
-} 
+}
 
 
 .header_user {
@@ -1248,7 +1249,7 @@ header #logo a:hover:before {
 	font-family: Ubuntu;
 	font-size: 14px;
 	color: #6e6e6e;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1303,7 +1304,7 @@ header #logo a:hover:before {
   	text-align:center;
 }
 .header_currency .jq-selectbox__dropdown ul li {
-	 
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1337,13 +1338,13 @@ header #logo a:hover:before {
 .header_cart a:hover b,
 .header_cart a:hover span {
 	color: #8dbf41;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .header_cart a i {
 	padding: 1px 9px 0 0;
@@ -1397,13 +1398,13 @@ header #logo a:hover:before {
 	color:#171717;
 	width:33px;
 	padding-top:4px;
-	
+
 -webkit-transition: .5s ease-in-out;
 	   -moz-transition: .5s ease-in-out;
 	    -ms-transition: .5s ease-in-out;
 	     -o-transition: .5s ease-in-out;
 	        transition: .5s ease-in-out;
-	 
+
 }
 .header_search #search-submit:hover {
 	color:#e10c0c;
@@ -1451,7 +1452,7 @@ header #logo a:hover:before {
 	bottom: 50%;
 	z-index:-1;
 	background: #7f44a2;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1526,22 +1527,22 @@ header #logo a:hover:before {
 	font-weight: 700;
 	text-transform: uppercase;
 	font-family: Ubuntu;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .sf-menu .submenu h3 a {
-    
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .sf-menu .submenu h3 a:hover {
 	color: #ffffff;
@@ -1551,7 +1552,7 @@ header #logo a:hover:before {
 	text-transform: uppercase;
 	font-family: Ubuntu;
 	color: #ffffff;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1578,7 +1579,7 @@ header #logo a:hover:before {
 
 /* CUSTOM LINK */
 .megamenu__2 .submenu {
-	
+
 }
 
 .megamenu__2 h3 {
@@ -1616,7 +1617,7 @@ header #logo a:hover:before {
 .megamenu__4 .product_img a {
 	display: block;
 	background: #ffffff;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1819,13 +1820,13 @@ header #logo a:hover:before {
 	background: #ffffff;
 	opacity:0;
 	border:1px solid #6e6e6e;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .nivo-caption .btn_slider:hover:after {
 	opacity: .2;
@@ -1847,7 +1848,7 @@ header #logo a:hover:before {
 	border-radius: 50%;
 	background: #31353d;
 	margin:0 3px;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -1895,23 +1896,23 @@ header #logo a:hover:before {
 	z-index: -1;
 }
 .parallax_box {
-	
+
     background-image: url(../images/parallax_box_bg.jpg);
 	    background-position: 50% 0;
 	    background-repeat: repeat-y;
-	
+
 }
 .opacity_block h4,
 .opacity_block h3 {
 	font-family: Droid Serif;
-  	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
 	;
-} 
+}
 .opacity_block h4 {
 	font-size: 24px;
 	text-transform: none;
@@ -1922,7 +1923,7 @@ header #logo a:hover:before {
 }
 .opacity_block a:hover h4,
 .opacity_block a:hover h3 {
-  	color:#7f44a2; 
+  	color:#7f44a2;
 }
 
 
@@ -1986,21 +1987,21 @@ header #logo a:hover:before {
 	padding: 41px 45px 42px;
 }
 .parallax_box1 {
-	
+
     background-image: url(../images/custom_bottom.png);
 	    background-position: right 0;
 	    background-repeat: no-repeat;
-	
+
 }
 .custom_bottom a .title1,
 .custom_bottom a .title2 {
-	 
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .custom_bottom a:hover .title1 {
 	color: #8dbf41;
@@ -2070,7 +2071,7 @@ header #logo a:hover:before {
 	width: 0;
 	height: 0;
 	z-index: 12;
-	
+
 -webkit-transition: .5s ease-in-out;
 	   -moz-transition: .5s ease-in-out;
 	    -ms-transition: .5s ease-in-out;
@@ -2152,7 +2153,7 @@ header #logo a:hover:before {
 	font-size: 24px;
 	color: #cccccc;
 	position: relative;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -2178,13 +2179,13 @@ header #logo a:hover:before {
 	border-radius: 50%;
 	border: 2px solid #cccccc;
 	opacity:0;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .product .product_links > .btn:hover i:after {
 	top: -2px;
@@ -2219,18 +2220,18 @@ header #logo a:hover:before {
 	top: 50%;
 	z-index: 99;
 	background: rgba(0,0,0,.7);
-	
+
 -webkit-border-radius: 50%;
 	   -moz-border-radius: 50%;
 	        border-radius: 50%;
-	
+
 
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 
 .index-scope .bx-controls a:hover {
@@ -2295,7 +2296,7 @@ footer a {
 	text-transform: uppercase;
 	font-family: Ubuntu;
 	color: #6e6e6e;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -2365,7 +2366,7 @@ footer h6 {
 	line-height: 1.1em;
 }
 .footer_block__5 li a {
-	 
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -2411,7 +2412,7 @@ ul.tags li a {
 	padding: 5px 10px;
 	background: #232323;
 	color: #ffffff;
-	
+
 -webkit-transition: .5s ease-in-out;
 	   -moz-transition: .5s ease-in-out;
 	    -ms-transition: .5s ease-in-out;
@@ -2474,7 +2475,7 @@ ul.tags li.active a {
 .breadcrumb a,
 .breadcrumb > li + li:before {
 	color:#ffffff;
-	
+
 -webkit-transition: .5s ease-in-out;
 	   -moz-transition: .5s ease-in-out;
 	    -ms-transition: .5s ease-in-out;
@@ -2520,7 +2521,7 @@ ul.tags li.active a {
 	padding: 4px 16px;
 	background: #232323;
 	color: #ffffff;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -2566,7 +2567,7 @@ ul.tags li.active a {
 }
 .column .widget ul.list li a {
 	color: #6e6e6e;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -2596,7 +2597,7 @@ ul.tags li.active a {
 .product_listing_sidebar .prod_inside  {
 	padding-bottom: 26px;
 	border: 1px solid #efefef;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
@@ -2627,13 +2628,13 @@ ul.tags li.active a {
 	position: relative;
 	display: block;
 	border: 1px solid #efefef;
-	
+
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	 
+
 }
 .widget_banner a:hover {
 	border: 1px solid #8dbf41;
@@ -2704,7 +2705,7 @@ ul.tags li.active a {
 #searchresults h3 {
 	margin: 0;
 	padding: 0;
-} 
+}
 
 #searchresults ol {
 	list-style-type: none;
@@ -2788,18 +2789,18 @@ ul.tags li.active a {
 	position: absolute;
 	top: 50%;
 	background: rgba(0,0,0,.7);
-	
+
 -webkit-border-radius: 50%;
 	   -moz-border-radius: 50%;
 	        border-radius: 50%;
-	
+
 
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
 	    -ms-transition: .3s ease-in-out;
 	     -o-transition: .3s ease-in-out;
 	        transition: .3s ease-in-out;
-	
+
 }
 .product_images .bx-controls a:hover {
 	background: rgba(0,0,0,1);
@@ -2876,7 +2877,7 @@ ul.tags li.active a {
 }
 
 
-    
+
 .product_wrap .product_details {
 	margin: 15px 0 0 0;
 	padding: 10px 0 15px 0;

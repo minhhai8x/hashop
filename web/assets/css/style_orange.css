@@ -1133,7 +1133,8 @@ html, body {
 
 /* 8.1 HEADER */
 #header {
-	margin-bottom: 62px;
+	margin-bottom: 0px;
+    background-image: url(../images/header_bg.png);
 }
 
 .header_top {
