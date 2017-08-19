@@ -132,7 +132,11 @@
 
                            {% else %}
                               <div class="text-center">
-                                <h1 class="page_heading">{{ 'no_product.label'|trans }}</h1>
+                                <div class="article_header"></div><p class="clearfix"></p>
+                                <div class="article_meta"><span>{{ 'no_product.label'|trans }}</span></div>
+                                <p class="clearfix">
+                                  <span class="left"><a href="{{ url('front_homepage') }}" title="">← {{ 'continue_shopping.label'|trans }}</a><br></span>
+                                </p>
                               </div>
                            {% endif %}
                         </div>

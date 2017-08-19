@@ -13,9 +13,7 @@
 <script src="{{ asset('assets/js/jquery.ui.totop.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/jquery.formstyler.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/wow.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/js/jquery.bxslider.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/jquery.elevatezoom.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/js/jquery.fancybox-2.1.5.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block wrapper %}
 <div id="wrapper">
@@ -35,7 +33,7 @@
       {% endblock %}
       <!-- MEGAMENU -->
       {% block megamenu %}
-         {{ include('FrontBundle:Default:megamenu.html.twig') }}
+      {{ include('FrontBundle:Default:megamenu.html.twig') }}
       {% endblock %}
       <!-- nivoslider -->
       {% block nivoslider %}{% endblock %}
@@ -47,39 +45,57 @@
          <div class="container">
             <ul class="breadcrumb">
                <li><a href="{{ url('front_homepage') }}" class="homepage-link" title="{{ 'back_to.the_frontpage'|trans }}">{{ 'homepage.label'|trans }}</a></li>
-               <li><span class="page-title">{{ 'order_success.label'|trans }}</span></li>
+               <li><span class="page-title">{{ 'delivery.label'|trans }}</span></li>
             </ul>
             <div class="row sidebar_left ">
                <div class="column_center">
                   <div id="main_content" class="col-sm-9">
-                     <div class="contact-scope">
-                        <h3 class="page_heading">{{ 'order_success.label'|trans }}</h3>
+                     <div class="page-scope">
+                        <h1 class="page_heading">{{ 'delivery.label'|trans }}</h1>
                         <div class="article_header"></div><p class="clearfix"></p>
-                        <div>
-                           <h1 style="text-transform: initial;">{{ 'cart_success_message.label'|trans }}: {{ orderNo }}</h1>
-                           <h1>{{ 'continue_shopping.label'|trans }} <a href="{{ url('front_homepage') }}">{{ 'here.label'|trans }}</a>.</h1>
+                        <div class="page_content">
+                          <div class="rte">
+                           <div class="row">
+                              <div class="col-sm-9">
+                              <h3 class="page_block_title">Ship miễn phí</h3>
+                                 <ul>
+                                    <li>Bán kính 5km: ship miễn phí với hoá đơn trên 300k.</li>
+                                    <li>Bán kính 10km: ship miễn phí với hoá đơn trên 500k.</li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                              <h3 class="page_block_title">Phí ship: TP HCM và Bình Dương</h3>
+                                 <ul>
+                                    <li>Bán kính 10km - 20km: phí ship 20k.</li>
+                                    <li>Phí ship sẽ cộng thêm 10k/10km tiếp theo.</li>
+                                 </ul>
+                              </div>
+                           </div>
                         </div>
                      </div>
+                     <img src="{{ asset('assets/images/delivery_process.jpg') }}" alt="{{ 'delivery_process.label'|trans }}"/>
                   </div>
                </div>
-               <div class="column_left column col-sm-3">
-                  <!-- Left menu -->
-                  {{ include('FrontBundle:Default:left_menu.html.twig') }}
-                  <!-- END Left menu -->
-                  <!-- Best sellers -->
-                  {{ include('FrontBundle:Product:best_sellers.html.twig') }}
-                  <!-- END Best sellers -->
-               </div>
+            </div>
+            <div class="column_left column col-sm-3">
+               <!-- Left menu -->
+               {{ include('FrontBundle:Default:left_menu.html.twig') }}
+               <!-- END Left menu -->
+               <!-- Best sellers -->
+               {{ include('FrontBundle:Product:best_sellers.html.twig') }}
+               <!-- END Best sellers -->
             </div>
          </div>
       </div>
-      {% endblock %}
-      <!-- FOOTER -->
-      {% block footer %}
-      {{ include('FrontBundle:Default:footer.html.twig') }}
-      {% endblock %}
-
    </div>
-   <!-- / #wrapper2 -->
+   {% endblock %}
+   <!-- FOOTER -->
+   {% block footer %}
+   {{ include('FrontBundle:Default:footer.html.twig') }}
+   {% endblock %}
+</div>
+<!-- / #wrapper2 -->
 </div>
 {% endblock %}

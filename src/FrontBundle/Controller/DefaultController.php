@@ -75,4 +75,23 @@ class DefaultController extends Controller
     {
         return $this->render('FrontBundle:Default:contact_success.html.twig', array());
     }
+
+    public function deliveryAction(Request $request)
+    {
+        $productManager = $this->get('utils.product.manager');
+        $globalManager  = $this->get('utils.global.manager');
+        $megaMenu       = $globalManager->getMegamenu();
+        $categories     = $globalManager->getAllCategories();
+        $bestSellers    = $productManager->getProductsBestSeller();
+
+        $renderData     = array(
+            'body_id'     => 'delivery',
+            'body_class'  => 'template-page',
+            'megaMenu'    => $megaMenu,
+            'categories'  => $categories,
+            'bestSellers' => $bestSellers,
+        );
+
+        return $this->render('FrontBundle:Default:delivery.html.twig', $renderData);
+    }
 }

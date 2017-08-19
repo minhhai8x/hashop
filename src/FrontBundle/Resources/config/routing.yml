@@ -16,6 +16,10 @@ front_contact_us:
     path: /contact-us
     defaults: { _controller: FrontBundle:Default:contactUs }
 
+front_delivery:
+    path: /delivery
+    defaults: { _controller: FrontBundle:Default:delivery }
+
 front_cart:
     path: /cart
     defaults: { _controller: FrontBundle:Cart:index }

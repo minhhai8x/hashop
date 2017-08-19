@@ -108,10 +108,11 @@
                               </div>
                            </form>
                         {% else %}
-                           <div>
-                              <h2>{{ 'cart_empty.label'|trans }}</h2>
-                              <h3>{{ 'continue_shopping.label'|trans }} <a href="{{ url('front_homepage') }}">{{ 'here.label'|trans }}</a>.</h3>
-                           </div>
+                           <div class="article_header"></div><p class="clearfix"></p>
+                           <div class="article_meta"><span>{{ 'cart_empty.label'|trans }}</span></div>
+                           <p class="clearfix">
+                              <span class="left"><a href="{{ url('front_homepage') }}" title="">← {{ 'continue_shopping.label'|trans }}</a><br></span>
+                           </p>
                         {% endif %}
                         </div>
                      </div>
