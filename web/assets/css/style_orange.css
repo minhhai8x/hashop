@@ -1154,9 +1154,13 @@ header #logo {
 }
 header #logo img {
 	float: left;
-	margin-top: 4px;
+	/*margin-top: 4px;
 	margin-right: 14px;
-	margin-top: -5px;
+	margin-top: -5px;*/
+    margin-right: 14px;
+    margin-top: -64px;
+    position: absolute;
+    margin-left: -60px;
 }
 header #logo a {
 	text-transform: uppercase;
