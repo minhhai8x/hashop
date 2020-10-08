@@ -1,13 +1,13 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "cb90fc19ed9d339697b3ee3e02661690",
     "packages": [
         {
-            "name": "beberlei/DoctrineExtensions",
+            "name": "beberlei/doctrineextensions",
             "version": "v1.0.17",
             "source": {
                 "type": "git",
@@ -766,12 +766,12 @@
             "version": "v2.5.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "e6c434196c8ef058239aaa0724b4aadb0107940b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e6c434196c8ef058239aaa0724b4aadb0107940b",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/e6c434196c8ef058239aaa0724b4aadb0107940b",
                 "reference": "e6c434196c8ef058239aaa0724b4aadb0107940b",
                 "shasum": ""
             },
@@ -1091,6 +1091,7 @@
                 "backend",
                 "generator"
             ],
+            "abandoned": "easycorp/easyadmin-bundle",
             "time": "2017-04-08T18:35:00+00:00"
         },
         {
@@ -1463,12 +1464,12 @@
             "version": "v1.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/whiteoctober/Pagerfanta.git",
+                "url": "https://github.com/BabDev/Pagerfanta.git",
                 "reference": "29aade64addfdfb12c05aabf160f09d1aea6b143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/29aade64addfdfb12c05aabf160f09d1aea6b143",
+                "url": "https://api.github.com/repos/BabDev/Pagerfanta/zipball/29aade64addfdfb12c05aabf160f09d1aea6b143",
                 "reference": "29aade64addfdfb12c05aabf160f09d1aea6b143",
                 "shasum": ""
             },
@@ -1524,6 +1525,12 @@
                 "pagination",
                 "paginator",
                 "paging"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/mbabker",
+                    "type": "github"
+                }
             ],
             "time": "2017-03-20T13:46:15+00:00"
         },
@@ -1680,6 +1687,7 @@
                 "configuration",
                 "distribution"
             ],
+            "abandoned": true,
             "time": "2017-01-04T13:34:44+00:00"
         },
         {
@@ -2723,6 +2731,7 @@
                 "i18n",
                 "text"
             ],
+            "abandoned": true,
             "time": "2016-10-25T17:34:14+00:00"
         },
         {
@@ -2921,6 +2930,7 @@
                 "code",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2016-04-20T17:26:42+00:00"
         },
         {
@@ -2975,6 +2985,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2016-12-19T21:47:12+00:00"
         },
         {
@@ -3025,6 +3036,7 @@
                 "json",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-json",
             "time": "2016-04-01T02:34:00+00:00"
         }
     ],
@@ -3197,20 +3209,21 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": "symfony/maker-bundle",
             "time": "2017-03-15T01:02:10+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.19",
+            "version": "v2.8.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "bc240bf630ea49d5f86cef746254d64299029932"
+                "reference": "4aa44ecbfb5e2c50797d17756da11c93a8a6974f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/bc240bf630ea49d5f86cef746254d64299029932",
-                "reference": "bc240bf630ea49d5f86cef746254d64299029932",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/4aa44ecbfb5e2c50797d17756da11c93a8a6974f",
+                "reference": "4aa44ecbfb5e2c50797d17756da11c93a8a6974f",
                 "shasum": ""
             },
             "require": {
@@ -3255,7 +3268,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2017-03-01T19:11:57+00:00"
+            "time": "2019-04-16T10:01:26+00:00"
         }
     ],
     "aliases": [],
@@ -3266,5 +3279,6 @@
     "platform": {
         "php": ">=5.3.9"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
