@@ -24,6 +24,7 @@ class DefaultController extends Controller
             'megaMenu' => $megaMenu,
             'banners'  => $banners,
             'bestSellers'  => $bestSellers,
+            'homeMenuClass'  => true,
         );
 
         return $this->render('FrontBundle:Default:index.html.twig', $renderData);

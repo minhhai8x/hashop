@@ -64,16 +64,16 @@ jQuery(function($){
         speed: 'fast'
     });
 
-    var path = window.location.pathname.split('/');
-    path = path[path.length-1];
-    if (path !== undefined) {
-      $("ul.sf-menu > li").children("a[href$='" + path + "']").parents('li').children('a').addClass('active');
-    };
+   //  var path = window.location.pathname.split('/');
+   //  path = path[path.length-1];
+   //  if (path !== undefined) {
+   //    $("ul.sf-menu > li").children("a[href$='" + path + "']").parents('li').children('a').addClass('active');
+   //  };
 
-    var path2 = window.location.pathname;
-  	if (path2 == '/' || path == undefined) {
-      $("ul.sf-menu > li").children("a[href$='" + path2 + "']").parents('li').children('a').addClass('active');
-    };
+   //  var path2 = window.location.pathname;
+  	// if (path2 == '/' || path == undefined) {
+   //    $("ul.sf-menu > li").children("a[href$='" + path2 + "']").parents('li').children('a').addClass('active');
+   //  };
 
 
     /* MEGAMENU MOBILE */

@@ -46,7 +46,7 @@ class GlobalManager
      *
      * @return array $results Megamenu items
      */
-    public function getMegamenu()
+    public function getMegamenu($activeCat = '')
     {
         $result = array();
         $recordsPerPage  = $this->container->getParameter('items_per_page');
@@ -54,11 +54,14 @@ class GlobalManager
         $categories = $this->categoryRepo->findAllCategoriesLevel1($params);
         if (!empty($categories)) {
             foreach ($categories as $key => $category) {
+                $slug = $category->getSlug();
+                $isActive = ($activeCat == $slug) ? 'active' : '';
                 $result[$key]['info'] = array(
                     'name' => $category->getName(),
                     'pid'  => $category->getParentId() ? $category->getParentId()->getId() : null,
-                    'slug' => $category->getSlug(),
-                    'subData' => $this->getSubCategoryById($category->getId()),
+                    'slug' => $slug,
+                    'activeClass' => $isActive,
+                    // 'subData' => $this->getSubCategoryById($category->getId()),
                 );
 
                 // $result[$key]['products'] = array();

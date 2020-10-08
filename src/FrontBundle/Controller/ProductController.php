@@ -47,7 +47,7 @@ class ProductController extends Controller
     {
         $globalManager  = $this->get('utils.global.manager');
         $categories     = $globalManager->getAllCategories();
-        $megaMenu       = $globalManager->getMegamenu();
+        $megaMenu       = $globalManager->getMegamenu($slug);
 
         $productManager = $this->get('utils.product.manager');
         $category       = $productManager->getCategoryBySlug($slug);
