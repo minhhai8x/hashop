@@ -1134,7 +1134,7 @@ html, body {
 /* 8.1 HEADER */
 #header {
 	margin-bottom: 0px;
-    background-image: url(../images/header_bg.png);
+    /*background-image: url(../images/header_bg.png);*/
 }
 
 .header_top {
@@ -1169,7 +1169,8 @@ header #logo b {
 	font-weight: 400;
 	letter-spacing: 2px;
 	white-space:nowrap;
-	color: #ffffff;
+	/*color: #ffffff;*/
+    color: #000000;
 }
 header #logo span {
 	display: block;
@@ -1178,7 +1179,8 @@ header #logo span {
 	line-height: 1em;
 	letter-spacing: .3px;
 	font-family: Ubuntu;
-	color: #ffffff;
+	/*color: #ffffff;*/
+    color: #6e6e6e;
 }
 header #logo .ins {
 	overflow: hidden;
