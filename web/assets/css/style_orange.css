@@ -730,12 +730,13 @@ a:hover, a:focus {
 /* 4.4 PRODUCT ATTRIBUTES (name, description, price) */
 .product_name {
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 15px;
 	color: #2e2e2e;
+    text-transform: initial;
 }
 .product_name a {
 	font-weight: bold;
-	color: #2e2e2e;
+	color: #282828;
 
 -webkit-transition: .3s ease-in-out;
 	   -moz-transition: .3s ease-in-out;
@@ -1157,10 +1158,9 @@ header #logo img {
 	/*margin-top: 4px;
 	margin-right: 14px;
 	margin-top: -5px;*/
-    margin-right: 14px;
     margin-top: -52px;
     position: absolute;
-    margin-left: -60px;
+    margin-left: -45px;
 }
 header #logo a {
 	text-transform: uppercase;
@@ -1331,7 +1331,7 @@ header #logo a:hover:before {
 
 .header_cart {
 	display: inline-block;
-	padding: 41px 12px 0 0;
+	padding: 4px 12px 0 0;
 	line-height: 11px;
 	vertical-align: top;
 }
