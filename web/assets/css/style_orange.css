@@ -1447,6 +1447,9 @@ header #logo a:hover:before {
 	z-index: 1;
 	color: #ffffff;
 }
+.sf-menu > li > a.sf-with-ul {
+    z-index: 3;
+}
 .sf-menu > li:first-child > a {
 	margin-left: 10px;
 }
@@ -1504,6 +1507,7 @@ header #logo a:hover:before {
 	display: none;
 	background: #31353d;
 	padding-right: 30px;
+    z-index: 2;
 	}
 .sf-menu .submenu .row > div {
 	padding: 27px 0 23px 32px;
