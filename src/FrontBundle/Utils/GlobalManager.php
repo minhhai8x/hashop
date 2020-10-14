@@ -61,7 +61,7 @@ class GlobalManager
                     'pid'  => $category->getParentId() ? $category->getParentId()->getId() : null,
                     'slug' => $slug,
                     'activeClass' => $isActive,
-                    // 'subData' => $this->getSubCategoryById($category->getId()),
+                    'subData' => $this->getSubCategoryById($category->getId()),
                 );
 
                 // $result[$key]['products'] = array();

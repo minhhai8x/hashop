@@ -10,9 +10,28 @@
          </li>
          {% if megaMenu is defined and megaMenu %}
          {% for menu in megaMenu %}
-         <li class="{{ loop.index }}">
-            <a href="{{ url('front_category', {'slug': menu.info.slug}) }}" class="{{ menu.info.activeClass }}">{{ menu.info.name }}</a>
-         </li>
+            {% if menu.info.subData is defined and menu.info.subData %}
+               <li class="megamenu__{{ loop.index }}">
+                  <a href="#">{{ menu.info.name }}</a>
+                  <ul>
+                     <li>
+                        <div class="submenu">
+                           <div class="row">
+                           {% for submenu in menu.info.subData %}
+                              <div class="col-sm-3">
+                                 <h3><a href="{{ url('front_category', {'slug': submenu.slug}) }}">{{ submenu.name }}</a></h3>
+                              </div>
+                           {% endfor %}
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </li>
+            {% else %}
+               <li class="megamenu__{{ loop.index }}">
+                  <a href="{{ url('front_category', {'slug': menu.info.slug}) }}" class="{{ menu.info.activeClass }}">{{ menu.info.name }}</a>
+               </li>
+            {% endif %}
          {% endfor %}
          {% endif %}
          <li class="megamenu__3">
