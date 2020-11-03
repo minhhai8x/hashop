@@ -280,7 +280,7 @@ header #logo {
 
 .megamenu_mobile {
 	position: relative;
-	background: #7f44a2;
+	background: #ffce51;
 }
 .megamenu_mobile h2 {
 	overflow: hidden;
@@ -328,7 +328,7 @@ header #logo {
 	color: #ffffff;
 }
 .submenu__1 > li > a:hover {
-	background: #7f44a2;
+	background: #ffce51;
 }
 .submenu__1 > li > a > i {
 	float: right;
@@ -354,7 +354,7 @@ header #logo {
 	color: #ffffff;
 }
 .submenu__2 > li > a:hover {
-	background: #7f44a2;
+	background: #ffce51;
 }
 .submenu__2 > li > a > i {
 	float: right;
@@ -380,7 +380,7 @@ header #logo {
 	color: #ffffff;
 }
 .submenu__3 > li > a:hover {
-	background: #7f44a2;
+	background: #ffce51;
 }
 
 

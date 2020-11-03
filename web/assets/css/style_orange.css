@@ -512,7 +512,7 @@ textarea:focus::-webkit-input-placeholder {
     color: #ffffff;
 }
 
-#toTop:hover { background: #7f44a2;}
+#toTop:hover { background: #ffce51;}
 
 #toTop:active, #toTop:focus {outline:none;}
 
@@ -998,8 +998,8 @@ textarea.form-control {
 .btn-info:hover,
 .btn-primary:hover {
 	color: #ffffff;
-	background: #7f44a2;
-	border:1px solid #7f44a2;
+	background: #ffce51;
+	border:1px solid #ffce51;
 }
 
 .btn-cart:hover {
@@ -1200,7 +1200,7 @@ header #logo a:hover span {
 	        transition: .3s ease-in-out;
 	 }
 header #logo a:hover b {
-	color: #7f44a2;
+	color: #ffce51;
 }
 header #logo a:hover span {
 	color: #ffce51;
@@ -1934,7 +1934,7 @@ header #logo a:hover:before {
 }
 .opacity_block a:hover h4,
 .opacity_block a:hover h3 {
-  	color:#7f44a2;
+  	color:#ffce51;
 }
 
 
@@ -2028,7 +2028,7 @@ header #logo a:hover:before {
 .title1 {
 	font-weight: bold;
 	font-size: 48px;
-	color: #7f44a2;
+	color: #ffce51;
 }
 .title2 {
 	font-style: italic;
@@ -2127,7 +2127,7 @@ header #logo a:hover:before {
 	left: -18px;
 }
 .product_listing_main .product_img span.sale {
-	background: #7f44a2;
+	background: #ffce51;
 	right: -18px;
 }
 
@@ -2495,7 +2495,7 @@ ul.tags li.active a {
 	;
 }
 .breadcrumb a:hover {
-	color:#7f44a2;
+	color:#ffce51;
 }
 
 
